@@ -99,3 +99,24 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Compiled renpy files
+*.rpyc
+
+# renpy bytecode files
+*.rpyb
+
+# save files
+*.save
+
+# text files
+*.txt
+
+# backup files
+*.bak
+
+# saves folder
+game/saves
+
+# tmp folder
+tmp/
