@@ -8,28 +8,203 @@
 ##############################################################################
 # Pokedex
 #
-# Screen that's used to display information regarding pokemon.
+# Screen that's used to display information regarding Pokemon.
     
 screen pokedex():
     tag menu
     use navigation
+    
     window:
         style "gm_root"
+        
     frame:
         style_group "gm_nav"
         xalign 0.75
         yalign 0.25
         
         has vbox
-
-        textbutton _("Dad") action ShowMenu("dad_dex")
+        
+        # I wanted to use a dictionary and a for loop for this part
+        # but apparently renpy doesn't support for loops
+        # and I couldn't think of another way to do this :(
+        if dad_dex == True:
+            textbutton _("Dad") action ShowMenu("dad_dex")
+        else:
+            text "There's nothing in your Pokedex right now!"
+        if pika_dex == True:
+            textbutton _("Pikachu") action ShowMenu("pika_dex")
+        if jynx_dex == True:
+            textbutton _("Jynx") action ShowMenu("jynx_dex")
+        if digl_dex == True:
+            textbutton _("Diglett") action ShowMenu("digl_dex")
+        if char_dex == True:
+            textbutton _("Charmander") action ShowMenu("char_dex")
+        if ditt_dex == True:
+            textbutton _("Ditto") action ShowMenu("ditt_dex")
+        if bulb_dex == True:
+            textbutton _("Bulbasaur") action ShowMenu("bulb_dex")
 
 
 screen dad_dex():
     tag menu
     use navigation
-    text "Hello"
+    window:
+        style "gm_root"
+    frame:
+        style_group "gm_nav"
+        xalign 0.98
+        yalign 0.98
         
+        has vbox
+        
+        textbutton _("Back") action ShowMenu("pokedex")
+    
+    frame:
+        style_group "gm_nav"
+        xalign 0.50
+        yalign 0.50
+        
+        has vbox
+        
+        text "It's your dad. That's right, he's a fucking fish."
+        
+screen pika_dex():
+    tag menu
+    use navigation
+    window:
+        style "gm_root"
+    frame:
+        style_group "gm_nav"
+        xalign 0.98
+        yalign 0.98
+        
+        has vbox
+        
+        textbutton _("Back") action ShowMenu("pokedex")
+    
+    frame:
+        style_group "gm_nav"
+        xalign 0.50
+        yalign 0.50
+        
+        has vbox
+        
+        text "It's your childhood friend. You two have a very strong platonic relationship!"
+        
+screen jynx_dex():
+    tag menu
+    use navigation
+    window:
+        style "gm_root"
+    frame:
+        style_group "gm_nav"
+        xalign 0.98
+        yalign 0.98
+        
+        has vbox
+        
+        textbutton _("Back") action ShowMenu("pokedex")
+    
+    frame:
+        style_group "gm_nav"
+        xalign 0.50
+        yalign 0.50
+        
+        has vbox
+        
+        text "Some lady who works at a salon. Kinda scary."
+
+screen digl_dex():
+    tag menu
+    use navigation
+    window:
+        style "gm_root"
+    frame:
+        style_group "gm_nav"
+        xalign 0.98
+        yalign 0.98
+        
+        has vbox
+        
+        textbutton _("Back") action ShowMenu("pokedex")
+    
+    frame:
+        style_group "gm_nav"
+        xalign 0.50
+        yalign 0.50
+        
+        has vbox
+        
+        text "A tsundere with a cute flower pot."
+
+screen char_dex():
+    tag menu
+    use navigation
+    window:
+        style "gm_root"
+    frame:
+        style_group "gm_nav"
+        xalign 0.98
+        yalign 0.98
+        
+        has vbox
+        
+        textbutton _("Back") action ShowMenu("pokedex")
+    
+    frame:
+        style_group "gm_nav"
+        xalign 0.50
+        yalign 0.50
+        
+        has vbox
+        
+        text "Your gentle senpai."
+        
+screen ditt_dex():
+    tag menu
+    use navigation
+    window:
+        style "gm_root"
+    frame:
+        style_group "gm_nav"
+        xalign 0.98
+        yalign 0.98
+        
+        has vbox
+        
+        textbutton _("Back") action ShowMenu("pokedex")
+    
+    frame:
+        style_group "gm_nav"
+        xalign 0.50
+        yalign 0.50
+        
+        has vbox
+        
+        text "Trash."
+
+screen bulb_dex():
+    tag menu
+    use navigation
+    window:
+        style "gm_root"
+    frame:
+        style_group "gm_nav"
+        xalign 0.98
+        yalign 0.98
+        
+        has vbox
+        
+        textbutton _("Back") action ShowMenu("pokedex")
+    
+    frame:
+        style_group "gm_nav"
+        xalign 0.50
+        yalign 0.50
+        
+        has vbox
+        
+        text "A florist at the.. florist in the mall. \'Florist \' is a weird word."
 ##############################################################################
 # Say
 #

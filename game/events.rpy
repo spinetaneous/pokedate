@@ -16,6 +16,7 @@ init:
 
     define jynx = Character('Jynx', color="#70018b")
     define bulb = Character('Bulbasaur', color="#008080")
+    define digl = Character('Diglett', color="#ab4221")
 
     define pika = Character('Pikachu', color="#ffd700")
 

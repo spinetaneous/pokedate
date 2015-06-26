@@ -3,7 +3,8 @@
 # to the characters before making any real choices.
 
 label breakfast:
-    $ dad_dex1 = True
+    $ dad_dex = True
+    $ pika_dex = True
     "It's the start of a new day."
     "My name is [name], and I'm just a regular human in the pokemon world."
     "When I was 3, I was adopted by a single father."
@@ -246,6 +247,9 @@ label mall_day1: #pikachu introduces you to diglett and jynx
     
     "I have no idea who this is or why she's talking to me."
     
+    if gender != "girl":
+        "And I'm not a girl..."
+    
     player "What are you talking about? Is there something wrong with me?"
     
     pika "...!"
@@ -271,7 +275,8 @@ label mall_day1: #pikachu introduces you to diglett and jynx
     
     jynx "Nice to meet you too!"
     
-    pdex "Jynx has been added to your Pokedex." #pokedex statement
+    $ jynx_dex = True
+    pdex "Jynx has been added to your Pokedex."
     
     jynx "Oh, would you look at the time! My shift starts in a few minutes!"
     
@@ -324,6 +329,9 @@ label florist_day1:
     "As we browse, the florist comes by."
     "Judging by his name tag, his name is Bulbasaur."
     
+    $ bulb_dex = True
+    pdex "Bulbasaur has been added to your Pokedex."
+    
     bulb "Would you like any assistance?"
     
     pika "No thanks, we're fine."
@@ -356,3 +364,180 @@ label florist_day1:
     
     "He went back to looking at the flowers."
     "I wonder who it is?"
+    "..."
+    "...!"
+    "I wonder what kind of flower this is? I've never seen anything like it..."
+    "It's even got a different flower pot compared to the rest. Why are there wheels?"
+    "The flower itself looks strange too..."
+    "It's more like a brown blob. Is this even a flower?"
+    "Should I take a closer look?"
+    menu:
+        "Eh, why not?.":
+            "I pick up the flower pot and examine the plant."
+            "It's very brown and very smooth... Like one of those hills in Mario, but brown."
+            
+            unknown "Hey!"
+            unknown "What are you doing!?"
+            
+            player "Huh!? Who said that!?"
+            
+            unknown "Put me down!"
+            
+            player "!!"
+            
+            "Is the voice coming from... the plant?"
+            "I turn the pot around and..."
+            
+            player "!!!!!!"
+            
+            "There's a face!?!?"
+            
+            player "Are you a Pokemon?"
+            
+            unknown "Of course I am; can't you tell!?"
+            unknown "I'm Diglett!!"
+            
+            $ digl_dex = True
+            pdex "Diglett has been added to your Pokedex."
+            
+            player "O-Oh, I'm sorry for--"
+            
+            digl "You know, there's something called a \"personal bubble\"!"
+            digl "And you invaded the bubble!"
+            
+            player "Ah, I'm really sorry about--"
+            
+            digl "Put me down!!"
+            
+            player "O-Oh, uh, okay."
+            
+            "I set Diglett back down on the shelf."
+            
+            pika "[name], are you okay?!"
+            pika "What's wrong? I heard a lot of shouting!"
+            
+            player "Oh, it was just--"
+            
+            digl "She tried kidnapping me!"
+            digl "All I was doing was looking at flowers, and she just grabs me out of nowhere and--"
+            
+            player "N-No! I thought he was another plant!"
+            
+            digl "\"Another plant\"?! I'm a Pokemon, you idiot!"
+            
+            bulb "Hey!! Stop fighting in my store!!"
+            bulb "You can argue all you want, but do it outside!"
+            
+            player "No, Pikachu needs to buy his roses!"
+            
+            digl "...!"
+            digl "Roses?"
+            digl "Are you buying them for your girlfriend?"
+            
+            pika "U-Um, well, not really..."
+            pika "It's complicated..."
+            
+            digl "D-Do you want help?"
+            digl "I can help, if you want..."
+            
+            pika "That'd be great. Thank you!"
+            
+            digl "I-It's not like I like flowers a lot or anything."
+            digl "Especially not enough to study about them..."
+            
+            pika "Oh, okay... Well, all help is appreciated."
+            
+            digl "What kind of person are you getting these roses for?"
+            
+            pika "Um... Come over here and I'll tell you."
+            
+            digl "Alright."
+            
+            "Diglett rolls off the shelf and lands with a small thud."
+            "I wonder how he didn't break?"
+            "He rolls towards Pikachu, and they go off talking about roses."
+            "They come back a few minutes later."
+            
+            digl "Are you serious, man? You want [pronoun1]?"
+            digl "Not exactly the kind of [gender] you'd want to date..."
+            
+            pika "Hey, don't say that about [pronoun1]."
+            pika "I promise, once you get to know [pronoun1]..."
+            
+            digl "...Alright dude."
+            digl "I respect your wishes, so I'll help you."
+            
+            player "Since he's helping you with the roses, is it okay if I look around the mall?"
+            
+            pika "Yeah, don't worry about it. Do what you like."
+            pika "Just don't get lost, okay? We'll meet up later."
+            
+            player "I'm not a little kid!"
+            player "..."
+            player "Seeya, Homiechu!"
+            "I sprint before he can say anything."
+            
+            jump mall_choice_day1
+        "I don't want to touch it...":
+            "I decide to leave it alone."
+            "..."
+            "Wait, maybe Pikachu's \'special\' person would actually like this!?"
+            "Hmmm..."
+            
+            player "Hey, Pikachu."
+            
+            pika "Yes, [name]?"
+            
+            player "I really have no idea what this [gender] is like."
+            player "Tell me more about [pronoun1]."
+            
+            pika "U-Um, well, I--"
+            
+            player "Like, what's [pos_pronoun] favorite color?"
+            player "And [pos_pronoun] favorite food?"
+            
+            pika "Probably Pokepu-"
+            
+            player "And [pos_pronoun] favorite anime?"
+            player "Favorite Pokemon?"
+            player "Favorite manga?"
+            
+            pika "Um--" #pikachu gets redder and redder with the questions lol
+            
+            player "Favorite thing to hug to sleep?"
+            
+            pika "Huh--"
+            
+            player "Favorite brand of cigarettes?"
+            
+            pika "What--"
+            
+            player "Favorite recreational drug?"
+            
+            pika "[name]!!"
+            
+            player "!"
+            
+            pika "O-On second thought..."
+            pika "Maybe it would be better if I just looked for flowers myself."
+            pika "Why don't you go look around the mall for now? We'll meet up later."
+            
+            player "Alright, good luck then!"
+            player "Seeya!"
+            player "..."
+            player "Homiechu!"
+            "I sprint before he can say anything."
+            
+            jump mall_choice_day1
+        
+label mall_choice_day1:
+    "While Pikachu's busy at the florist, I walk around the mall."
+    "..."
+    "Oh, I just remembered!"
+    "Pikabelle Chutendo released a new game a few days ago!"
+    "PokeCrossing: Happy Ball Designer!"
+    "I've gotta go check out the prices at Gamemon!"
+    
+    #fade to gamemon
+    
+    

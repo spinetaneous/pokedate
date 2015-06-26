@@ -28,12 +28,17 @@ label start:
     $ char_pts = 0
     
     #Pokedex variables.
-    $ pika_dex1 = False
-    $ char_dex1 = False
-    $ jynx_dex1 = False
-    $ dig_dex1 = False
-    $ char_dex1 = False
-    $ dad_dex1 = False
+    $ pika_dex = False
+    $ char_dex = False
+    $ jynx_dex = False
+    $ digl_dex = False
+    $ char_dex = False
+    $ dad_dex = False
+    $ ditt_dex = False
+    $ bulb_dex = False
+    
+    #other variables
+    $ digl_know = False
     
     # Show a default background.
     scene black
@@ -63,7 +68,7 @@ label start:
             $ gender = "boy"
             player "I am a boy."
         "Girl":
-            $ pronoun1 = "she"
+            $ pronoun1 = "her"
             $ pronoun2 = "she"
             $ pos_pronoun = "her"
             $ gender = "girl"
