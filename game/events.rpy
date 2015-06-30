@@ -4,6 +4,19 @@
 
 #event format: $ event("event name", "act == required act and other requirements (e.g. stats), event methods, priority")
 
+#############################################################
+#notes:
+#   player thinks single parents are normal and doesn't know that parents come in pairs
+#   pikachu hates his mom for neglecting him bc she's pikabelle chutendo aka v busy
+#   ditto just wants to fit in :(
+#   player's mom was fished out of the ocean before dad's very eyes :(((((
+#   player was adopted out of all the other orphans bc she's a human and
+#     mom would have wanted to help someone different and in need
+#   pikachu loves player because player fought off his childhood bullies bc she genki af
+
+#   remember to introduce pokedex properly
+#############################################################
+
 # Some characters that are used in events in the game.
 init:
     define narrator = Character(' ')

@@ -4,7 +4,7 @@
 
 # Set up a default schedule.
 init python:
-    register_stat("Money", "money", 00, 1000)
+    register_stat("Money", "money", 00, 1000) #increment money later (once you find out when you get hired)
 
     dp_period("Morning", "morning_act")
     dp_choice("Attend Class!!", "class") #YOU HAVE TO GO BECAUSE YOU ARE A GOOD STUDENT OKAY
@@ -39,6 +39,7 @@ label start:
     
     #other variables
     $ digl_know = False
+    $ has_job = False
     
     # Show a default background.
     scene black
@@ -91,12 +92,11 @@ label start:
 label day:
     #Initialize default values for variables to be used in the game.
     # Increment the day it is.
-    $ day += 1
-
-    # We may also want to compute the name for the day here, but
-    # right now we don't bother.
-    
     python:
+        day += 1
+        if has_job == True:
+            money += 10
+    
         if day % 7 == 1:
             today = "Sunday"
         elif day % 7 == 2:

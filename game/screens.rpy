@@ -204,7 +204,7 @@ screen bulb_dex():
         
         has vbox
         
-        text "A florist at the.. florist in the mall. \'Florist \' is a weird word."
+        text "A florist at the... florist in the mall. \'Florist \' is a weird word."
 ##############################################################################
 # Say
 #

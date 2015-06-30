@@ -5,6 +5,7 @@
 label breakfast:
     $ dad_dex = True
     $ pika_dex = True
+    
     "It's the start of a new day."
     "My name is [name], and I'm just a regular human in the pokemon world."
     "When I was 3, I was adopted by a single father."
@@ -19,7 +20,7 @@ label breakfast:
     
     dad "How could I forget?"
     dad "It's the special meet-and-greet with the creator of that game you love so much."
-    dad "PokeCrossing: New Ball, right?"
+    dad "{i}PokeCrossing: New Ball{/i}, right?"
     
     player "Yeah! I can't believe I'll get to meet Pikabelle Chutendo in person!"
     player "They're holding it in the park. I'm going to go after school and get her autograph!"
@@ -149,6 +150,9 @@ label lunch_day1:
     "What should I do?"
     menu:
         "Agree to go with him later.":
+            $ pika_mall = True
+            "Friendship triumphs over everything!"
+            "Even over Pikabelle Chutendo...!"
             
             player "It's a date!"
             
@@ -170,6 +174,7 @@ label lunch_day1:
             #fade to after school
             jump mall_day1
         "Decline for the meet-and-greet.":
+            $ pika_mall = False
             player "Sorry, I have something to do after school."
             
             pika "Really? What is it?"
@@ -212,6 +217,10 @@ label lunch_day1:
             player "I can't wait until after school!"
             
             jump park_day1
+            
+label park_day1:
+    "Sorry, this path isn't finished yet. Go to the mall with Pikachu!"
+    pass
 
 label mall_day1: #pikachu introduces you to diglett and jynx
     "After school, Pikachu and I go to the mall together."
@@ -236,7 +245,7 @@ label mall_day1: #pikachu introduces you to diglett and jynx
     
     "Suddenly, I hear an unfamiliar voice."
     
-    unknown "OOO, DANG GIRL!"
+    unknown "{size=+10}OOO, DANG GIRL!{/size}"
     
     player "Huh?"
     
@@ -358,7 +367,6 @@ label florist_day1:
     
     player "...?"
     player "Are we similar or something?"
-	#irene is gay
     
     pika "..."
     pika "You could say that."
@@ -536,9 +544,146 @@ label mall_choice_day1:
     "..."
     "Oh, I just remembered!"
     "Pikabelle Chutendo released a new game a few days ago!"
-    "PokeCrossing: Happy Ball Designer!"
+    "{i}PokeCrossing: Happy Ball Designer!{/i}"
     "I've gotta go check out the prices at Gamemon!"
     
     #fade to gamemon
     
+    player "..."
+    player "......"
+    player "Where could it be...?"
+    player "........."
+    player "...!"
+    player "There it is!"
+    player "I wonder how much it is..."
+    
+    "My eyes wander down to the price tag."
+    
+    player "*GASP*"
+    player "*COUGH*"
+    player "*GAG*"
+    player "HOW CAN ANYONE AFFORD THAT?"
+    player "BUT..."
+    player "BUT...!"
+    player "{size=+10}{color=#f00}{i}I NEED THIS GAME!{/i}{/color}{/size}"
+    player "{size=-5}*pant*...*pant*...{/size}"
+    player "There's no way I'll be able to afford that on my own..."
+    player "Maybe I have to ask Dad..."
+    
+    "Regrettably, I walk out of Gamemon unable to purchase anything."
+    "I blink back my tears."
+    
+    player "I'll be back for you, {i}PokeCrossing: Happy Ball Designer...{/i}"
+    
+    if pika_mall == True:
+        "I guess I should return to Pikachu now..."
+        jump pika_return_day1
+    elif pika_mall == False:
+        "I guess I'll go home..."
+        jump home_return_day1
+    
+label pika_return_day1:
+    player "Hey Pikachu, I'm back..."
+    
+    "Pikachu quickly places something behind a shelf."
+    
+    pika "H-Hey, [name]!"
+    pika "How was your walk around the mall? Did you find anything interesting?"
+    
+    player "Well..."
+    player "I saw this game at Gamemon, but it's so..."
+    player "{i}expensive.........{/i}"
+    
+    "I blink back more tears."
+    
+    player "Well anyway..."
+    player "Did you pick any flowers yet?"
+    
+    pika "Nope. Couldn't find--No--Couldn't decide on--I mean--"
+    
+    player "Alright, I guess we'll just come another day."
+    
+    pika "Yeah... What a pity... that I couldn't find anything."
+    pika "Yeah."
+    
+    "Pikachu sure is acting kind of strange."
+    "I wonder if there was something that I was supposed to pick up on."
+    "Good thing I picked up on {i}that{/i}! Otherwise I would be the oblivious character that everyone hates in manga and anime!"
+    "Somehow this cheers me up a little after the whole Gamemon thing."
+    
+    player "Let's head home, Pikachu."
+    
+    pika "Okay, [name]."
+    
+    "We leave the mall and walk home together, talking about our day."
+    $ pika_pts += 1
+    
+    #fade home
+    jump home_return_day1
+    
+label home_return_day1:
+    "Once I get home, I open the door and see my dad sitting on the couch watching TV."
+    
+    player "DAD!!"
+    
+    dad "Welcome home, [name]."
+    
+    player "DAD, I NEED TO TALK TO YOU ABOUT SOMETHING!!!"
+    player "IT'S REALLY IMPORTANT!"
+    
+    dad "Sure thing, [name]. What is it?"
+    
+    player "You know that lady I was talking about earlier? Pikabelle Chutendo?"
+    
+    if pika_mall == True:
+        player "Well, I didn't go because Pikachu wanted to go the mall, and..."
+        
+    player "It turns out that Pikabelle Chutendo released a new game!"
+    
+    dad "That's wonderful. Did you get it?"
+    
+    player "W-Well, that's the thing..."
+    player "You see... It was really expensive."
+    player "I don't have enough money, and..."
+    
+    dad "Are you asking me for money?"
+    
+    player "U-Um... Maybe?"
+    
+    dad "[name]. I don't want you to be this kind of person."
+    dad "You shouldn't be fully dependent on others to get the things you want."
+    
+    player "But... But I'm still young! Aren't I supposed to be financially dependent?"
+    
+    dad "That's no excuse!"
+    dad "Remember, money doesn't grow on anemones."
+    
+    player "Haha, I get it, aneMONEY--"
+    
+    dad "Besides the point. You need to get a job!"
+    dad "I don't want you to grow up to be an adult who cries at every unaffordable price tag."
+    
+    player "But Dad--"
+    
+    dad "Uh-uh! You're getting a job, and that's final!"
+    dad "You're going to learn what it means to {i}earn{/i} what you want!"
+    
+    "Dad looks set on his decision."
+    "There's nothing I can do to change his mind at this point."
+    
+    player "Okay, Dad..."
+    
+    dad "That's a good [gender]."
+    dad "Now go get ready for bed. It's getting late, and you don't want to be late to school!"
+    
+    "I gasp in horror."
+    
+    player "I would {i}never{/i} be late to school!"
+    
+    "With that, I go to the bathroom to thoroughly brush and floss my teeth. Hygiene is very important!"
+    #add charmander event here
+    
+    "Then, I lay in bed until falling asleep."
+    
+    jump day
     
