@@ -358,6 +358,7 @@ label florist_day1:
     
     player "...?"
     player "Are we similar or something?"
+	#irene is gay
     
     pika "..."
     pika "You could say that."
