@@ -4,7 +4,10 @@
 
 # Set up a default schedule.
 init python:
-    register_stat("Money", "money", 00, 1000) #increment money later (once you find out when you get hired)
+    #inventory testing
+    inventory = Inventory(00)
+    
+    register_stat("Money", "current_money", 00, 1000) #increment money later (once you find out when you get hired)
 
     dp_period("Morning", "morning_act")
     dp_choice("Attend Class!!", "class") #YOU HAVE TO GO BECAUSE YOU ARE A GOOD STUDENT OKAY
@@ -18,10 +21,10 @@ init python:
     dp_choice("Go Home", "home")
     
     
+    
 # This is the entry point into the game.
 label start:
     $ day = 2 #after intro, it will be a Tuesday
-    $ money = 0
     
     #Affection points.
     $ pika_pts = 10
@@ -47,6 +50,7 @@ label start:
     # The script here is run before any event.
 
     "Hello, and welcome to PokeDate!"
+    
     "If you've ever looked a Pokemon and thought, \"Wow, I would totally date that Pokemon!\"
      then this is the dating sim for you!"
     "We are dedicated to provide for you an unforgettable experience."
@@ -92,6 +96,12 @@ label start:
 label day:
     #Initialize default values for variables to be used in the game.
     # Increment the day it is.
+    
+    $ current_money = inventory.money
+    # if inventory.money is changed multiple times during a day (without going back to dayplanner)
+    # then current_money = inventory.money must be stated to update the value
+    # so you don't accidentally have $10, buy something worth $7, and then still have current_money = 10
+    
     python:
         day += 1
         if has_job == True:
