@@ -72,11 +72,11 @@ label school_day1:
     #fade to class
     
     "**SLAM**"
-    player "TEACHER...! I AM HERE!!!"
+    player "{size=+5}TEACHER...! I AM HERE!!!{/size}"
     
     t "Wow, and it's only 8:03AM."
     
-    player "I... AM NOT LATE!!!!"
+    player "{size=+5}I... AM NOT LATE!!!!{/size}"
     
     "From the door, I can see my childhood friend, Pikachu, looking worried for me."
     "I flash him a brief thumbs up and wink, as if saying, \"Don't worry, I got this!\""
@@ -85,7 +85,7 @@ label school_day1:
     
     t "Just take a seat, [name]."
     
-    player "WAIT, DID YOU JUST MARK ME LATE--"
+    player "{size=+5}WAIT, DID YOU JUST MARK ME LATE--{/size}"
     
     t "[name]."
     t "Take a seat."
@@ -220,6 +220,9 @@ label lunch_day1:
             
 label park_day1:
     "Sorry, this path isn't finished yet. Go to the mall with Pikachu!"
+    "But in this route, you're supposed to meet Charmander."
+    "Just pretend that you do."
+    $ char_dex = True
     pass
 
 label mall_day1: #pikachu introduces you to diglett and jynx
@@ -682,8 +685,10 @@ label home_return_day1:
     
     "With that, I go to the bathroom to thoroughly brush and floss my teeth. Hygiene is very important!"
     #add charmander event here
-    
-    "Then, I lay in bed until falling asleep."
+    if char_dex == True:
+        "THEN I TEXTED CHARMANDER ALLLLL NIGHT LONG"
+    elif char_dex == False:
+        "Then, I lie in bed until falling asleep."
     
     jump day
     

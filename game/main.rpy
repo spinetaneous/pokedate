@@ -7,45 +7,45 @@ init python:
     #inventory testing
     inventory = Inventory(00)
     
-    register_stat("Money", "current_money", 00, 1000) #increment money later (once you find out when you get hired)
+    register_stat("Money", "current_money", 00, 1000) #money is incremented by 30 each time player goes to the mall aka job
 
+    # dp_period() and dp_choice() are only necessary if the day planner will be used
     dp_period("Morning", "morning_act")
     dp_choice("Attend Class!!", "class") #YOU HAVE TO GO BECAUSE YOU ARE A GOOD STUDENT OKAY
     
     dp_period("Afternoon", "afternoon_act")
     dp_choice("Go to Mall", "mall")
-    dp_choice("Skip Work", "skip_work") #don't have to go to work tho u lazy butt
-
+    dp_choice("Skip Work", "skip_work", show= "not has_job") #don't have to go to work tho u lazy butt
+    
     dp_period("Evening", "evening_act")
     dp_choice("Go to Park", "park")
     dp_choice("Go Home", "home")
     
     
-    
 # This is the entry point into the game.
 label start:
-    $ day = 2 #after intro, it will be a Tuesday
+    python:
+        day = 2 #after intro, it will be a Tuesday
     
     #Affection points.
-    $ pika_pts = 10
-    $ char_pts = 0
-    
+        pika_pts = 10
+        char_pts = 0
+        
     #Pokedex variables.
-    $ pika_dex = False
-    $ char_dex = False
-    $ jynx_dex = False
-    $ digl_dex = False
-    $ char_dex = False
-    $ dad_dex = False
-    $ ditt_dex = False
-    $ bulb_dex = False
-    
-    #other variables
-    $ digl_know = False
-    $ has_job = False
+        pika_dex = False
+        char_dex = False
+        jynx_dex = False
+        digl_dex = False
+        char_dex = False
+        dad_dex = False
+        ditt_dex = False
+        bulb_dex = False
     
     # Show a default background.
     scene black
+    
+    # other variables
+    $ has_job = False #will become True once event get_hired runs
     
     # The script here is run before any event.
 
@@ -98,14 +98,14 @@ label day:
     # Increment the day it is.
     
     $ current_money = inventory.money
+    # By default, current_money will be updated at the start of every day (i.e. at the statement "It's ____day!")
     # if inventory.money is changed multiple times during a day (without going back to dayplanner)
-    # then current_money = inventory.money must be stated to update the value
+    # then current_money = inventory.money must be stated to update the displayed value
     # so you don't accidentally have $10, buy something worth $7, and then still have current_money = 10
+    # although if day planner is discarded, then money will be displayed in an inventory screen instead of as a stat
     
     python:
         day += 1
-        if has_job == True:
-            money += 10
     
         if day % 7 == 1:
             today = "Sunday"
@@ -133,14 +133,19 @@ label day:
     # user has available.
 
     $ morning_act = "class"
+    if day <= 3:
+        $ afternoon_act = "mall" #player HAS to go to the mall and get a job.
+    else:
+        $ afternoon_act = None
+    $ afternoon_act = None
     $ afternoon_act = None
     $ evening_act = None
-    $ narrator("What should I do today?", interact=False)
+    # $ narrator("What should I do today?", interact=False)
     
     # Now, we call the day planner, which may set the act variables
     # to new values. We call it with a list of periods that we want
     # to compute the values for.
-    call screen day_planner(["Morning", "Afternoon", "Evening"])
+    # call screen day_planner(["Morning", "Afternoon", "Evening"])
 
     
     # We process each of the three periods of the day, in turn.
@@ -152,11 +157,30 @@ label morning:
     # Set these variables to appropriate values, so they can be
     # picked up by the expression in the various events defined below. 
     $ period = "morning"
+
     $ act = morning_act
     
     # Execute the events for the morning.
     call events_run_period
 
+label lunch:
+    if check_skip_period():
+        jump afternoon
+        
+    centered "Lunch"
+    
+    $ period = "lunch"
+    
+    "It's lunch time!"
+    "Where should I go during lunch today?"
+    menu:
+        "Class 1-3":
+            $ lunch_act = "class"
+        "Class 2-1":
+            $ lunch_act = "class"
+        "Class 3-2":
+            $ lunch_act = "class"
+    call events_run_period
     # That's it for the morning, so we fall through to the
     # afternoon.
 
@@ -171,13 +195,22 @@ label afternoon:
     # The rest of this is the same as for the morning.
 
     centered "Afternoon"
-
+    
     $ period = "afternoon"
+    
+    "Before I know it, school's out!"
+    "What should I do after work?"
+    menu:   
+        "Go to Salon":
+            $ afternoon_act = "salon"
+        "You know, what? Screw work!":
+            $ afternoon_act = "skip_work"
+        # There will be other stores available here, but unless a certain
+        # character has been met, an uninteresting event will occur
     $ act = afternoon_act
-
     call events_run_period
-
-
+    
+    
 label evening:
     
     # The evening is the same as the afternoon.
@@ -187,6 +220,14 @@ label evening:
     centered "Evening"
 
     $ period = "evening"
+    
+    "Wow, the sun is starting to set."
+    "What should I do?"
+    menu:
+        "Go to Park":
+            $ evening_act = "park"
+        "Go Home":
+            $ evening_act = "home"
     $ act = evening_act
     
     call events_run_period

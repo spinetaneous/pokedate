@@ -23,7 +23,7 @@ style dp_label is label
 init -100 python:
 
     # The title of the done button.
-    dp_done_title = "Done Planning"
+    dp_done_title = "Let's go!"
 
     # A map from period name to the information we know about that
     # period.
@@ -73,7 +73,7 @@ screen display_planner(periods):
     frame:
         style_group "dp"        
         vbox:
-            text "Day Planner" yalign 0.0 xalign 0.5
+            text "Planner" yalign 0.0 xalign 0.5
             hbox:
                 $ can_continue = True
                 for p in periods:
