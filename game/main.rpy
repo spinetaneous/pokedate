@@ -51,6 +51,7 @@ label start:
 
     "Hello, and welcome to PokeDate!"
     
+    jump day #for testing purposes
     "If you've ever looked a Pokemon and thought, \"Wow, I would totally date that Pokemon!\"
      then this is the dating sim for you!"
     "We are dedicated to provide for you an unforgettable experience."
@@ -132,7 +133,7 @@ label day:
     # (especially dp_period_acts) to reflect the choices the
     # user has available.
 
-    $ morning_act = "class"
+    $ morning_act = "class" #player always goes to class
     if day <= 3:
         $ afternoon_act = "mall" #player HAS to go to the mall and get a job.
     else:
@@ -175,11 +176,12 @@ label lunch:
     "Where should I go during lunch today?"
     menu:
         "Class 1-3":
-            $ lunch_act = "class"
+            $ lunch_act = "lunch1"
         "Class 2-1":
-            $ lunch_act = "class"
+            $ lunch_act = "lunch2"
         "Class 3-2":
-            $ lunch_act = "class"
+            $ lunch_act = "lunch3"
+    $ act = lunch_act
     call events_run_period
     # That's it for the morning, so we fall through to the
     # afternoon.

@@ -36,12 +36,17 @@ init:
 init:
     # First up, we define some simple events for the various actions, that
     # are run only if no higher-priority event is about to occur.
+    python:
+        event("class1", "act == 'class'", event.solo(), event.choose_one("class"), priority=1000)
+        event("class2", "act == 'class'", event.solo(), event.choose_one("class"), priority=1000)
+        event("work", "act == 'mall'", event.solo(), event.depends("get_hired"), priority=1000)
+        event("skip_work1", "act == 'skip_work'", event.solo(), priority=1000)
+        event("eat_lunch1", "act == 'lunch1'", event.solo(), priority=1000)
+        event("eat_lunch2", "act == 'lunch2'", event.solo(), priority=1000)
+        event("eat_lunch3", "act == 'lunch3'", event.solo(), priority=1000)
     
-    $ event("class1", "act == 'class'", event.solo(), event.choose_one("class"), priority=1000)
-    $ event("class2", "act == 'class'", event.solo(), event.choose_one("class"), priority=1000)
-    $ event("mall1", "act == 'mall'", event.solo(), event.depends("get_hired"), priority=1000)
-    $ event("skip_work1", "act == 'skip_work'", event.solo(), priority=1000)
-    $ event("salon", "act == 'salon'",event.solo(), priority=1)
+    
+        event("salon", "act == 'salon'",event.solo(), priority=1)
     #$ event("hang1", "act == 'hang'", event.choose_one('hang'), priority=200)
     #$ event("hang2", "act == 'hang'", event.choose_one('hang'), priority=200)
     #$ event("exercise", "act == 'exercise'", event.solo(), priority=200)
@@ -50,9 +55,9 @@ init:
     # to class. 
     #$ event("introduction", "act == 'class'", event.once(), event.only())
     
-    $ event("get_hired", "act == 'mall'", event.solo(), event.once(), priority=1000)
+        event("get_hired", "act == 'mall'", event.solo(), event.once(), priority=1000)
     
-    $ event("meet_ditto", "act == 'class'", event.solo(), event.once(), priority=990)
+        event("meet_ditto", "act == 'class'", event.solo(), event.once(), priority=990)
 
     
 #Below are the boring events that happen when there are no higher priority events.
@@ -71,16 +76,29 @@ label class2:
     return
 
 #This only happens after you get hired.
-label mall1:
+label work:
     "I head to my job at the mall and strengthen my resolve as I sell pokepuffs."
     "I've got to work hard if I want to get {i}PokeCrossing: Happy Ball Designer!{/i}"
     $ inventory.earn(30)
     return
     
-label choose_shop:
-    "Which shop should I go to?"
-    "idk lol"
-    #insert menu here lol
+label eat_lunch1:
+    "I head over to the underclassmen classes."
+    "...But I don't see anyone here."
+    "Eh, whatever. I don't want to go back to my own classroom after having walked all this way."
+    "I don't really care if people give me weird looks."
+    return
+    
+label eat_lunch2:
+    "Since people eat their lunches in classrooms, and I'm already in my own classroom, I might as well eat here."
+    "Conserving energy for important times is a very crucial skill!"
+    return
+
+label eat_lunch3:
+    "I head over to the upperclassmen classes."
+    "...But I don't see anyone here."
+    "...But then again, it's not like I really care. We're all students at the same school, so I can eat wherever."
+    "It doesn't matter if people look at me weirdly."
     return
 
 label skip_work1:
