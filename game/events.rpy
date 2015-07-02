@@ -118,6 +118,9 @@ label skip_work1:
 	$ skipped_work += 1
     return
     
+label salon:
+
+	return
 #Below are the events actually matter.
 
 label get_hired:
@@ -126,8 +129,6 @@ label get_hired:
     $ has_job = True
     pass
     return
-	
-
 	
 label meet_ditto:
     if char_dex == True:
@@ -150,10 +151,11 @@ label salon1:
 	
 	jynx "How's it going?"
 	
+	"Oh, it's Jynx!"
 	"What should I say?"
 	menu:
 		"Oh, nothing much...":
-			#something happens
+			""
 		"Wow, this salon looks really busy!":
 			#ya
     return     
