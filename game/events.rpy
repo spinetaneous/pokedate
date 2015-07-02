@@ -27,7 +27,7 @@ init:
     define player = Character('[name]', color="#0d4b72")
     define dad = Character('Dad')
     define pdex = Character('Pokedex')
-	define trap = Character('Riley', color="#a3daf6")
+    define trap = Character('Riley', color="#a3daf6")
 
     define jynx = Character('Jynx', color="#70018b")
     define bulb = Character('Bulbasaur', color="#008080")
@@ -45,7 +45,7 @@ init:
         event("eat_lunch1", "act == 'lunch1'", event.solo(), priority=1000)
         event("eat_lunch2", "act == 'lunch2'", event.solo(), priority=1000)
         event("eat_lunch3", "act == 'lunch3'", event.solo(), priority=1000)
-		event("salon", "act == 'salon'", event.solo(), priority=1000)
+        event("salon", "act == 'salon'", event.solo(), priority=1000)
     
         event("salon1", "act == 'salon'",event.solo(), priority=990)
     #$ event("hang1", "act == 'hang'", event.choose_one('hang'), priority=200)
@@ -80,15 +80,15 @@ label class2:
 label work:
     "I head to my job at the mall and strengthen my resolve as I sell pokepuffs."
     "I've got to work hard if I want to get {i}PokeCrossing: Happy Ball Designer!{/i}"
-	python:
-		if skipped_work < 3:
-			inventory.earn(30)
-		elif skipped_work >= 3 and skipped_work < 6:
-			inventory.earn(20)
-		elif skipped_work >= 6 and skipped_work < 9:
-			inventory.earn(10)
-		else:
-			inventory.earn(5) #you can't get fired because riley really needs an employee
+    python:
+        if skipped_work < 3:
+            inventory.earn(30)
+        elif skipped_work >= 3 and skipped_work < 6:
+            inventory.earn(20)
+        elif skipped_work >= 6 and skipped_work < 9:
+            inventory.earn(10)
+        else:
+            inventory.earn(5) #you can't get fired because riley really needs an employee
     return
     
 label eat_lunch1:
@@ -96,7 +96,7 @@ label eat_lunch1:
     "...But I don't see anyone I know here."
     "Eh, whatever. I don't want to go back to my own classroom after having walked all this way."
     "I don't really care if people give me weird looks."
-	"I begin eating my lunch."
+    "I begin eating my lunch."
     return
     
 label eat_lunch2:
@@ -113,14 +113,16 @@ label eat_lunch3:
 
 label skip_work1:
     "I don't feel like working today."
-	"I'm sorry, Riley."
-	"I hope the store can run with one less person today."
-	$ skipped_work += 1
+    "I'm sorry, Riley."
+    "I hope the store can run with one less person today."
+    $ skipped_work += 1
     return
     
 label salon:
-
-	return
+    "I went to the salon, but Jynx is nowhere to be found."
+    "Maybe she has a dayoff? Or maybe I'm just really bad at finding people..."
+    "I spend the rest of the time looking at all the fancy hair products."
+    return
 #Below are the events actually matter.
 
 label get_hired:
@@ -129,7 +131,7 @@ label get_hired:
     $ has_job = True
     pass
     return
-	
+    
 label meet_ditto:
     if char_dex == True:
         "I stayed up late last night texting Charmander, so it's difficult to wake up in the morning."
@@ -140,22 +142,39 @@ label meet_ditto:
         "I'm totally ready to get a job after school!"
         "Wait for me, {i}PokeCrossing: Happy Ball Designer{/i}..."
     return
-	
+    
 label salon1:
     "So this is the salon that Jynx works at..."
-	"It looks like a popular salon. There's even people lining out the door."
-	
-	unknown "Hey, [name]! You finally came to visit! Glad to see you!"
-	
-	"Who's calling me?"
-	
-	jynx "How's it going?"
-	
-	"Oh, it's Jynx!"
-	"What should I say?"
-	menu:
-		"Oh, nothing much...":
-			""
-		"Wow, this salon looks really busy!":
-			#ya
+    "It looks like a popular salon. There's even people lining out the door."
+    unknown "Hey, [name]! You finally came to visit! Glad to see you!"
+    "Who's calling me?"
+    jynx "How's it going?"
+    "Oh, it's Jynx!"
+    player "Hey, Jynx! How are--"
+    jynx "So you decided to listen to my advice, right!?"
+    player "H-Huh?"
+    jynx "You came because you wanted me to make you pretty, right?"
+    "Oh yeah, she said that she would 'fix me up all nice and pretty'..."
+    player "W-Well, I didn't--"
+    jynx "{size=+5}Sit down here, honey!{/size}"
+    "Jynx grabs me by the shoulders and drags me to a chair."
+    "She drapes fabric around my shoulders and clips the edges to prevent it from falling."
+    "..."
+    "Did I just cut everyone waiting in line?"
+    jynx "Now then, don't worry about a thing! I'll make sure you walk outta this room looking better than ever!"
+    player "Y-You know, I really--"
+    jynx "This is the first time I've ever cut a {i}human's{/i} hair! Thank you for giving me experience!"
+    player "{i}You're cutting my hair?{/i}"
+    jynx "Don't worry! {size=-10}-snip-{/size} I trim the fur {size=-10}-snip-{/size} on Furfrou pokemon {size=-10}-snip-{/size} all the time!"
+    "My eyes are downcast the entire time, so I can only watch in horror as locks of my hair flutter to the floor."
+    "I don't dare to look up at the mirror."
+    jynx "Oh my goodness! {size=-10}-snip-{/size} This haircut is {size=-10}-snip-{/size} going to be so {size=-10}-snip-{/size} amazing!"
+    "{size=-10}snip...snip...snip...snip...snip...{/size}"
+    "{size=-10}......snip......snip......snip......{/size}"
+    "{size=-10}...snip...snip...snip...{/size}"
+    jynx "There you go--You're gorgeous!"
+    "At this point, I'm so tired of being dragged around that I don't even bother to look in the mirror."
+    player "Thanks, Jynx. Well, I'd best be going! See you tomorrow!"
+    jynx "No problem, sweetie."
+    "And with that, I get out of that salon."
     return

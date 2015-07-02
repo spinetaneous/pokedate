@@ -46,13 +46,12 @@ label start:
     
     # other variables
     $ has_job = False #will become True once event get_hired runs
-	$ skipped_work = 0
+    $ skipped_work = 0
     
     # The script here is run before any event.
 
     "Hello, and welcome to PokeDate!"
     
-    jump day #for testing purposes
     "If you've ever looked a Pokemon and thought, \"Wow, I would totally date that Pokemon!\"
      then this is the dating sim for you!"
     "We are dedicated to provide for you an unforgettable experience."
@@ -90,6 +89,8 @@ label start:
     "..."
     "Thank you for providing this information!"
     "Without further ado, let's get started on your romantic adventure! :-)"
+    
+    jump day #for testing purposes
     
     # We jump to breakfast. Remember to fade!
     jump breakfast
