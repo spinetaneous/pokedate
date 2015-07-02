@@ -158,4 +158,4 @@ label salon1:
 			""
 		"Wow, this salon looks really busy!":
 			#ya
-    return 
+    return
