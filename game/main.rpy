@@ -262,4 +262,3 @@ label dp_callback:
     $ narrator("What should I do today?", interact=False)
     
     return
-
