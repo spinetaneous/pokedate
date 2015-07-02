@@ -27,6 +27,7 @@ init:
     define player = Character('[name]', color="#0d4b72")
     define dad = Character('Dad')
     define pdex = Character('Pokedex')
+	define trap = Character('Riley', color="#a3daf6")
 
     define jynx = Character('Jynx', color="#70018b")
     define bulb = Character('Bulbasaur', color="#008080")
@@ -44,9 +45,9 @@ init:
         event("eat_lunch1", "act == 'lunch1'", event.solo(), priority=1000)
         event("eat_lunch2", "act == 'lunch2'", event.solo(), priority=1000)
         event("eat_lunch3", "act == 'lunch3'", event.solo(), priority=1000)
+		event("salon", "act == 'salon'", event.solo(), priority=1000)
     
-    
-        event("salon", "act == 'salon'",event.solo(), priority=1)
+        event("salon1", "act == 'salon'",event.solo(), priority=990)
     #$ event("hang1", "act == 'hang'", event.choose_one('hang'), priority=200)
     #$ event("hang2", "act == 'hang'", event.choose_one('hang'), priority=200)
     #$ event("exercise", "act == 'exercise'", event.solo(), priority=200)
@@ -79,14 +80,23 @@ label class2:
 label work:
     "I head to my job at the mall and strengthen my resolve as I sell pokepuffs."
     "I've got to work hard if I want to get {i}PokeCrossing: Happy Ball Designer!{/i}"
-    $ inventory.earn(30)
+	python:
+		if skipped_work < 3:
+			inventory.earn(30)
+		elif skipped_work >= 3 and skipped_work < 6:
+			inventory.earn(20)
+		elif skipped_work >= 6 and skipped_work < 9:
+			inventory.earn(10)
+		else:
+			inventory.earn(5) #you can't get fired because riley really needs an employee
     return
     
 label eat_lunch1:
-    "I head over to the underclassmen classes."
-    "...But I don't see anyone here."
+    "I head over to the underclassmen classes and sit down."
+    "...But I don't see anyone I know here."
     "Eh, whatever. I don't want to go back to my own classroom after having walked all this way."
     "I don't really care if people give me weird looks."
+	"I begin eating my lunch."
     return
     
 label eat_lunch2:
@@ -96,20 +106,22 @@ label eat_lunch2:
 
 label eat_lunch3:
     "I head over to the upperclassmen classes."
-    "...But I don't see anyone here."
+    "...But I don't see anyone I know here."
     "...But then again, it's not like I really care. We're all students at the same school, so I can eat wherever."
     "It doesn't matter if people look at me weirdly."
     return
 
 label skip_work1:
-    "why didn't u go to work huh"
+    "I don't feel like working today."
+	"I'm sorry, Riley."
+	"I hope the store can run with one less person today."
+	$ skipped_work += 1
     return
     
-#Below are the events actually matter.
-
 label salon:
-    "yo u at salon"
-    return
+
+	return
+#Below are the events actually matter.
 
 label get_hired:
     #the first time player goes to the mall, trap hires her
@@ -117,21 +129,33 @@ label get_hired:
     $ has_job = True
     pass
     return
-    
+	
 label meet_ditto:
-    #player's room
     if char_dex == True:
         "I stayed up late last night texting Charmander, so it's difficult to wake up in the morning."
         "But I do it."
         "I wipe the sleep from my eyes because I am {i}determined not to be late!{/i}"
-        "Not to mention that I've also got to be awake if I want to get a job after school..."
     elif char_dex == False:
         "What a good night's sleep! I feel so refreshed and awake."
         "I'm totally ready to get a job after school!"
         "Wait for me, {i}PokeCrossing: Happy Ball Designer{/i}..."
-    #fade to school
-    
-    ""
     return
-    
-    
+	
+label salon1:
+    "So this is the salon that Jynx works at..."
+	"It looks like a popular salon. There's even people lining out the door."
+	
+	unknown "Hey, [name]! You finally came to visit! Glad to see you!"
+	
+	"Who's calling me?"
+	
+	jynx "How's it going?"
+	
+	"Oh, it's Jynx!"
+	"What should I say?"
+	menu:
+		"Oh, nothing much...":
+			""
+		"Wow, this salon looks really busy!":
+			#ya
+    return 
