@@ -46,6 +46,7 @@ label start:
     
     # other variables
     $ has_job = False #will become True once event get_hired runs
+	$ skipped_work = 0
     
     # The script here is run before any event.
 
