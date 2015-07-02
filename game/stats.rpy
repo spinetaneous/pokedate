@@ -27,7 +27,7 @@ init -100 python:
 
     def normalize_stats():
         for s in __dse_stats:
-
+        
             v = getattr(store, s.var)
 
             if v > s.max:
