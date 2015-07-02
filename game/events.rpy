@@ -119,15 +119,19 @@ label get_hired:
     return
     
 label meet_ditto:
+    #player's room
     if char_dex == True:
         "I stayed up late last night texting Charmander, so it's difficult to wake up in the morning."
         "But I do it."
         "I wipe the sleep from my eyes because I am {i}determined not to be late!{/i}"
+        "Not to mention that I've also got to be awake if I want to get a job after school..."
     elif char_dex == False:
         "What a good night's sleep! I feel so refreshed and awake."
         "I'm totally ready to get a job after school!"
         "Wait for me, {i}PokeCrossing: Happy Ball Designer{/i}..."
+    #fade to school
     
+    ""
     return
     
     
