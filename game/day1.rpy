@@ -379,7 +379,7 @@ label mall_choice_day1:
     player "Oh my goodness..."
     player "Is that..."
     #picture of the game
-    player "{size=+5}{i}THE SPECIAL LIMITED EDITION GOLD VERSION OF{/i} POKECROSSING: HAPPY BALL DESIGNER{i} SIGNED BY PIKABELLE CHUTENDO HERSELF!?{/i}{/size}"
+    player "{size=+5}{i}THE SUPER SPECIAL LIMITED EDITION {color=#ffd700}GOLD{/color} VERSION OF{/i} POKECROSSING: HAPPY BALL DESIGNER{i} SIGNED BY PIKABELLE CHUTENDO HERSELF FEATURING NEVER-BEFORE-SEEN EXTRA MATERIAL!?{/i}{/size}"
     player "...But it's probably going to be expensive..."
     "I briefly close my eyes to say a small prayer."
     player "Please let me have enough money to buy it..."

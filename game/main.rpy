@@ -15,7 +15,7 @@ init python:
     
     dp_period("Afternoon", "afternoon_act")
     dp_choice("Go to Mall", "mall")
-    dp_choice("Skip Work", "skip_work", show= "not has_job") #don't have to go to work tho u lazy butt
+    dp_choice("Skip Work", "skip_work", show= "not has_job")
     
     dp_period("Evening", "evening_act")
     dp_choice("Go to Park", "park")
@@ -167,6 +167,10 @@ label morning:
     # Execute the events for the morning.
     call events_run_period
 
+# player decides where to eat lunch at
+# 1-A is an underclassman class and player can talk with ditto and diglett
+# 2-B is player's own class where she can talk with pikachu
+# 3-C is an upperclassman class and player can talk with jynx and charmander
 label lunch:
     if check_skip_period():
         jump afternoon
@@ -178,24 +182,25 @@ label lunch:
     "It's lunch time!"
     "Where should I go during lunch today?"
     menu:
-        "Class 1-3":
+        "Class 1-A":
             $ lunch_act = "lunch1"
-        "Class 2-1":
+        "Class 2-B":
             $ lunch_act = "lunch2"
-        "Class 3-2":
+        "Class 3-C":
             $ lunch_act = "lunch3"
     $ act = lunch_act
     call events_run_period
     # That's it for the morning, so we fall through to the
     # afternoon.
 
+# player decides whether to go to work or not
 label afternoon:
 
     # It's possible that we will be skipping the afternoon, if one
     # of the events in the morning jumped to skip_next_period. If
     # so, we should skip the afternoon.
     if check_skip_period():
-        jump evening
+        jump mall
 
     # The rest of this is the same as for the morning.
 
@@ -204,18 +209,43 @@ label afternoon:
     $ period = "afternoon"
     
     "Before I know it, school's out!"
-    "What should I do after work?"
-    menu:   
-        "Go to Salon":
-            $ afternoon_act = "salon"
-        "You know, what? Screw work!":
-            $ afternoon_act = "skip_work"
-        # There will be other stores available here, but unless a certain
-        # character has been met, an uninteresting event will occur
+    if has_job:
+        "Should I go to work?"
+        menu:   
+            "Time to earn some cash!":
+                $ afternoon_act = "work"
+            "You know, what? Screw work!":
+                $ afternoon_act = "skip_work"
+            # there will be other stores available here, but unless a certain
+            # character for that store has been met, an uninteresting event will occur
+    else:
+        "Time to job hunt!"
+        $ afternoon_act = "job_hunt"
     $ act = afternoon_act
     call events_run_period
+
+# if player went to work, then now she can hang around the mall afterwards
+label mall:
+    if check_skip_period() or afternoon_act == "skip_work":
+        jump evening
     
+    centered "Mall"
     
+    $ period = "mall"
+    
+    if afternoon_act != "job_hunt":
+        "Nothing like a day of hard work!"
+    else:
+        "Still at the mall..."
+    "Where should I hang out now?"
+    menu:
+        "Salon":
+            $ mall_act = "salon"
+        #other choices later... like perhaps you can go home early and hang out with pikachu instead (^:
+    $ act = mall_act
+    call events_run_period
+
+# player decides whether to go to the park or to go/stay home
 label evening:
     
     # The evening is the same as the afternoon.
@@ -231,7 +261,9 @@ label evening:
     menu:
         "Go to Park":
             $ evening_act = "park"
-        "Go Home":
+        "Stay Home" if afternoon_act == "skip_work":
+            $ evening_act = "home"
+        "Go Home" if afternoon_act != "skip_work":
             $ evening_act = "home"
     $ act = evening_act
     
