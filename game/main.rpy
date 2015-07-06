@@ -45,8 +45,9 @@ label start:
     scene black
     
     # other variables
-    $ has_job = False #will become True once event get_hired runs
+    $ has_job = False #true after get_hired runs
     $ skipped_work = 0
+    $ haircut = False #true after salon1 runs
     
     # The script here is run before any event.
 

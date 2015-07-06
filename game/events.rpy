@@ -16,6 +16,7 @@
 #   pikachu loves player because player fought off his childhood bullies bc she genki af
 
 #   remember to introduce pokedex properly
+#   events based on number of affection pts need a backup event (since the only stats that will trigger anything are affection pts)
 #############################################################
 
 # Some characters that are used in events in the game.
@@ -47,19 +48,10 @@ init:
         event("eat_lunch3", "act == 'lunch3'", event.solo(), priority=1000)
         event("salon", "act == 'salon'", event.solo(), priority=1000)
     
-        event("salon1", "act == 'salon'",event.solo(), priority=990)
-    #$ event("hang1", "act == 'hang'", event.choose_one('hang'), priority=200)
-    #$ event("hang2", "act == 'hang'", event.choose_one('hang'), priority=200)
-    #$ event("exercise", "act == 'exercise'", event.solo(), priority=200)
-    #$ event("play", "act == 'play'", event.solo(), priority=200)
-    # This is an introduction event, that runs once when we first go
-    # to class. 
-    #$ event("introduction", "act == 'class'", event.once(), event.only())
-    
         event("get_hired", "act == 'mall'", event.solo(), event.once(), priority=1000)
-    
+        event("salon1", "act == 'salon'",event.solo(), event.once(), priority=990)
         event("meet_ditto", "act == 'class'", event.solo(), event.once(), priority=990)
-
+    
     
 #Below are the boring events that happen when there are no higher priority events.
 
@@ -76,8 +68,7 @@ label class2:
     "Nothing worth mentioning happens."
     return
 
-#This only happens after you get hired.
-label work:
+label work: #this only happens after you get hired
     "I head to my job at the mall and strengthen my resolve as I sell pokepuffs."
     "I've got to work hard if I want to get {i}PokeCrossing: Happy Ball Designer!{/i}"
     python:
@@ -89,6 +80,7 @@ label work:
             inventory.earn(10)
         else:
             inventory.earn(5) #you can't get fired because riley really needs an employee
+            "It's difficult with such little pay, though..."
     return
     
 label eat_lunch1:
@@ -113,26 +105,25 @@ label eat_lunch3:
 
 label skip_work1:
     "I don't feel like working today."
-    "I'm sorry, Riley."
-    "I hope the store can run with one less person today."
+    "Sorry, Riley."
+    "I'm sure the store can run with one less person today."
     $ skipped_work += 1
     return
     
 label salon:
     "I went to the salon, but Jynx is nowhere to be found."
-    "Maybe she has a dayoff? Or maybe I'm just really bad at finding people..."
+    "Maybe she has a day off? Or maybe I'm just really bad at finding people..."
     "I spend the rest of the time looking at all the fancy hair products."
     return
 #Below are the events actually matter.
 
-label get_hired:
-    #the first time player goes to the mall, trap hires her
+label get_hired: #the first time player goes to the mall, trap hires her
     "u got job yay"
     $ has_job = True
     pass
     return
     
-label meet_ditto:
+label meet_ditto: #the first time player goes to class, she notices ditto
     if char_dex == True:
         "I stayed up late last night texting Charmander, so it's difficult to wake up in the morning."
         "But I do it."
@@ -143,7 +134,7 @@ label meet_ditto:
         "Wait for me, {i}PokeCrossing: Happy Ball Designer{/i}..."
     return
     
-label salon1:
+label salon1: #the first time player goes to salon, she gets a haircut by jynx LOL surprise
     "So this is the salon that Jynx works at..."
     "It looks like a popular salon. There's even people lining out the door."
     unknown "Hey, [name]! You finally came to visit! Glad to see you!"
