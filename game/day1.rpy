@@ -3,9 +3,6 @@
 # to the characters before making any real choices.
 
 label breakfast:
-    $ dad_dex = True
-    $ pika_dex = True
-    
     "It's the start of a new day."
     "My name is [name], and I'm just a regular human in the pokemon world."
     "I'm a second year in a high school called PokeCreek. It's full of very diverse pokemon!"

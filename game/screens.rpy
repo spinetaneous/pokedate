@@ -27,12 +27,8 @@ screen pokedex():
         # I wanted to use a dictionary and a for loop for this part
         # but apparently renpy doesn't support for loops
         # and I couldn't think of another way to do this :(
-        if dad_dex == True:
-            textbutton _("Dad") action ShowMenu("dad_dex")
-        else:
-            text "There's nothing in your Pokedex right now!"
-        if pika_dex == True:
-            textbutton _("Pikachu") action ShowMenu("pika_dex")
+        textbutton _("Dad") action ShowMenu("dad_dex")
+        textbutton _("Pikachu") action ShowMenu("pika_dex")
         if jynx_dex == True:
             textbutton _("Jynx") action ShowMenu("jynx_dex")
         if digl_dex == True:

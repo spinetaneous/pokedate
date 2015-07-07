@@ -30,14 +30,15 @@ label start:
     #Affection points.
         pika_pts = 10
         char_pts = 0
+        ditt_pts = 0
         
     #Pokedex variables.
-        pika_dex = False
+        dad_dex = True
+        pika_dex = True
         char_dex = False
         jynx_dex = False
         digl_dex = False
         char_dex = False
-        dad_dex = False
         ditt_dex = False
         bulb_dex = False
     
@@ -91,7 +92,7 @@ label start:
     "Thank you for providing this information!"
     "Without further ado, let's get started on your romantic adventure! :-)"
     
-    jump day #for testing purposes
+    jump meet_ditto #for testing purposes
     
     # We jump to breakfast. Remember to fade!
     jump breakfast

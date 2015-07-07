@@ -36,6 +36,10 @@ init:
     define digl = Character('Diglett', color="#ab4221") #works at gym
     define pika = Character('Pikachu', color="#ffd700") #at school... maybe one day u can go to house????
     define char = Character('Charmander', color="#ff760d") #at park all the time
+    define ditt = Character('Ditto', color="#c9a0dc")
+    
+    #fake dittos
+    define dpika = Character('Pikachu', color="#c9a0dc")
 
 init:
     # First up, we define some simple events for the various actions, that
@@ -122,7 +126,7 @@ label salon:
 
 label get_hired: #the first time player goes to the mall, trap hires her
     player "The time has come..."
-    player "I'm not leaving the mall today unless I get a job!"
+    player "I'm not leaving the mall today until I get a job!"
     player "It shouldn't be that hard, right?"
     #fade gamemon
     "I walk into Gamemon."
@@ -254,6 +258,97 @@ label meet_ditto: #the first time player goes to class, she notices ditto
         "What a good night's sleep! I feel so refreshed and awake."
         "I'm totally ready to get a job after school!"
         "Wait for me, {i}PokeCrossing: Happy Ball Designer{/i}..."
+    #fade school
+    "Another day of getting to school on time!"
+    "Not surprising though... After all, I've had perfect attendance for my entire school career!"
+    "And I have never, ever been absent or late."
+    "Ever."
+    "So now I'm here at school early!"
+    "But now I have some time to kill..."
+    "Maybe I should just walk around campus for a little while."
+    #fade courtyard
+    "..."
+    "...!"
+    "Hey, is that Pikachu?"
+    "I wonder why he's at school so early. Maybe he likes to be punctual just like me."
+    player "Hey, Pikachu! What are you doing here?"
+    dpika "Hey, baby. What's up?"
+    player "..."
+    dpika "Why the long face, shawty?"
+    player "......"
+    dpika "Come on cupcake, lemme see you smile."
+    player "Pikachu..."
+    "Pikachu is being really strange. What should I do?"
+    menu:
+        "Ask him why he's being like this.":
+            player "Why are you acting all weirdly...?"
+            dpika "Am I acting weird, or is {i}you{/i} acting weird?"
+            dpika "Oh wait, I know why you ain't got no chill."
+            dpika "It's cuz you just can't control yourself around me, correct?"
+            dpika "Ain't that right, sweetcheeks?"
+            player "!!!"
+            player "Don't call me that. You're being gross."
+        "Go along with it.":
+            player "Bruh, you askin' me to smile, but why ain't you smilin'?"
+            dpika "Damn, you hella sharp fo'sho."
+            player "Yeah, as sharp as my di--"
+            $ ditt_pts += 1
+    pika "[name]!!" #two pikas on screen with SHAKY SCREEN 4 footsteps
+    player "P...Pikachu...?"
+    player "I..."
+    player "But aren't you..."
+    player "Are there two of..."
+    player "...What?"
+    "Wait, I think I figured it all out! I'm a genius!"
+    player "Pikachu, do you... {i}have an {b}evil twin!?{/b}{/i}"
+    pika "???"
+    pika "No, I--"
+    dpika "Of course! I come from {b}another dimension{/b}!"
+    dpika "Nice to meet you... Or as they say on my home planet..."
+    dpika "YO - RO - SHI - KU - O - NI - GA - I - SHI - MA - SU"
+    player "O-Oh? Then, uh..."
+    player "Yoro..."
+    player "Yoroshi...ganimasou to you too! Yoroshiganimasou!"
+    pika "[name]..."
+    pika "I don't have a twin... I have no idea who this is..."
+    pika "Don't you remember!? I'm an only child!"
+    pika "{i}We're childhood friends!{/i}"
+    player "Oh yeah..."
+    player "Then wait, who's this!?!?"
+    dpika "Haha [name], you're silly."
+    dpika "I like you!"
+    pika "!"
+    pika "[name], can you come here for a sec..."
+    "Pikachu pulls me aside and starts whispering in my ear."
+    pika "{size=-5}This guy is giving me the creeps...{/size}"
+    pika "{size=-5}He's impersonating me and playing this weird prank on you...{/size}"
+    pika "{size=-5}We should just leave him right now.{/size}"
+    "I turn around to look at Mr. Pikachu Imposter."
+    "...!"
+    player "Where'd he go?"
+    unknown "Down here!"
+    pika "Huh?"
+    "Pikachu and I look down at the direction of the voice."
+    unknown "Hey guuuuuuuuuuys!"
+    ditt "It's me, Ditto! ♥"
+    $ ditt_dex = True
+    pdex "Ditto has been added to your Pokedex."
+    "Pikachu and I glance at each other."
+    pika "{size=-5}This guy's weird...{/size}"
+    player "You're...You're a blob!"
+    ditt "Hey! You're a {i}human{/i}!"
+    player "{i}That is a sensitive subject!{/i}"
+    "DING -- DONG -- DING -- DONG --"
+    pika "Oh hey would you look at that it's time to go to class let's go [name]--"
+    "Pikachu grabs me by the arm and starts to lead me away."
+    ditt "Hey, Pikachu-senpai, [name]-senpai!"
+    ditt "I'm in class 1-A! Come visit me!"
+    ditt "I'll be waiting, babylips~♥"
+    pika "Haha that is very funny now come on [name] we'll be late for class--"
+    "Before I can say anything, Pikachu runs off while grabbing me by the wrist."
+    "We make it to class before the second bell rings."
+    "..."
+    "I wonder what a senpai is?"
     return
     
 label salon1: #the first time player goes to salon, she gets a haircut by jynx LOL surprise
