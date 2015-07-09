@@ -17,6 +17,13 @@
 
 #   remember to introduce pokedex properly
 #   events based on number of affection pts need a backup event (since the only stats that will trigger anything are affection pts)
+
+#FUTURE EVENTS:
+#   charmeleon fucking dies at the beach (maybe the worst ending??? maybe happens in the middle of the game?? i dunno)
+#   camping adventure with everyone but u get lost with charmeleon and he makes a lil fire for u (cuz he's made of fire)
+#   ditto gets kidnapped and u rescue him
+#   PIKACHU EARNS PERFECT ATTENDANCE AWARD AND U DON'T *RIFT CREATED* but pikachu has never taken it srsly so u are offended
+#   the "I never needed you" ending for not choosing pikachu (worst ending)
 #############################################################
 
 # Some characters that are used in events in the game.
@@ -29,14 +36,34 @@ init:
     define dad = Character('Dad', color="#e74c14")
     define pdex = Character('Pokedex')
     define trap = Character('Riley', color="#a3daf6") #works at la pokesserie
+    define popo = Character('Police')
 
     #pokemon (besides dad)
+    define pbc = Character('Pikabelle Chutendo', color="#ffd700")
     define jynx = Character('Jynx', color="#70018b") #works at salon
+        #info-chan
+        #thinks she's popular
+        #genki girl. all up in ur face. nice once u get used to her
     define bulb = Character('Bulbasaur', color="#008080") #works at florist/is the florist
+        #normal guy. boo
     define digl = Character('Diglett', color="#ab4221") #works at gym
+        #tsundere. works at gym. is secretly hella ripped
+        #insecure about his looks
     define pika = Character('Pikachu', color="#ffd700") #at school... maybe one day u can go to house????
-    define char = Character('Charmander', color="#ff760d") #at park all the time
-    define ditt = Character('Ditto', color="#c9a0dc")
+        #the childhood friend. sweet and nice
+        #neglected by mom aka Pikabelle Chutendo who works too much to pay for dad's medical bills
+        #doesn't like mom
+        #likes player. obviously
+    define char = Character('Charmeleon', color="#ff760d") #at park all the time
+        #the aristocrat. suave and lame
+        #is the bastard child of a rich man
+        #lives with his mom who has been kicked outta the rich house and is now an alcoholic
+        #goes to park to escape home life but doesn't run away cuz deep down he loves his mom
+        #gets embarrassed easily
+    define ditt = Character('Ditto', color="#c9a0dc") #works at sleezy store 
+        #silly and weird
+        #wants to fit in bc he's a scared and tiny freshman who is also a blob with no form
+        #also the LAMEST
     
     #fake dittos
     define dpika = Character('Pikachu', color="#c9a0dc")
@@ -57,7 +84,7 @@ init:
         event("get_hired", "act == 'job_hunt'", event.solo(), event.once(), priority=999)
         event("salon1", "act == 'salon'",event.solo(), event.once(), priority=999)
         event("meet_ditto", "act == 'class'", event.solo(), event.once(), priority=999)
-    
+        
     
 #Below are the boring events that happen when there are no higher priority events.
 
@@ -250,11 +277,11 @@ label get_hired: #the first time player goes to the mall, trap hires her
     return
     
 label meet_ditto: #the first time player goes to class, she notices ditto
-    if char_dex == True:
-        "I stayed up late last night texting Charmander, so it's difficult to wake up in the morning."
+    if char_dex and not grabbed_tail:
+        "I stayed up late last night with Charmeleon, so it's difficult to wake up in the morning."
         "But I do it."
         "I wipe the sleep from my eyes because I am {i}determined not to be late!{/i}"
-    elif char_dex == False:
+    else:
         "What a good night's sleep! I feel so refreshed and awake."
         "I'm totally ready to get a job after school!"
         "Wait for me, {i}PokeCrossing: Happy Ball Designer{/i}..."

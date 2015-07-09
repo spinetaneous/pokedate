@@ -29,17 +29,16 @@ screen pokedex():
         # and I couldn't think of another way to do this :(
         textbutton _("Dad") action ShowMenu("dad_dex")
         textbutton _("Pikachu") action ShowMenu("pika_dex")
-        if jynx_dex == True:
+        if jynx_dex:
             textbutton _("Jynx") action ShowMenu("jynx_dex")
-        if digl_dex == True:
+        if digl_dex:
             textbutton _("Diglett") action ShowMenu("digl_dex")
-        if char_dex == True:
-            textbutton _("Charmander") action ShowMenu("char_dex")
-        if ditt_dex == True:
+        if char_dex:
+            textbutton _("Charmeleon") action ShowMenu("char_dex")
+        if ditt_dex:
             textbutton _("Ditto") action ShowMenu("ditt_dex")
-        if bulb_dex == True:
+        if bulb_dex:
             textbutton _("Bulbasaur") action ShowMenu("bulb_dex")
-
 
 screen dad_dex():
     tag menu

@@ -48,7 +48,8 @@ label start:
     # other variables
     $ has_job = False #true after get_hired runs
     $ skipped_work = 0
-    $ haircut = False #true after salon1 runs
+    $ grabbed_tail = False #true if you decide to light something on fire with charmeleon's tail
+    #if true, then player is surprised to see charmeleon at school
     
     # The script here is run before any event.
 
@@ -92,7 +93,7 @@ label start:
     "Thank you for providing this information!"
     "Without further ado, let's get started on your romantic adventure! :-)"
     
-    jump meet_ditto #for testing purposes
+    #jump park_day1 #for testing purposes
     
     # We jump to breakfast. Remember to fade!
     jump breakfast
@@ -171,7 +172,7 @@ label morning:
 # player decides where to eat lunch at
 # 1-A is an underclassman class and player can talk with ditto and diglett
 # 2-B is player's own class where she can talk with pikachu
-# 3-C is an upperclassman class and player can talk with jynx and charmander
+# 3-C is an upperclassman class and player can talk with jynx and charmeleon
 label lunch:
     if check_skip_period():
         jump afternoon
