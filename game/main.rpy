@@ -50,9 +50,8 @@ label start:
     $ skipped_work = 0
     $ grabbed_tail = False #true if you decide to light something on fire with charmeleon's tail
     #if true, then player is surprised to see charmeleon at school
+    #if false, then player is not surprised bc they already know that they attend the same school
     
-    # The script here is run before any event.
-
     "Hello, and welcome to PokeDate!"
     
     "If you've ever looked a Pokemon and thought, \"Wow, I would totally date that Pokemon!\"
@@ -95,14 +94,11 @@ label start:
     
     #jump park_day1 #for testing purposes
     
-    # We jump to breakfast. Remember to fade!
+    # fade home
     jump breakfast
 
 # This is the label that is jumped to at the start of a day.
 label day:
-    #Initialize default values for variables to be used in the game.
-    # Increment the day it is.
-    
     $ current_money = inventory.money
     # By default, current_money will be updated at the start of every day (i.e. at the statement "It's ____day!")
     # if inventory.money is changed multiple times during a day (without going back to dayplanner)
@@ -132,13 +128,8 @@ label day:
             
     "Today is [today]."
 
-    # Here, we want to set up some of the default values for the
-    # day planner. In a more complicated game, we would probably
-    # want to add and remove choices from the dp_ variables
-    # (especially dp_period_acts) to reflect the choices the
-    # user has available.
-
     $ morning_act = "class" #player always goes to class
+    
     if day <= 3:
         $ afternoon_act = "mall" #player HAS to go to the mall and get a job.
     else:
@@ -146,27 +137,14 @@ label day:
     $ afternoon_act = None
     $ afternoon_act = None
     $ evening_act = None
+    
     # $ narrator("What should I do today?", interact=False)
-    
-    # Now, we call the day planner, which may set the act variables
-    # to new values. We call it with a list of periods that we want
-    # to compute the values for.
     # call screen day_planner(["Morning", "Afternoon", "Evening"])
-
     
-    # We process each of the three periods of the day, in turn.
 label morning:
-
-    # Tell the user what period it is.
     centered "Morning"
-
-    # Set these variables to appropriate values, so they can be
-    # picked up by the expression in the various events defined below. 
     $ period = "morning"
-
     $ act = morning_act
-    
-    # Execute the events for the morning.
     call events_run_period
 
 # player decides where to eat lunch at
@@ -192,8 +170,6 @@ label lunch:
             $ lunch_act = "lunch3"
     $ act = lunch_act
     call events_run_period
-    # That's it for the morning, so we fall through to the
-    # afternoon.
 
 # player decides whether to go to work or not
 label afternoon:
@@ -288,7 +264,7 @@ label night:
     # And we jump back to day to start the next day. This goes
     # on forever, until an event ends the game.
     jump day
-         
+
 
 # This is a callback that is called by the day planner. 
 label dp_callback:

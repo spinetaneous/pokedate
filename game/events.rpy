@@ -149,7 +149,8 @@ label salon:
     "Maybe she has a day off? Or maybe I'm just really bad at finding people..."
     "I spend the rest of the time looking at all the fancy hair products."
     return
-#Below are the events actually matter.
+    
+    #Below are the events actually matter.
 
 label get_hired: #the first time player goes to the mall, trap hires her
     player "The time has come..."

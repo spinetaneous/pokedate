@@ -648,13 +648,13 @@ label mall_choice_day1:
     "I briefly close my eyes to say a small prayer."
     player "Please let me have enough money to buy it..."
     "My eyes wander down to the price tag."
-    player "*GASP*"
-    player "*COUGH*"
-    player "*GAG*"
+    player "*GASP*" with vpunch
+    player "*COUGH*" with vpunch
+    player "*GAG*" with vpunch
     player "HOW CAN ANYONE AFFORD THAT?"
     player "BUT..."
     player "BUT...!"
-    player "{size=+10}{color=#f00}{i}I NEED THIS GAME!{/i}{/color}{/size}"
+    player "{size=+10}{color=#f00}{i}I NEED THIS GAME!{/i}{/color}{/size}" with vpunch
     player "{size=-5}*pant*...*pant*...{/size}"
     player "There's no way I'll be able to afford that on my own..."
     player "Maybe I have to ask Dad..."
