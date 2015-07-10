@@ -422,7 +422,7 @@ label park_day1:
     pbc "What a nice [gender]."
     jump mall_choice_day1
     
-label mall_day1: #pikachu introduces you to diglett and jynx
+label mall_day1:
     "After school, Pikachu and I go to the mall together."
     "We first head to the pokepuff place."
     #show la pokesserie
@@ -435,7 +435,7 @@ label mall_day1: #pikachu introduces you to diglett and jynx
     pika "Isn't that part of the reason why we're here in the first place?"
     player "Teehee. Whoops."
     "Suddenly, I hear an unfamiliar voice."
-    unknown "{size=+10}OOO, DANG GIRL!{/size}"
+    unknown "{size=+10}OOO, DANG GIRL!{/size}" with vpunch
     player "Huh?"
     "Someone pushes their way past other pokemon and grabs my arm."
     unknown "GIRL, YOUR HAIR..."
@@ -732,10 +732,10 @@ label home_return_day1:
     "With that, I go to the bathroom to thoroughly brush and floss my teeth. Hygiene is very important!"
     #add charmeleon event here
     if char_dex and grabbed_tail:
-        "Then I texted Charmeleon for his Tomodachi-Code."
+        "Then I text Charmeleon for his Tomodachi-Code."
     elif char_dex and not grabbed_tail:
-        "Then I texted Charmeleon for his Tomodachi-Code."
-        "We played {i}PokeCrossing: New Ball{/i} until late at night."
+        "Then I text Charmeleon for his Tomodachi-Code."
+        "We play {i}PokeCrossing: New Ball{/i} until late at night."
     else:
         "Then, I lie in bed until falling asleep."
     jump day

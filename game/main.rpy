@@ -47,10 +47,18 @@ label start:
     
     # other variables
     $ has_job = False #true after get_hired runs
-    $ skipped_work = 0
+    $ skipped_work = 0 #affects salary
     $ grabbed_tail = False #true if you decide to light something on fire with charmeleon's tail
     #if true, then player is surprised to see charmeleon at school
     #if false, then player is not surprised bc they already know that they attend the same school
+    $ haircut = False #true after jynx cuts player's hair
+    
+    #job_hunt variables. true after trying to get hired at each respective store
+    $ tried_gamemon = False
+    $ tried_salon = False
+    $ tried_gym = False
+    $ tried_florist = False
+    $ tried_job_hunt = 0 #increases every time player quits job hunting. prevents player from not getting a job at all.
     
     "Hello, and welcome to PokeDate!"
     
@@ -194,10 +202,12 @@ label afternoon:
                 $ afternoon_act = "work"
             "You know, what? Screw work!":
                 $ afternoon_act = "skip_work"
-            # there will be other stores available here, but unless a certain
-            # character for that store has been met, an uninteresting event will occur
     else:
+        "The time has come..."
         "Time to job hunt!"
+        if tried_job_hunt == 0:
+            "I'm not leaving the mall until I get a job!"
+            "It shouldn't be that hard, right?"
         $ afternoon_act = "job_hunt"
     $ act = afternoon_act
     call events_run_period
@@ -219,6 +229,8 @@ label mall:
     menu:
         "Salon":
             $ mall_act = "salon"
+            # there will be other stores available here, but unless a certain
+            # character for that store has been met, an uninteresting event will occur
         #other choices later... like perhaps you can go home early and hang out with pikachu instead (^:
     $ act = mall_act
     call events_run_period
@@ -243,6 +255,7 @@ label evening:
             $ evening_act = "home"
         "Go Home" if afternoon_act != "skip_work":
             $ evening_act = "home"
+        #perhaps at a certain day, dad gives you unlimited texting so you can text some buddies?
     $ act = evening_act
     
     call events_run_period
