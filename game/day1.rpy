@@ -305,7 +305,7 @@ label park_day1:
     player "What's your name?"
     if grabbed_tail:
         unknown "Why should I tell you?"
-        player "Hey, I'm sorry, okay?!"
+        player "Hey, I'm sorry, okay!?"
         player "At least let me know your name! Then I can properly apologize."
         unknown "..."
         char "It's Charmeleon."
@@ -341,7 +341,7 @@ label park_day1:
                 char "You're so witty. How old are you anyway?"
                 player "I'm a second-year in high school!"
                 char "Really? I'm a third-year!"
-                char "Which school do you go to?!"
+                char "Which school do you go to!?"
                 player "PokeCreek!"
                 char "Me too!"
                 char "I guess we'll see each other around."
@@ -552,13 +552,13 @@ label florist_day1:
             digl "Put me down!!"
             player "O-Oh, uh, okay."
             "I set Diglett back down on the shelf."
-            pika "[name], are you okay?!"
+            pika "[name], are you okay!?"
             pika "What's wrong? I heard a lot of shouting!"
             player "Oh, it was just--"
             digl "She tried kidnapping me!"
             digl "All I was doing was looking at flowers, and she just grabs me out of nowhere and--"
             player "N-No! I thought he was another plant!"
-            digl "\"Another plant\"?! I'm a Pokemon, you idiot!"
+            digl "\"Another plant\"!? I'm a Pokemon, you idiot!"
             bulb "Hey!! Stop fighting in my store!!"
             bulb "You can argue all you want, but do it outside!"
             player "No, Pikachu needs to buy his roses!"
@@ -675,7 +675,7 @@ label see_game_day1:
     player "{size=+5}{i}THE SUPER SPECIAL LIMITED EDITION {color=#ffd700}GOLD{/color} VERSION OF{/i} POKECROSSING: HAPPY BALL DESIGNER{i} SIGNED BY PIKABELLE CHUTENDO HERSELF FEATURING NEVER-BEFORE-SEEN EXTRA MATERIAL!{/i}{/size}" with vpunch
     player "I would jump over canyons, swim up waterfalls, and walk barefoot over burning coals for this!"
     player "PLEASE, GAMEMON STORE CLERK PERSON!!" with vpunch
-    player "DON'T YOU UNDERSTAND?!?!?"
+    player "DON'T YOU UNDERSTAND!?!?!"
     player "MY ENTIRE LIFE HANGS IN THE BALANCE--" with vpunch
     "Suddenly I feel a hand on my shoulder."
     gscp "...Say no more."

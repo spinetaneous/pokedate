@@ -88,6 +88,7 @@ init:
     # First up, we define some simple events for the various actions, that
     # are run only if no higher-priority event is about to occur.
     python:
+        #default events for when nothing interesting is happening
         event("class1", "act == 'class'", event.solo(), event.choose_one("class"), priority=1000)
         event("class2", "act == 'class'", event.solo(), event.choose_one("class"), priority=1000)
         event("work", "act == 'mall'", event.solo(), event.depends("get_hired"), priority=1000)
@@ -97,12 +98,19 @@ init:
         event("eat_lunch3", "act == 'lunch3'", event.solo(), priority=1000)
         event("salon", "act == 'salon'", event.solo(), priority=1000)
         
-        #the process of finding a job
+        #the process of finding a job. can take place over many days. stops once player gets hired
         event("where_job_hunt", "act == 'job_hunt' and not has_job", priority=1)
+        
+        #the first time player goes to salon after knowing jynx, she gets a haircut
         event("get_haircut", "act == 'salon' and jynx_dex", event.once(), priority=999)
+        
+        #player meets ditto in courtyard
         event("meet_ditto", "act == 'class'", event.once(), priority=10)
         
-        event("forgot_lunch1", "act == 'lunch1' and digl_dex", event.once(), event.happened("meet_ditto"), priority=998)
+        #the player forgets her lunch one time. event differs depending on where player decides to go during lunch
+        event("forgot_lunch1", "act == 'lunch1' and digl_dex", event.once(), event.happened("meet_ditto", not "forgot_lunch2", not "forgot_lunch3"), priority=998)
+        event("forgot_lunch2", "act == 'lunch2'", event.once(), event.happened(not "forgot_lunch1", not "forgot_lunch3"), priority=998)
+        event("forgot_lunch3", "act == 'lunch3'", event.once(), event.happened(not "forgot_lunch1", not "forgot_lunch2"), priority=998)
         
     
 #Below are the boring events that happen when there are no higher priority events.
@@ -372,7 +380,7 @@ label job_hunt_gym:
             player "What!? But I saw a flyer that said you were hiring!"
             digl "Argh, I already told all the stores to take those down..."
             digl "That flyer is old. We already have the employees we need."
-        player "Really?! Dang... That's too bad..."
+        player "Really!? Dang... That's too bad..."
         player "I guess I need to try somewhere else then."
         digl "..."
         #if player knows jynx, then diglett says go to the bakery
@@ -405,7 +413,7 @@ label job_hunt_gym:
             digl "Argh, I already told all the stores to take those down..."
             digl "That flyer is old. We already have the employees we need."
         
-        player "Really?! Dang... That's too bad..."
+        player "Really!? Dang... That's too bad..."
         player "I guess I need to try somewhere else then."
         digl "..."
         #if player knows jynx, then diglett says go to the bakery
@@ -446,7 +454,7 @@ label job_hunt_florist:
     player "I'm looking for a job!"
     bulb "Oh, I see."
     bulb "Well, you're in luck! I'm currently hiring."
-    player "Really? That's great! When do I start?!"
+    player "Really? That's great! When do I start!?"
     bulb "Hold on, I didn't hire you yet."
     player "What?"
     bulb "Well, I have to see if you're suitable for the store after all."
@@ -499,7 +507,7 @@ label job_hunt_la_pokesserie:
     unknown "..." #this is riley
     "Whoa... I wonder who that is..."
     "I've never seen this person at La Pokesserie before..."
-    "...Oh no! What if La Pokeserie just hired someone new! Did I just miss out on a job opportunity?!"
+    "...Oh no! What if La Pokeserie just hired someone new! Did I just miss out on a job opportunity!?"
     unknown "May I help you?"
     player "Oh, uh, yes! I was wondering..."
     player "Are you a new employee here?"
@@ -524,7 +532,7 @@ label job_hunt_la_pokesserie:
     player "Oh boy, I can't wait to start earning money!"
     "Now... It begins..."
     "Soon it will be in my hands..."
-    "{size=+5}{i}THE SUPER SPECIAL LIMITED EDITION {color=#ffd700}GOLD{/color} VERSION OF{/i} POKECROSSING: HAPPY BALL DESIGNER{i} SIGNED BY PIKABELLE CHUTENDO HERSELF FEATURING NEVER-BEFORE-SEEN EXTRA MATERIAL{/i}{/size} is mine!"
+    "{size=+5}{i}THE SUPER SPECIAL LIMITED EDITION {color=#ffd700}GOLD{/color} VERSION OF{/i} POKECROSSING: HAPPY BALL DESIGNER{i} SIGNED BY PIKABELLE CHUTENDO HERSELF FEATURING NEVER-BEFORE-SEEN EXTRA MATERIAL{/i}{/size}... {w}is mine!{w}"
     $ has_job = True
     return
     
@@ -593,7 +601,7 @@ label meet_ditto: #the first time player goes to class, she notices ditto
     pika "Don't you remember!? I'm an only child!"
     pika "{i}We're childhood friends!{/i}"
     player "Oh yeah..."
-    player "Then wait, who's this!?!?"
+    player "Then wait, who's this!!??"
     dpika "Haha [name], you're silly."
     dpika "I like you!"
     pika "!"
@@ -675,16 +683,30 @@ label forgot_lunch1:
     "I head over to class 1-A, the underclassmen's classroom."
     "There, I see Ditto and Diglett from the corner of my eye."
     "They notice me, and I wave. {w}They wave back.{w}"
-    ditt "Heeeeey [name]~~~"
-    ditt "What's crackalackin'?!"
-    digl "Oh, [name]."
-    digl "Why are you here?"
+    ditt "'Sup, [name]!?"
+    ditt "What's crackalackin'!?"
+    digl "Oh, [name]. It's you."
     player "I came to eat lunch with you guys!!"
-    digl "..."
-    digl "Um--"
-    ditt "But where's your lunch, [name]?"
-    player "Oh, it's right here--"
-    player "!"
-    player "Oh no..."
-    player "Don't tell me I..."
+    digl "Yeah, right. If that's the case, where's your lunch?"
+    player "Haha, You're funny! My lunch is right here--"
+    player "...!" with vpunch
+    player "W-Where's my lunch!?"
+    player "I can't believe it... {w}How could I have forgotten to bring my lunch, one of the most important meals of the day!?{w}"
+    ditt "I bet you just wanted to see me. Isn't that right, sugar muffin?"
+    "Nevermind his question. Right now, there are bigger things to worry about!"
+    "What should I do about lunch?"
+    menu:
+        "Make the underclassmen buy your lunch":
+            pass
+        "Don't eat lunch":
+            player "Sigh... I guess there's nothing I can do "
+    return
+    
+label forgot_lunch2:
+    pass
+    return
+    
+label forgot_lunch3:
+    pass
+    return
     
