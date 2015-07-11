@@ -24,6 +24,7 @@
 #   ditto gets kidnapped and u rescue him
 #   PIKACHU EARNS PERFECT ATTENDANCE AWARD AND U DON'T *RIFT CREATED* but pikachu has never taken it srsly so u are offended
 #   the "I never needed you" ending for not choosing pikachu (worst ending)
+#   fight fight fight 4 ur luv
 #############################################################
 
 # Some characters that are used in events in the game.
@@ -32,11 +33,20 @@ init:
     define unknown = Character('??????')
 
     define t = Character('Teacher')
+        #stern but fair
     define player = Character('[name]', color="#0d4b72")
+        #little common sense
+        #LOVES POKECROSSING
+        #one hell of a dancer. not kidding. will win at every dance battle
+        #yells a lot. mostly out of excitement
     define dad = Character('Dad', color="#e74c14")
+        #makes dad jokes
+        #is very dad
+        #typical dad
     define pdex = Character('Pokedex')
     define trap = Character('Riley', color="#a3daf6") #works at la pokesserie
     define popo = Character('Police')
+    define gscp = Character('Gamemon Store Clerk Person') #works at gamemon. holds game for u for 30 days cuz he kno that feel bro
 
     #pokemon (besides dad)
     define pbc = Character('Pikabelle Chutendo', color="#ffd700")
@@ -46,6 +56,12 @@ init:
         #genki girl. all up in ur face. nice once u get used to her
     define bulb = Character('Bulbasaur', color="#008080") #works at florist/is the florist
         #normal guy. boo
+    define elek = Character('Elekid', color="#f3f15d") #works at gamemon
+        #knows that gamer feel
+        #very passionate about games
+        #always playing on his Chutendo TS behind the counter
+    
+    #pokemon that you can date
     define digl = Character('Diglett', color="#ab4221") #works at gym
         #tsundere. works at gym. is secretly hella ripped
         #insecure about his looks
@@ -82,9 +98,11 @@ init:
         event("salon", "act == 'salon'", event.solo(), priority=1000)
         
         #the process of finding a job
-        event("where_job_hunt", "act == 'job_hunt' and not has_job", event.solo(), priority=1)
-        event("get_haircut", "act == 'salon' and jynx_dex",event.solo(), event.once(), priority=999)
-        event("meet_ditto", "act == 'class'", event.solo(), event.once(), priority=999)
+        event("where_job_hunt", "act == 'job_hunt' and not has_job", priority=1)
+        event("get_haircut", "act == 'salon' and jynx_dex", event.once(), priority=999)
+        event("meet_ditto", "act == 'class'", event.once(), priority=10)
+        
+        event("forgot_lunch1", "act == 'lunch1' and digl_dex", event.once(), event.happened("meet_ditto"), priority=998)
         
     
 #Below are the boring events that happen when there are no higher priority events.
@@ -107,7 +125,7 @@ label work: #this only happens after you get hired
     "I've got to work hard if I want to get {i}PokeCrossing: Happy Ball Designer!{/i}"
     python:
         if skipped_work < 3:
-            inventory.earn(30)
+            inventory.earn(35)
         elif skipped_work >= 3 and skipped_work < 6:
             inventory.earn(20)
         elif skipped_work >= 6 and skipped_work < 9:
@@ -172,6 +190,7 @@ label home:
 #Below are the events actually matter.
 
 label where_job_hunt:
+    $ tried_job_hunt += 1
     #fade mall
     "Where should I try to get hired at?"
     menu:
@@ -635,3 +654,21 @@ label get_haircut: #the first time player goes to salon after getting a job, she
     "And with that, I get out of that salon."
     $ haircut = True
     return
+
+label forgot_lunch1:
+    "Time to spend lunch with the little ones today!"
+    "I head over to class 1-A, where Diglett and Ditto are."
+    "It's lively in there, as usual."
+    ditt "Heeeeey [name]~~~"
+    ditt "What's crackalackin'?!"
+    digl "Oh, [name]."
+    digl "Why are you here?"
+    player "I came to eat lunch with you guys!!"
+    digl "..."
+    digl "Um--"
+    ditt "But where's your lunch, [name]?"
+    player "Oh, it's right here--"
+    player "!"
+    player "Oh no..."
+    player "Don't tell me I..."
+    

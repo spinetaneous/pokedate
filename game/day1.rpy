@@ -72,7 +72,7 @@ label school_day1:
     jump lunch_day1
     
 label lunch_day1:
-    "DING -- DONG --"
+    "DING -- DONG -- DING -- DONG --"
     "Before I know it, it's lunch time!"
     t "Alright class, you're dismissed!"
     t "If you have any questions, speak to me after class."
@@ -150,7 +150,7 @@ label lunch_day1:
             player "Pikabelle Chutendo... I'll finally get to see her in real life!"
             player "I can't wait until after school!"
             jump park_day1
-            
+
 label park_day1:
     #still at school
     "DING -- DONG -- DING -- DONG --"
@@ -392,8 +392,12 @@ label park_day1:
         "After that, he comes back."
     "Charmeleon hands me a slip of paper."
     char "Here's my number. You can text me tonight, if you want."
+    if grabbed_tail:
+        char "...I guess."
     player "Thanks!"
-    char "I've gotta go home now. Talk to you later!"
+    char "I've gotta go home now."
+    if not grabbed_tail:
+        char "Talk to you later!"
     player "Bye!"
     "He runs off."
     "..."
@@ -420,7 +424,7 @@ label park_day1:
     player "{size=+5}THANK YOU FOR EXISTING PIKABELLE CHUTENDO I LOVE YOU VERY MUCH GOODBYE{/size}"
     pbc "See you!"
     pbc "What a nice [gender]."
-    jump mall_choice_day1
+    jump see_game_day1
     
 label mall_day1:
     "After school, Pikachu and I go to the mall together."
@@ -589,7 +593,7 @@ label florist_day1:
             player "..."
             player "Seeya, Homiechu!"
             "I sprint before he can say anything."
-            jump mall_choice_day1
+            jump see_game_day1
         "I don't want to touch it...":
             "I decide to leave it alone."
             "..."
@@ -622,9 +626,9 @@ label florist_day1:
             player "..."
             player "Homiechu!"
             "I sprint before he can say anything."
-            jump mall_choice_day1
-        
-label mall_choice_day1:
+            jump see_game_day1
+
+label see_game_day1:
     if pika_mall:
         "While Pikachu's busy at the florist, I walk around the mall."
         "..."
@@ -643,7 +647,7 @@ label mall_choice_day1:
     player "Oh my goodness..."
     player "Is that..."
     #picture of the game
-    player "{size=+5}{i}THE SUPER SPECIAL LIMITED EDITION {color=#ffd700}GOLD{/color} VERSION OF{/i} POKECROSSING: HAPPY BALL DESIGNER{i} SIGNED BY PIKABELLE CHUTENDO HERSELF FEATURING NEVER-BEFORE-SEEN EXTRA MATERIAL!?{/i}{/size}"
+    player "{size=+5}{i}THE SUPER SPECIAL LIMITED EDITION {color=#ffd700}GOLD{/color} VERSION OF{/i} POKECROSSING: HAPPY BALL DESIGNER{i} SIGNED BY PIKABELLE CHUTENDO HERSELF FEATURING NEVER-BEFORE-SEEN EXTRA MATERIAL!?{/i}{/size}" with vpunch
     player "...But it's probably going to be expensive..."
     "I briefly close my eyes to say a small prayer."
     player "Please let me have enough money to buy it..."
@@ -651,11 +655,48 @@ label mall_choice_day1:
     player "*GASP*" with vpunch
     player "*COUGH*" with vpunch
     player "*GAG*" with vpunch
+    player "{b}$500!?{/b}"
     player "HOW CAN ANYONE AFFORD THAT?"
     player "BUT..."
     player "BUT...!"
     player "{size=+10}{color=#f00}{i}I NEED THIS GAME!{/i}{/color}{/size}" with vpunch
     player "{size=-5}*pant*...*pant*...{/size}"
+    player "EXCUSE ME, STORE CLERK PERSON!!" with vpunch
+    gscp "Yes!?"
+    gscp "May I help you!?"
+    player "I would like for you to reserve this game for me!!"
+    player "Right now, I don't have enough money, but..."
+    player "I WILL!! I {i}WILL{/i} HAVE ENOUGH MONEY!!" with vpunch
+    gscp "Okay, I can reserve it for a week--"
+    player "A WEEK!?" with vpunch
+    player "I can't possible have enough money by then!"
+    player "But... I have to have this item!"
+    player "After all, it's..."
+    player "{size=+5}{i}THE SUPER SPECIAL LIMITED EDITION {color=#ffd700}GOLD{/color} VERSION OF{/i} POKECROSSING: HAPPY BALL DESIGNER{i} SIGNED BY PIKABELLE CHUTENDO HERSELF FEATURING NEVER-BEFORE-SEEN EXTRA MATERIAL!{/i}{/size}" with vpunch
+    player "I would jump over canyons, swim up waterfalls, and walk barefoot over burning coals for this!"
+    player "PLEASE, GAMEMON STORE CLERK PERSON!!" with vpunch
+    player "DON'T YOU UNDERSTAND?!?!?"
+    player "MY ENTIRE LIFE HANGS IN THE BALANCE--" with vpunch
+    "Suddenly I feel a hand on my shoulder."
+    gscp "...Say no more."
+    gscp "I..."
+    gscp "I know that feel, bro...!" with vpunch
+    if gender != "boy":
+        player "{size=-5}...i'm not a boy...{/size}"
+    gscp "Don't worry; it's against the rules, but I'll reserve this game for you for a whole month."
+    gscp "Sorry, I can't go any longer though."
+    "There are a few tears in my eyes."
+    "I grasp his hands."
+    player "No, dude. It's okay."
+    player "Thanks. I'll try my hardest to earn enough money."
+    gscp "Wishing you the best."
+    "We let go of each other."
+    player "Thanks again..."
+    "I look at his name tag."
+    player "Elekid."
+    $ elek_dex = True
+    pdex "Elekid has been added to your Pokedex."
+    elek "No problem."
     player "There's no way I'll be able to afford that on my own..."
     player "Maybe I have to ask Dad..."
     "Regrettably, I walk out of Gamemon unable to purchase anything."
@@ -667,7 +708,7 @@ label mall_choice_day1:
     else:
         "I guess I'll go home..."
         jump home_return_day1
-    
+
 label pika_return_day1:
     player "Hey Pikachu, I'm back..."
     "Pikachu quickly places something behind a shelf."

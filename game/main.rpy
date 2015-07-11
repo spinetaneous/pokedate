@@ -25,7 +25,7 @@ init python:
 # This is the entry point into the game.
 label start:
     python:
-        day = 2 #after intro, it will be a Tuesday
+        day = 0 #after intro, it will be a Tuesday
     
     #Affection points.
         pika_pts = 10
@@ -41,6 +41,7 @@ label start:
         char_dex = False
         ditt_dex = False
         bulb_dex = False
+        elek_dex = False
     
     # Show a default background.
     scene black
@@ -117,24 +118,24 @@ label day:
     python:
         day += 1
     
-        if day % 7 == 1:
+        if day % 7 == 6:
             today = "Sunday"
-        elif day % 7 == 2:
-            today = "Monday"
-        elif day % 7 == 3:
-            today = "Tuesday"
-        elif day % 7 == 4:
-            today = "Wednesday"
-        elif day % 7 == 5:
-            today = "Thursday"
-        elif day % 7 == 6:
-            today = "Friday"
         elif day % 7 == 0:
+            today = "Monday"
+        elif day % 7 == 1:
+            today = "Tuesday"
+        elif day % 7 == 2:
+            today = "Wednesday"
+        elif day % 7 == 3:
+            today = "Thursday"
+        elif day % 7 == 4:
+            today = "Friday"
+        elif day % 7 == 5:
             today = "Saturday"
         else:
             today = "...I have no idea. This isn't supposed to happen, and if it does, tell the developers."
             
-    "Today is [today]."
+    "It's day [day]. Today is [today]."
 
     $ morning_act = "class" #player always goes to class
     
@@ -167,6 +168,7 @@ label lunch:
     
     $ period = "lunch"
     
+    "DING -- DONG -- DING -- DONG --"
     "It's lunch time!"
     "Where should I go during lunch today?"
     menu:
