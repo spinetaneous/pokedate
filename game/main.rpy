@@ -60,6 +60,8 @@ label start:
     $ tried_gym = False
     $ tried_florist = False
     $ tried_job_hunt = 0 #increases every time player quits job hunting. prevents player from not getting a job at all.
+    $ go_gym_advice = False
+    $ go_salon_advice = False
     
     "Hello, and welcome to PokeDate!"
     

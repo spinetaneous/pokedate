@@ -46,7 +46,7 @@ init:
     define pdex = Character('Pokedex')
     define trap = Character('Riley', color="#a3daf6") #works at la pokesserie
     define popo = Character('Police')
-    define gscp = Character('Gamemon Store Clerk Person') #works at gamemon. holds game for u for 30 days cuz he kno that feel bro
+    define gscp = Character('Gamemon Store Clerk Person') #works at gamemon. elekid. holds game for u for 30 days cuz he kno that feel bro
 
     #pokemon (besides dad)
     define pbc = Character('Pikabelle Chutendo', color="#ffd700")
@@ -56,7 +56,7 @@ init:
         #genki girl. all up in ur face. nice once u get used to her
     define bulb = Character('Bulbasaur', color="#008080") #works at florist/is the florist
         #normal guy. boo
-    define elek = Character('Elekid', color="#f3f15d") #works at gamemon
+    define elek = Character('Elekid', color="#f3f15d") #works at gamemon. gscp
         #knows that gamer feel
         #very passionate about games
         #always playing on his Chutendo TS behind the counter
@@ -269,6 +269,10 @@ label job_hunt_salon:
         player "I need to earn money and a job is the only way!"
         jynx "Oh, sweetie..."
         jynx "Sorry, but we're not hiring."
+        if go_salon_advice:
+            player "Wait, but someone told me that you were!?"
+            jynx "That pokemon must have heard wrong, then."
+            jynx "Sorry, sweetie."
         player "Aw, man..."
         player "Do you know any place that's currently hiring?"
         jynx "Hm..."
@@ -285,6 +289,7 @@ label job_hunt_salon:
             jynx "Maybe try the gym?"
             player "!"
             "So the gym is looking for people...?"
+            $ go_gym_advice = True
         player "Thanks, Jynx!"
         jynx "No problem, honey."
         jynx "Just remember to come back soon!"
@@ -316,7 +321,12 @@ label job_hunt_salon:
         player "Um... I--"
         jynx "Sorry sweetie, but I gotta focus here! Get in line if you're so eager for a haircut!" with vpunch
         player "W-Wait!"
-        player "Do you know any place that's currently hiring?"
+        player "Are you hiring!?"
+        jynx "Nope! Sorry!"
+        if go_salon_advice:
+            player "But someone told me that you were!?"
+            jynx "That pokemon must've heard wrong, then!"
+        player "Oh... {w}Well, do you know any place that {i}is{/i} looking for employees?"
         jynx "Hm..."
         #if player knows diglett, then jynx says go to the bakery
         #if not, then jynx says to go to the gym
@@ -331,6 +341,7 @@ label job_hunt_salon:
             jynx "Maybe try the gym?"
             player "!"
             "So the gym is looking for people...?"
+            $ go_gym_advice = True
         "I don't think there's any use staying here."
         "With the coupon in my hands, I leave the salon."
     $ tried_salon = True
@@ -371,6 +382,7 @@ label job_hunt_gym:
             digl "{size=-5}You could try the bakery... \"La Pokesserie\" I think it was called...{/size}"
         else:
             digl "{size=-5}You could try the salon... They might be hiring...{/size}"
+            $ go_salon_advice = True
         player "Really? Thanks!"
         digl "Y-You heard that!?"
         digl "Don't think that I want to help you or anything! I just want you to stop stalking me!"
@@ -385,11 +397,14 @@ label job_hunt_gym:
         unknown "Who are you?"
         player "I'm [name]! And I'm currently looking for a job!"
         digl "Oh. I'm Diglett."
+        $ digl_dex = True
+        pdex "Diglett has been added to your Pokedex."
         digl "Go get hired somewhere else. The gym isn't hiring right now."
         if tried_gamemon:
             player "What!? But I saw a flyer that said you were hiring!"
             digl "Argh, I already told all the stores to take those down..."
             digl "That flyer is old. We already have the employees we need."
+        
         player "Really?! Dang... That's too bad..."
         player "I guess I need to try somewhere else then."
         digl "..."
@@ -400,6 +415,7 @@ label job_hunt_gym:
             digl "{size=-5}You could try the bakery... \"La Pokesserie\" I think it was called...{/size}"
         else:
             digl "{size=-5}You could try the salon... They might be hiring...{/size}"
+            $ go_salon_advice = True
         player "Really? Thanks!"
         digl "Y-You heard that!?"
         digl "Don't think that I want to help you or anything!"
@@ -446,15 +462,15 @@ label job_hunt_florist:
     menu:
         "Roses are red?":
             bulb "Most of the time, yeah..."
-        "Violets are blue?":
-            bulb "At least you know that they aren't violet..."
+        "They're really pretty?":
+            bulb "Well, I can't deny that..."
         "What are flowers?":
             bulb "..."
             bulb "Um..."
     bulb "I see... Finally, are you experienced in working a cash register?"
     menu:
         "The click-clack cash thingy?":
-            bulb "Uh..."
+            bulb "Um..."
         "Yeah, totally!":
             bulb "Really? Did you use one in a previous job?"
             player "No, but it's kind of like a big calculator, right? I know how to use a calculator!"
@@ -469,8 +485,7 @@ label job_hunt_florist:
     player "I WILL CONQUER THE JOB MARKET!"
     player "Do you know any store that's hiring?"
     bulb "I don't. Ask other people."
-    bulb "They might be more helpful."
-    bulb "Might."
+    bulb "They might be more helpful. {w}Might.{w}"
     player "Oh, okay."
     player "Seeya!"
     bulb "Bye."
@@ -657,8 +672,9 @@ label get_haircut: #the first time player goes to salon after getting a job, she
 
 label forgot_lunch1:
     "Time to spend lunch with the little ones today!"
-    "I head over to class 1-A, where Diglett and Ditto are."
-    "It's lively in there, as usual."
+    "I head over to class 1-A, the underclassmen's classroom."
+    "There, I see Ditto and Diglett from the corner of my eye."
+    "They notice me, and I wave. {w}They wave back.{w}"
     ditt "Heeeeey [name]~~~"
     ditt "What's crackalackin'?!"
     digl "Oh, [name]."
