@@ -66,6 +66,9 @@ label start:
     $ go_gym_advice = False #true if jynx tells player to try job hunting at the gym
     $ go_salon_advice = False #true if diglett tells player to try job hunting at the salon
     
+    $ ditt_getlunch = False
+    $ digl_getlunch = False
+    
     "Hello, and welcome to PokeDate!"
     
     "If you've ever looked a Pokemon and thought, \"Wow, I would totally date that Pokemon!\"

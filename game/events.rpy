@@ -15,6 +15,7 @@
 #     mom would have wanted to help someone different and in need
 #   pikachu loves player because player fought off his childhood bullies bc she genki af
 
+#   INCORPORATE GARY GARY (OAK) KUN!!!
 #   remember to introduce pokedex properly
 #   events based on number of affection pts need a backup event (since the only stats that will trigger anything are affection pts)
 
@@ -699,16 +700,162 @@ label forgot_lunch1:
     ditt "I bet you just wanted to see me. Isn't that right, sugar muffin?"
     "Nevermind his question. Right now, there are bigger things to worry about!"
     "What should I do about lunch?"
+    $ditt_pts += 10
+    $digl_pts += 11
     menu:
         "Buy your own lunch":
-            pass
+            "Hmm... {w}Well, I didn't get a job for nothing!"
+            player "I think I'll just go and buy my own lunch."
+            player "I'll be back in a bit!"
+            if ditt_pts >= 10 and ditt_pts > digl_pts:
+                ditt "Hey, baby! No invite?"
+                player "Huh?"
+                "!" 
+                "Ditto wants to come too!"
+                "Should I let him tag along?"
+                menu:
+                    "Yes":
+                        player "You can come along too, if you'd like."
+                        player "After all, the more the merrier!"
+                        ditt "Cool! Let's go!"
+                        ditt "Seeya, Diglett!"
+                        player "We'll be back soon!"
+                        digl "...Like I care."
+                        $ ditt_pts += 2
+                        $ ditt_getlunch = True
+                    "No":
+                        player "Well, there's really no need, is there?"
+                        player "Your \"senpai\" can buy [pos_pronoun] lunch just fine! {w}Just sit back and relax!"
+                        ditt "Alrighty, baby doll."
+                        ditt "But come back soon, dear. {w}Otherwise {i}{b}I'll miss you too much{/b}{/i}~~♥!"
+                        digl "That's disgusting, Ditto."
+                        ditt "Hehe!"
+                        "Haha! {w}My underclassmen are so cute!"
+            elif digl_pts >= 10 and digl_pts > ditt_pts:
+                digl "...{w}I don't know how I feel about you going alone."
+                digl "You might get lost or something. After all, you're not too bright."
+                digl "It would probably be best if I went with you."
+                digl "{size=-5}I can watch over you... in case something happens. {/size}"
+                player "!"
+                "What's this? {w}Diglett wants to tag along?"
+                "Should I let Diglett come with me to get lunch?"
+                menu:
+                    "Yes.":
+                        player "That's fine with me!"
+                        player "Let's go!"
+                        ditt "Come back soon!! I'm going to be so {i}{b}lonely{/b}{/i}~~!"
+                        digl "You're so weird, Ditto."
+                        $ digl_pts += 2
+                        $ digl_getlunch = True
+                    "No.":
+                        player "It's okay, Diglett."
+                        player "I'm actually stronger than I look, so you don't have to worry at all!"
+                        digl "!"
+                        digl "W-who said I was {i}worried{/i}?!" 
+                        player "Oh, you weren't? {w}It seemed like it to me."
+                        player "Sorry, haha! I interpreted you wrong."
+                        digl "W-wait, that's not what I..."
+                        player "Okay, I'll be back soon! Don't miss me too much!"
+                        digl "..."
+            else:
+                ditt "Sure thing, hotcakes!"
+                digl "As if I care."
+            #fade to lunch
+            "Wow! So this is the cafeteria."
+            "I'm not too familiar with buying my own lunch. I always bring lunch from home."
+            if ditt_getlunch: 
+                player "Ditto, do you know what's good here?"
+                ditt "Hmm..."
+                ditt "It really depends on your preference, doll face."
+                player "Okay, then what's {i}your{/i} favorite here?"
+                ditt "Mmm...{w} I guess... {w}I would go with... {w}the ramen."
+                player "..."
+                player "Why do you sound so uncertain?"
+                ditt "I don't know... I don't really have a favorite food."
+                player "Oh, come on. {w}There's {i}nothing{/i} out there that you like?"
+                ditt "Well, there's food that I {i}like{/i}, but I don't have a {i}favorite{/i} food." #uncomfortable face
+                ditt "It's kind of weird."
+                ditt "I don't have a favorite... {w}{i}anything{/i}, actually."
+                ditt "..."
+                ditt "Hey, what's with that face?"
+                player "!"
+                player "Oh... {w}It's just that I've never seen this side of you."
+                player "You're usually so confident."
+                player "So... {w}I'm just kind of surprised that you could be so hesitant."
+                ditt "Yeah, well... {w}I guess not everyone is who you think they are."
+                ditt "Isn't that right, honey bunny?"
+                player "Haha, yeah!"
+                player "Okay, I'm going to get in line now!"
+                $ ditt_pts += 5
+            elif digl_getlunch:
+                player "So Diglett, do you know what's good here?"
+                digl "You've never eaten the cafeteria food before?"
+                player "Nope! {w}I've always brought my dad's home-made lunch to school."
+                digl "{size=-5}T-that's amazing...{/size}"
+                digl "Um... {w}I recommend the curry."
+                digl "And make sure to get some Moomoo Milk with that. The curry can get rather spicy sometimes, and milk has an enzyme that relieves the spiciness."
+                player "...But why specifically {i}Moomoo Milk{/i}?"
+                digl "O-oh... That's because Moomoo Milk is my... f-{size=-5}favorite{/size}..."
+                player "Hmm? {w}You have a soft side for {i}Moomoo Milk{/i}?"
+                digl "!"
+                digl "What's wrong with Moomoo Milk?!"
+                player "Nothing! It's just surprising to know that you have a soft side!"
+                digl "...!" #diglett blushhhh
+                player "Okay, Diglett! {w}I'm going to get in line now."
+                $ digl_pts += 5
+            "I get in line."
+            if ditt_getlunch: 
+                "Shortly afterword, I receive my ramen and pay $7 for it."
+                "I grab my food and return to Ditto."
+                ditt "So, you still got the ramen?"
+                player "Of course! {w}You suggested it, after all."
+                ditt "...I see."
+                player "Let's get back to class."
+                ditt "Yeah, Diglett must be feeling so {i}{b}lonely{/b}{/i} without us by his side. ♥"
+            elif digl_getlunch:
+                "Shortly afterword, I receive my curry and Moomoo Milk. I pay $7 for it."
+                "I grab my food and return to Diglett."
+                player "Alright! Let's get back to class."
+                digl "Yeah, that idiot, Ditto, must be up to no good right about now."
+            else:
+                "... {w}Where's the menu around here?"
+                "..."
+                "Oh! {w}There it is."
+                "..."
+                "I'll get the vegetable soup with fish."
+                "It seems like the healthiest option here."
+                "I receive my vegetable soup with fish and pay $7 for it."
+                "Alright! Now I can head back to class 1-A."    
+            #player loses $7
+            #fade to class
+            if ditt_getlunch:
+                player "We're baaack!"
+                ditt "Did you miss us, Diglett? ♥"
+                digl "What did you get, [name]?"
+                player "Ramen!"
+                digl "Hmph! Curry is better."
+            elif digl_getlunch:
+                player "We're baaack!"
+                digl "You didn't get yourself into any trouble, did you Ditto?"
+                ditt "Aww, you worried about me~~♥!"
+                ditt "Don't worry! The only thing I've done since you two were gone was eat."
+            else: 
+                player "I'm baaack!"
+                ditt "What did you get, buttercup?"
+                player "Vegetable soup with fish!"
+                digl "Hmph! Curry is better."
+                $ ditt_pts += 5
+                $ digl_pts += 5
+            "I sit back down in my seat."
+            "I spend my lunch talking to Ditto and Diglett."
+            "We eat happily together."    
         "Make the underclassmen buy your lunch":
             pass
         "Don't eat lunch":
             player "Sigh... I guess there's nothing I can do."
             player "My lunch is at home, and I don't want to spend money to buy lunch..."
             player "Today, I'll skip lunch."
-            if ditt_pts >= 10 and digl_pts >= 10:
+            if ditt_pts >= 10 and digl_pts >= 10: 
                 if ditt_pts > digl_pts:
                     ditt "Hey, that's a no-no!"
                     ditt "Lunch is very important. We'll share our lunches with you!"
@@ -716,14 +863,14 @@ label forgot_lunch1:
                     digl "What???"
                     ditt "Ahem. {w}{i}Right, Diglett?{/i}"
                     digl "..."
-                    digl "{size=-5}Well, I never said I was bothered by [name] anyway...{/size}"
+                    digl "{size=-5}Well, I never said I didn't like [name] anyway...{/size}"
                     digl "I guess."
                     ditt "Hehe! Okay, let's all eat lunch together now!"
                 elif digl_pts > ditt_pts:
                     digl "Hey, you can't do that...!"
                     digl "Lunch is important. You shouldn't skip it."
                     digl "Here, we'll share our lunches with you."
-                    ditt "Right, Ditto?"
+                    digl "Right, Ditto?"
                     ditt "Oh!"
                     ditt "Diglett, that's very smart of you!"
                     digl "Sit down, [name]. Let's eat lunch."
@@ -749,7 +896,7 @@ label forgot_lunch1:
                         ditt "Here [name], you can have some of my lunch!"
                         if digl_pts > 5:
                             digl "..."
-                            digl "You can have some of mine too..."
+                            digl "You can have some of mine, too..."
                         else:
                             digl "You can't have any of mine."
                         digl "Bring your own lunch next time."
@@ -763,6 +910,8 @@ label forgot_lunch1:
                         digl "Bring your lunch next time."
                         "I leave class 1-A and spend lunch sleeping at my desk."
                         "Gotta conserve energy!"
+                        $ digl_pts += 1
+                        $ ditt_pts += 1 #gave points anyway bc player chose to go to 1-A during lunch
     return
     
 label forgot_lunch2:
