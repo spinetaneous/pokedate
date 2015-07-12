@@ -30,6 +30,7 @@ label start:
     #Affection points.
         pika_pts = 10
         char_pts = 0
+        digl_pts = 0
         ditt_pts = 0
         
     #Pokedex variables.
@@ -105,7 +106,7 @@ label start:
     "Thank you for providing this information!"
     "Without further ado, let's get started on your romantic adventure! :-)"
     
-    #jump park_day1 #for testing purposes
+    jump forgot_lunch1 #for testing purposes
     
     # fade home
     jump breakfast

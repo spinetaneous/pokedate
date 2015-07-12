@@ -117,7 +117,7 @@ init:
 
 label class1:
     "I run to school and make it well before the bell rings."
-    "Although {i}inside{/i} of the school, I speed-walked."
+    "Although {i}inside{/i} of the school, I speed-walk."
     "One is not supposed to run in the hallways!"
     "..."
     "Nothing interesting happened during class."
@@ -129,6 +129,8 @@ label class2:
     return
 
 label work: #this only happens after you get hired
+    #perhaps add variable 'salary' and use that instead of numbers
+    #and add events that notify the player that their pay is being reduced
     "I head to my job at the mall and strengthen my resolve as I sell pokepuffs."
     "I've got to work hard if I want to get {i}PokeCrossing: Happy Ball Designer!{/i}"
     python:
@@ -493,7 +495,7 @@ label job_hunt_florist:
     player "I WILL CONQUER THE JOB MARKET!"
     player "Do you know any store that's hiring?"
     bulb "I don't. Ask other people."
-    bulb "They might be more helpful. {w}Might.{w}"
+    bulb "They might be more helpful. {w}Might."
     player "Oh, okay."
     player "Seeya!"
     bulb "Bye."
@@ -532,7 +534,7 @@ label job_hunt_la_pokesserie:
     player "Oh boy, I can't wait to start earning money!"
     "Now... It begins..."
     "Soon it will be in my hands..."
-    "{size=+5}{i}THE SUPER SPECIAL LIMITED EDITION {color=#ffd700}GOLD{/color} VERSION OF{/i} POKECROSSING: HAPPY BALL DESIGNER{i} SIGNED BY PIKABELLE CHUTENDO HERSELF FEATURING NEVER-BEFORE-SEEN EXTRA MATERIAL{/i}{/size}... {w}is mine!{w}"
+    "{size=+5}{i}THE SUPER SPECIAL LIMITED EDITION {color=#ffd700}GOLD{/color} VERSION OF{/i} POKECROSSING: HAPPY BALL DESIGNER{i} SIGNED BY PIKABELLE CHUTENDO HERSELF FEATURING NEVER-BEFORE-SEEN EXTRA MATERIAL{/i}{/size}... {w}is mine!"
     $ has_job = True
     return
     
@@ -671,18 +673,20 @@ label get_haircut: #the first time player goes to salon after getting a job, she
     "{size=-10}......snip......snip......snip......{/size}"
     "{size=-10}...snip...snip...snip...{/size}"
     jynx "There you go--You're gorgeous!"
-    "At this point, I'm so tired of being dragged around that I don't even bother to look in the mirror."
+    "I look up at the mirror."
+    "My hair is so much shorter than it used to be..."
+    "I'm not sure if it looks good or not... I've never had a good sense of style."
     player "Thanks, Jynx. Well, I'd best be going! See you tomorrow!"
     jynx "No problem, sweetie."
     "And with that, I get out of that salon."
     $ haircut = True
     return
-
+    
 label forgot_lunch1:
     "Time to spend lunch with the little ones today!"
     "I head over to class 1-A, the underclassmen's classroom."
     "There, I see Ditto and Diglett from the corner of my eye."
-    "They notice me, and I wave. {w}They wave back.{w}"
+    "They notice me, and I wave. {w}They wave back."
     ditt "'Sup, [name]!?"
     ditt "What's crackalackin'!?"
     digl "Oh, [name]. It's you."
@@ -691,15 +695,71 @@ label forgot_lunch1:
     player "Haha, You're funny! My lunch is right here--"
     player "...!" with vpunch
     player "W-Where's my lunch!?"
-    player "I can't believe it... {w}How could I have forgotten to bring my lunch, one of the most important meals of the day!?{w}"
+    player "I can't believe it... {w}How could I have forgotten to bring my lunch, one of the most important meals of the day!?"
     ditt "I bet you just wanted to see me. Isn't that right, sugar muffin?"
     "Nevermind his question. Right now, there are bigger things to worry about!"
     "What should I do about lunch?"
     menu:
+        "Buy your own lunch":
+            pass
         "Make the underclassmen buy your lunch":
             pass
         "Don't eat lunch":
-            player "Sigh... I guess there's nothing I can do "
+            player "Sigh... I guess there's nothing I can do."
+            player "My lunch is at home, and I don't want to spend money to buy lunch..."
+            player "Today, I'll skip lunch."
+            if ditt_pts >= 3 and digl_pts >= 3:
+                if ditt_pts > digl_pts:
+                    ditt "Hey, that's a no-no!"
+                    ditt "Lunch is very important. We'll share our lunches with you!"
+                    ditt "Right, Diglett?"
+                    digl "What???"
+                    ditt "Ahem. {i}Right, Diglett?{/i}"
+                    digl "..."
+                    digl "{size=-5}Well, I never said I was bothered by [name] anyway...{/size}"
+                    digl "I guess."
+                    ditt "Hehe! Okay, let's all eat lunch together now!"
+                elif digl_pts > ditt_pts:
+                    digl "Hey, you can't do that...!"
+                    digl "Lunch is important. You shouldn't skip it."
+                    digl "Here, we'll share our lunches with you."
+                    ditt "Right, Ditto?"
+                    ditt "Oh! Diglett, that's very smart of you!"
+                    digl "Sit down, [name]. Let's eat lunch."
+                    digl "..."
+                    digl "{size=-5}Together.{/size}"
+                "Ditto and Diglett share their lunches with me."
+                "I'm so glad I have friends!"
+                "We talk and eat happily together."
+            else:
+                ditt "Oh, that's too bad!"
+                digl "Yeah..."
+                ditt "So, what now?"
+                digl "Are you leaving?"
+                "If I don't have my lunch, should I still stay here?"
+                menu:
+                    "Yeah.":
+                        player "I'm going to stay."
+                        player "Even though I don't have my lunch, I want to stay here with you guys!"
+                        digl "!"
+                        ditt "Okay, then let's all spend lunch together!"
+                        ditt "Here [name], you can have some of my lunch!"
+                        if digl_pts > 1:
+                            digl "..."
+                            digl "You can have some of mine too..."
+                        else:
+                            digl "You can't have any of mine."
+                        digl "Bring your own lunch next time."
+                        "I spend lunch talking with Diglett and Ditto."
+                        $ digl_pts += 1
+                        $ ditt_pts += 1
+                    "Nah.":
+                        player "I guess I should leave then...?"
+                        ditt "Aw..."
+                        ditt "I hope you come by soon!"
+                        digl "Bring your lunch next time."
+                        "I leave class 1-A and spend lunch sleeping at my desk."
+                        "Gotta conserve energy!"
     return
     
 label forgot_lunch2:
