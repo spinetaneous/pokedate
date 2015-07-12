@@ -581,7 +581,7 @@ label meet_ditto: #the first time player goes to class, she notices ditto
             player "Bruh, you askin' me to smile, but why ain't you smilin'?"
             dpika "Damn, you hella sharp fo'sho."
             player "Yeah, as sharp as my di--"
-            $ ditt_pts += 1
+            $ ditt_pts += 5
     pika "[name]!!" #two pikas on screen with SHAKY SCREEN 4 footsteps
     player "P...Pikachu...?"
     player "I..."
@@ -744,15 +744,15 @@ label forgot_lunch1:
                         digl "!"
                         ditt "Okay, then let's all spend lunch together!"
                         ditt "Here [name], you can have some of my lunch!"
-                        if digl_pts > 1:
+                        if digl_pts > 5:
                             digl "..."
                             digl "You can have some of mine too..."
                         else:
                             digl "You can't have any of mine."
                         digl "Bring your own lunch next time."
                         "I spend lunch talking with Diglett and Ditto."
-                        $ digl_pts += 1
-                        $ ditt_pts += 1
+                        $ digl_pts += 5
+                        $ ditt_pts += 5
                     "Nah.":
                         player "I guess I should leave then...?"
                         ditt "Aw..."

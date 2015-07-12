@@ -199,7 +199,7 @@ label park_day1:
             "What should I say?"
             menu:
                 "What's it like being so hot all the time?":
-                    $ char_pts += 1
+                    $ char_pts += 5
                     unknown "!"
                     unknown "Well, I guess you could say I'm just a..."
                     unknown "{i}...force of nature{/i}."
@@ -210,7 +210,7 @@ label park_day1:
                     unknown "Not my type though."
                     player "Dude, she's married."
                 "You know, I think you're giving me heat stroke...":
-                    $ char_pts -= 1
+                    $ char_pts -= 5
                     unknown "Well... I am a fire-type pokemon after all..."
                     unknown "My..."
                     unknown "{i}...heat...{/i}"
@@ -218,7 +218,7 @@ label park_day1:
                     "I can't believe he just said that."
                     unknown "Maybe you should go to the back of the line or something."
                 "Have you played any {i}PokeCrossing{/i} games lately?":
-                    $ char_pts += 2
+                    $ char_pts += 10
                     unknown "Yeah, actually!"
                     unknown "I was playing {i}New Ball{/i} yesterday, and I got to put in a campsite!"
                     player "Oh, those are fun!"
@@ -232,7 +232,7 @@ label park_day1:
                     player "Yeah!"
                     unknown "..."
         "Play with the fire-type pokemon's tail":
-            $ char_pts -= 1
+            $ char_pts -= 5
             $ grabbed_tail = True
             "Wow, this tail is not as hot as I thought it would be."
             "Actually, it's nice and warm."
@@ -290,12 +290,12 @@ label park_day1:
                             unknown "I know it's hard to keep your hands off me, but please exercise some control."
                             player "..."
                         "Nevermind!":
-                            $ char_pts += 1
+                            $ char_pts += 5
                             player "Sorry! I was just spacing out."
                             unknown "I know it's hard to keep your hands off me, but please exercise some control!"
                             player "..."
                 "Apologize.":
-                    $ char_pts += 1
+                    $ char_pts += 5
                     player "Sorry, I didn't mean to grab your tail!"
                     unknown "..."
                     unknown "Well, if you didn't mean to..."
@@ -327,7 +327,7 @@ label park_day1:
         "Did he just make a pun with his name?"
         menu:
             "Wow, that's pretty cool!":
-                $ char_pts += 1
+                $ char_pts += 5
                 char "I know, right!?"
                 char "It's a shame not many people think it's funny."
                 char "You're different, though. You thought it was cool."
@@ -348,7 +348,7 @@ label park_day1:
                 char "Wonder why we haven't seen each other before?"
                 player "I don't visit other classes that often, but maybe that'll change."
             "Wow, that's pretty lame!":
-                $ char_pts -= 1
+                $ char_pts -= 5
                 char "!"
                 char "You just don't appreciate my great sense of humor."
                 player "What sense of humor?"
@@ -731,7 +731,7 @@ label pika_return_day1:
     player "Let's head home, Pikachu."
     pika "Okay, [name]."
     "We leave the mall and walk home together, talking about our day."
-    $ pika_pts += 1
+    $ pika_pts += 5
     #fade home
     jump home_return_day1
     
