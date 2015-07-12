@@ -701,7 +701,33 @@ label forgot_lunch1:
     "What should I do about lunch?"
     menu:
         "Buy your own lunch":
-            pass
+			"Hmm... {w}Well, I didn't get a job for nothing!"
+			player "I think I'll just go and buy my own lunch."
+			player "I'll be back in a bit!"
+			if ditt_pts >= 10 or digl_pts >= 10:
+				if ditt_pts >= 10:
+					ditt "Hey, baby! No invite?"
+					player "Huh?"
+					"!"
+					"Ditto wants to come too!"
+					"Should I let him tag along?"
+					menu:
+						"Yes":
+							player "You can come along too, if you'd like."
+							player "After all, the more the merrier!"
+						"No":
+							player "Well, there's really no need, is there?"
+							player "Just sit back and relax! {w}Your \"senpai\" can buy [pos_pronoun] lunch just fine!"
+							ditt "Alrighty, sweetie."
+						
+				elif digl_pts >= 10:
+					digl "...I don't know how I feel about you going alone."
+					digl "You might get lost or something. {w}It would probably be best if I went with you."
+					digl "{size=-5}I can watch over you... in case something happens. {/size}"
+			else:
+				ditt "Sure thing, hotcakes!"
+				digl "As if I care."
+			
         "Make the underclassmen buy your lunch":
             pass
         "Don't eat lunch":
@@ -749,7 +775,7 @@ label forgot_lunch1:
                         ditt "Here [name], you can have some of my lunch!"
                         if digl_pts > 5:
                             digl "..."
-                            digl "You can have some of mine too..."
+                            digl "You can have some of mine, too..."
                         else:
                             digl "You can't have any of mine."
                         digl "Bring your own lunch next time."
