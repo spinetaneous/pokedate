@@ -27,23 +27,20 @@ screen pokedex():
         # I wanted to use a dictionary and a for loop for this part
         # but apparently renpy doesn't support for loops
         # and I couldn't think of another way to do this :(
-        if dad_dex == True:
-            textbutton _("Dad") action ShowMenu("dad_dex")
-        else:
-            text "There's nothing in your Pokedex right now!"
-        if pika_dex == True:
-            textbutton _("Pikachu") action ShowMenu("pika_dex")
-        if jynx_dex == True:
-            textbutton _("Jynx") action ShowMenu("jynx_dex")
-        if digl_dex == True:
+        textbutton _("Dad") action ShowMenu("dad_dex")
+        textbutton _("Pikachu") action ShowMenu("pika_dex")
+        if digl_dex:
             textbutton _("Diglett") action ShowMenu("digl_dex")
-        if char_dex == True:
-            textbutton _("Charmander") action ShowMenu("char_dex")
-        if ditt_dex == True:
+        if char_dex:
+            textbutton _("Charmeleon") action ShowMenu("char_dex")
+        if ditt_dex:
             textbutton _("Ditto") action ShowMenu("ditt_dex")
-        if bulb_dex == True:
+        if elek_dex:
+            textbutton _("Elekid") action ShowMenu("elek_dex")
+        if jynx_dex:
+            textbutton _("Jynx") action ShowMenu("jynx_dex")
+        if bulb_dex:
             textbutton _("Bulbasaur") action ShowMenu("bulb_dex")
-
 
 screen dad_dex():
     tag menu
@@ -205,6 +202,29 @@ screen bulb_dex():
         has vbox
         
         text "A florist at the... florist in the mall. \'Florist \' is a weird word."
+
+screen elek_dex():
+    tag menu
+    use navigation
+    window:
+        style "gm_root"
+    frame:
+        style_group "gm_nav"
+        xalign 0.98
+        yalign 0.98
+        
+        has vbox
+        
+        textbutton _("Back") action ShowMenu("pokedex")
+    
+    frame:
+        style_group "gm_nav"
+        xalign 0.50
+        yalign 0.50
+        
+        has vbox
+        
+        text "The coolest bro. It's because of him that you have a chance at the game."
 ##############################################################################
 # Say
 #

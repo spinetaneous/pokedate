@@ -3,12 +3,9 @@
 # to the characters before making any real choices.
 
 label breakfast:
-    $ dad_dex = True
-    $ pika_dex = True
-    
     "It's the start of a new day."
     "My name is [name], and I'm just a regular human in the pokemon world."
-    "I'm a second year in a high school called PokeCreek. It's full of very diverse pokemon!"
+    "I'm a second-year in a high school called PokeCreek. It's full of very diverse pokemon!"
     "When I was 3, I was adopted by a single father."
     "He's the most caring person I know."
     "We eat breakfast together every morning..."
@@ -75,7 +72,7 @@ label school_day1:
     jump lunch_day1
     
 label lunch_day1:
-    "DING -- DONG --"
+    "DING -- DONG -- DING -- DONG --"
     "Before I know it, it's lunch time!"
     t "Alright class, you're dismissed!"
     t "If you have any questions, speak to me after class."
@@ -135,7 +132,7 @@ label lunch_day1:
             pika "Well, I appreciate the offer but..."
             pika "I think I'll pass."
             player "Aw... That's too bad."
-            player "Let's go to the mall tomorrow then, yeah?"
+            player "Let's go to the mall some other time then, yeah?"
             pika "Alright, sounds good."
             player "It's a date!"
             #PIKABLUSH
@@ -153,15 +150,283 @@ label lunch_day1:
             player "Pikabelle Chutendo... I'll finally get to see her in real life!"
             player "I can't wait until after school!"
             jump park_day1
-            
-label park_day1:
-    "Sorry, this path isn't finished yet. Go to the mall with Pikachu!"
-    "But in this route, you're supposed to meet Charmander."
-    "Just pretend that you do."
-    $ char_dex = True
-    pass
 
-label mall_day1: #pikachu introduces you to diglett and jynx
+label park_day1:
+    #still at school
+    "DING -- DONG -- DING -- DONG --"
+    "School's out!"
+    "It's finally time for the meet and greet! I'm so excited!"
+    player "Seeya, Pikachu!"
+    pika "Have fun, [name]."
+    #fade park
+    "Wow, there are more pokemon than I expected..."
+    "The line is so long... Am I going to be able to meet Pikabelle Chutendo...?"
+    "I guess it's my fault for being so late..."
+    "Wait..."
+    "There was no official starting time!"
+    "Without that, there's no way to be late!"
+    "Haha, once again, my punctuality persists."
+    "..."
+    "Maybe I should get in line."
+    #footsteps
+    "..."
+    "Whoa...! I wonder what this pokemon is?"
+    "Big and orange..."
+    "...On fire..."
+    "Oh! I know about this type of pokemon! They're in movies all the time!"
+    "I've never seen a fire-type pokemon in real life before..."
+    "..." #fade black
+    "Man, it's really hot today..."
+    "Why does the guy in front of me have to be on fire?"
+    "..." #fade black
+    "Oh man, this line is so long..."
+    "I'm so bored..."
+    "...But this is all... for Pikabelle Chutendo...!"
+    "..." #fade black
+    "I..."
+    "..."
+    "I am pretty sure I've never been this bored in my entire life."
+    "Gotta do something to kill time..."
+    "What should I do?"
+    menu:
+        "Start a conversation with the guy in front":
+            "Since this pokemon is in line at a Pikabelle Chutendo event, that must mean that he likes {i}PokeCrossing!{/i}"
+            "I tap him on the shoulder. His skin is rough and warm... Kinda weird."
+            unknown "!"
+            player "Hey there!"
+            player "My name is [name]."
+            unknown "..."
+            "What should I say?"
+            menu:
+                "What's it like being so hot all the time?":
+                    $ char_pts += 5
+                    unknown "!"
+                    unknown "Well, I guess you could say I'm just a..."
+                    unknown "{i}...force of nature{/i}."
+                    player "..."
+                    player "I don't get it."
+                "Pikabelle Chutendo is pretty cool, right!?":
+                    unknown "Well, since she made so many games, I guess she's kinda cool."
+                    unknown "Not my type though."
+                    player "Dude, she's married."
+                "You know, I think you're giving me heat stroke...":
+                    $ char_pts -= 5
+                    unknown "Well... I am a fire-type pokemon after all..."
+                    unknown "My..."
+                    unknown "{i}...heat...{/i}"
+                    unknown "...can be pretty hard to handle sometimes."
+                    "I can't believe he just said that."
+                    unknown "Maybe you should go to the back of the line or something."
+                "Have you played any {i}PokeCrossing{/i} games lately?":
+                    $ char_pts += 10
+                    unknown "Yeah, actually!"
+                    unknown "I was playing {i}New Ball{/i} yesterday, and I got to put in a campsite!"
+                    player "Oh, those are fun!"
+                    player "You get non-resident villagers in there, and then you can play cool minigames to get furniture."
+                    unknown "That sounds fun."
+                    player "Sometimes you lose though, and then they take money or items from you..."
+                    unknown "Oh..."
+                    player "I usually fill my inventory with shells and put all my money in the bank!"
+                    unknown "Wow, that's smart!"
+                    unknown "I should try that next time!"
+                    player "Yeah!"
+                    unknown "..."
+        "Play with the fire-type pokemon's tail":
+            $ char_pts -= 5
+            $ grabbed_tail = True
+            "Wow, this tail is not as hot as I thought it would be."
+            "Actually, it's nice and warm."
+            "Maybe it gets hotter towards the end of the tail, where the fire is."
+            unknown "!"
+            unknown "What are you doing!?"
+            "Oh, he noticed me."
+            "What now?"
+            menu:
+                "Light something on fire.":
+                    "This is very dangerous, but..."
+                    "What should I light?"
+                    menu:
+                        "The fire-type pokemon!":
+                            "I start pointing the tail towards the pokemon in front of me."
+                            unknown "Wh-What are you doing!?"
+                            unknown "Unhand me!"
+                            player "Wait, just hold still for a bit..."
+                            unknown "OW!" with vpunch
+                            unknown "STOP!" with vpunch
+                            unknown "THAT HURTS!" with vpunch
+                            "The pokemon snatches his tail out of my hands."
+                            unknown "WHAT ARE YOU DOING!?"
+                            unknown "I DON'T EVEN KNOW YOU!"
+                            unknown "WHY ARE YOU ATTACKING ME WITH MY OWN TAIL!?"
+                            "People are looking at me worriedly."
+                            "Maybe this was a bad idea?"
+                            popo "Stop right there!" with vpunch
+                            popo "We got calls about an assault taking place at the park!"
+                            player "!"
+                            player "W-Wait, I--"
+                            popo "You have the right to remain silent!"
+                            "Apparently, lighting a pokemon on fire with their own tail is a bad idea."
+                            "The police arrested me."
+                            "Now I await my trial."
+                            "BAD END"
+                            "CRIMINAL"
+                            $ renpy.full_restart()
+                        "That tree!":
+                            "I start pulling the tail towards a random tree."
+                            unknown "HEY, THAT HURTS!" with hpunch
+                            "I'm not strong enough to drag him to the tree..."
+                            "Guess there's no choice but to let him go."
+                            unknown "What the hell was that for!?"
+                            player "Sorry."
+                            player "The boredom of waiting in line was getting to me."
+                            unknown "{i}That doesn't mean you can just grab my tail like that!{/i}"
+                            player "Well, sorry!!"
+                        "Myself!":
+                            "..."
+                            "I stand there for a moment, worried about my own intelligence."
+                            "Lighting myself on fire would be a very bad idea."
+                            unknown "What are you doing!? Give that back!"
+                            "He snatches the tail out of my hands."
+                            unknown "I know it's hard to keep your hands off me, but please exercise some control."
+                            player "..."
+                        "Nevermind!":
+                            $ char_pts += 5
+                            player "Sorry! I was just spacing out."
+                            unknown "I know it's hard to keep your hands off me, but please exercise some control!"
+                            player "..."
+                "Apologize.":
+                    $ char_pts += 5
+                    player "Sorry, I didn't mean to grab your tail!"
+                    unknown "..."
+                    unknown "Well, if you didn't mean to..."
+                    unknown "I guess I can let you off just this once..."
+    "..."
+    player "So uh..."
+    player "What's your name?"
+    if grabbed_tail:
+        unknown "Why should I tell you?"
+        player "Hey, I'm sorry, okay!?"
+        player "At least let me know your name! Then I can properly apologize."
+        unknown "..."
+        char "It's Charmeleon."
+        $ char_dex = True
+        pdex "Charmeleon has been added to your Pokedex."
+        player "Once again, I'm really sorry!"
+        player "Please forgive me, Charmeleon!"
+        char "...Sigh."
+        char "If you're going to be like that then..."
+        char "I suppose..."
+        player "Phew!"
+    else:
+        "He chuckles."
+        unknown "So... You wanna know my name, huh?"
+        unknown "They call me..."
+        char "{b}{i}Charm{/i}{/b}eleon."
+        $ char_dex = True
+        pdex "Charmeleon has been added to your Pokedex."
+        "Did he just make a pun with his name?"
+        menu:
+            "Wow, that's pretty cool!":
+                $ char_pts += 5
+                char "I know, right!?"
+                char "It's a shame not many people think it's funny."
+                char "You're different, though. You thought it was cool."
+                char "Great minds think alike!"
+                player "I know, right!?"
+                player "Your puns are so {i}fire!!{/i}"
+                char "Fire?"
+                player "Get it? \"Fire\" in teenage slang describes something really good!"
+                player "And also you're a fire-type pokemon!"
+                char "Wow, that's really clever."
+                char "You're so witty. How old are you anyway?"
+                player "I'm a second-year in high school!"
+                char "Really? I'm a third-year!"
+                char "Which school do you go to!?"
+                player "PokeCreek!"
+                char "Me too!"
+                char "I guess we'll see each other around."
+                char "Wonder why we haven't seen each other before?"
+                player "I don't visit other classes that often, but maybe that'll change."
+            "Wow, that's pretty lame!":
+                $ char_pts -= 5
+                char "!"
+                char "You just don't appreciate my great sense of humor."
+                player "What sense of humor?"
+                char "!"
+                char "You're pretty rude. You act like a little kid."
+                char "What are you, like, 12?"
+                player "No! I'm a second-year in high school!"
+                char "Pfft, no wonder. You wouldn't understand the wit of a third-year like me."
+                player "You're in high school? You seem like an old man."
+                player "What high school would accept you?"
+                char "Um, PokeCreek? The one I {i}attend?{/i}"
+                player "!"
+                player "That's my school!"
+    "..."
+    "Before we notice, Charmeleon's already at the front of the line."
+    "..."
+    "He talks with Pikabelle Chutendo and gets her autograph."
+    "Then he turns to leave."
+    player "Oh, before you go..."
+    player "Want to exchange Tomodachi-Codes for our Chutendo TS's?"
+    player "I don't know anyone else who plays {i}PokeCrossing{/i}."
+    char "Hm... I don't have many people to play either..."
+    if grabbed_tail:
+        char "Alright."
+    else:
+        char "Sure!"
+    player "Oh wait, I don't have my TS with me..."
+    player "Can we exchange numbers too? Then we can text each other our codes!"
+    if grabbed_tail:
+        char "..."
+        char "I guess there's no helping it..."
+    else:
+        char "No problem."
+        char "I'm wouldn't mind giving my number to such a lovely [gender] such as yourself."
+        "He winks at me."
+        char "..."
+        char "Excuse me for a second."
+        "Charmeleon turns around and walks a few steps away."
+        char "{size=-5}OH MY GOD I CAN'T BELIEVE I JUST SAID THAT{/size}"
+        char "{size=-5}THIS IS SO EMBARRASSING I CAN'T BELIEVE MYSELF{/size}"
+        "After that, he comes back."
+    "Charmeleon hands me a slip of paper."
+    char "Here's my number. You can text me tonight, if you want."
+    if grabbed_tail:
+        char "...I guess."
+    player "Thanks!"
+    char "I've gotta go home now."
+    if not grabbed_tail:
+        char "Talk to you later!"
+    player "Bye!"
+    "He runs off."
+    "..."
+    "...Now..."
+    "...Right before my very eyes..."
+    "...Pikabelle Chutendo...!"
+    pbc "Hello there!"
+    "She hands me an autograph."
+    player "{size=+5}OH MY GOD PIKABELLE CHUTENDO I LOVE YOU SO MUCH{/size}"
+    player "{size=+5}I HAVE EVERY SINGLE ONE OF YOUR GAMES{/size}"
+    pbc "Really? Each one?"
+    pbc "Wow, you must be a big fan! I'm glad you like my games so much."
+    pbc "I thought some might not like {i}Happy Ball Designer{/i} since it's a bit different than the rest..."
+    player "..."
+    player "...Wait..."
+    player "{i}Happy Ball Designer?{/i}"
+    pbc "Oh, it's my new game. Perhaps you haven't heard of it?"
+    pbc "Maybe you have every single game except that one, then."
+    pbc "It's alright if you don't have {i}every{/i} one."
+    pbc "I love all my fans, no matter what. Fans like you are what make everything worthwhile!"
+    player "You have a new game!?"
+    player "I have to have it!"
+    player "Sorry, I gotta go!"
+    player "{size=+5}THANK YOU FOR EXISTING PIKABELLE CHUTENDO I LOVE YOU VERY MUCH GOODBYE{/size}"
+    pbc "See you!"
+    pbc "What a nice [gender]."
+    jump see_game_day1
+    
+label mall_day1:
     "After school, Pikachu and I go to the mall together."
     "We first head to the pokepuff place."
     #show la pokesserie
@@ -174,7 +439,7 @@ label mall_day1: #pikachu introduces you to diglett and jynx
     pika "Isn't that part of the reason why we're here in the first place?"
     player "Teehee. Whoops."
     "Suddenly, I hear an unfamiliar voice."
-    unknown "{size=+10}OOO, DANG GIRL!{/size}"
+    unknown "{size=+10}OOO, DANG GIRL!{/size}" with vpunch
     player "Huh?"
     "Someone pushes their way past other pokemon and grabs my arm."
     unknown "GIRL, YOUR HAIR..."
@@ -287,13 +552,13 @@ label florist_day1:
             digl "Put me down!!"
             player "O-Oh, uh, okay."
             "I set Diglett back down on the shelf."
-            pika "[name], are you okay?!"
+            pika "[name], are you okay!?"
             pika "What's wrong? I heard a lot of shouting!"
             player "Oh, it was just--"
             digl "She tried kidnapping me!"
             digl "All I was doing was looking at flowers, and she just grabs me out of nowhere and--"
             player "N-No! I thought he was another plant!"
-            digl "\"Another plant\"?! I'm a Pokemon, you idiot!"
+            digl "\"Another plant\"!? I'm a Pokemon, you idiot!"
             bulb "Hey!! Stop fighting in my store!!"
             bulb "You can argue all you want, but do it outside!"
             player "No, Pikachu needs to buy his roses!"
@@ -328,7 +593,7 @@ label florist_day1:
             player "..."
             player "Seeya, Homiechu!"
             "I sprint before he can say anything."
-            jump mall_choice_day1
+            jump see_game_day1
         "I don't want to touch it...":
             "I decide to leave it alone."
             "..."
@@ -361,14 +626,17 @@ label florist_day1:
             player "..."
             player "Homiechu!"
             "I sprint before he can say anything."
-            jump mall_choice_day1
-        
-label mall_choice_day1:
-    "While Pikachu's busy at the florist, I walk around the mall."
-    "..."
-    "Oh, I just remembered!"
-    "Pikabelle Chutendo released a new game a few days ago!"
-    "{i}PokeCrossing: Happy Ball Designer!{/i}"
+            jump see_game_day1
+
+label see_game_day1:
+    if pika_mall:
+        "While Pikachu's busy at the florist, I walk around the mall."
+        "..."
+        "Oh, I just remembered!"
+        "Pikabelle Chutendo released a new game a few days ago!"
+        "{i}PokeCrossing: Happy Ball Designer!{/i}"
+    else:
+        "I'm at the mall now!"
     "I've gotta go check out the prices at Gamemon!"
     #fade to gamemon
     player "..."
@@ -379,31 +647,68 @@ label mall_choice_day1:
     player "Oh my goodness..."
     player "Is that..."
     #picture of the game
-    player "{size=+5}{i}THE SUPER SPECIAL LIMITED EDITION {color=#ffd700}GOLD{/color} VERSION OF{/i} POKECROSSING: HAPPY BALL DESIGNER{i} SIGNED BY PIKABELLE CHUTENDO HERSELF FEATURING NEVER-BEFORE-SEEN EXTRA MATERIAL!?{/i}{/size}"
+    player "{size=+5}{i}THE SUPER SPECIAL LIMITED EDITION {color=#ffd700}GOLD{/color} VERSION OF{/i} POKECROSSING: HAPPY BALL DESIGNER{i} SIGNED BY PIKABELLE CHUTENDO HERSELF FEATURING NEVER-BEFORE-SEEN EXTRA MATERIAL!?{/i}{/size}" with vpunch
     player "...But it's probably going to be expensive..."
     "I briefly close my eyes to say a small prayer."
     player "Please let me have enough money to buy it..."
     "My eyes wander down to the price tag."
-    player "*GASP*"
-    player "*COUGH*"
-    player "*GAG*"
+    player "*GASP*" with vpunch
+    player "*COUGH*" with vpunch
+    player "*GAG*" with vpunch
+    player "{b}$500!?{/b}"
     player "HOW CAN ANYONE AFFORD THAT?"
     player "BUT..."
     player "BUT...!"
-    player "{size=+10}{color=#f00}{i}I NEED THIS GAME!{/i}{/color}{/size}"
+    player "{size=+10}{color=#f00}{i}I NEED THIS GAME!{/i}{/color}{/size}" with vpunch
     player "{size=-5}*pant*...*pant*...{/size}"
+    player "EXCUSE ME, STORE CLERK PERSON!!" with vpunch
+    gscp "Yes!?"
+    gscp "May I help you!?"
+    player "I would like for you to reserve this game for me!!"
+    player "Right now, I don't have enough money, but..."
+    player "I WILL!! I {i}WILL{/i} HAVE ENOUGH MONEY!!" with vpunch
+    gscp "Okay, I can reserve it for a week--"
+    player "A WEEK!?" with vpunch
+    player "I can't possible have enough money by then!"
+    player "But... I have to have this item!"
+    player "After all, it's..."
+    player "{size=+5}{i}THE SUPER SPECIAL LIMITED EDITION {color=#ffd700}GOLD{/color} VERSION OF{/i} POKECROSSING: HAPPY BALL DESIGNER{i} SIGNED BY PIKABELLE CHUTENDO HERSELF FEATURING NEVER-BEFORE-SEEN EXTRA MATERIAL!{/i}{/size}" with vpunch
+    player "I would jump over canyons, swim up waterfalls, and walk barefoot over burning coals for this!"
+    player "PLEASE, GAMEMON STORE CLERK PERSON!!" with vpunch
+    player "DON'T YOU UNDERSTAND!?!?!"
+    player "MY ENTIRE LIFE HANGS IN THE BALANCE--" with vpunch
+    "Suddenly I feel a hand on my shoulder."
+    gscp "...Say no more."
+    gscp "I..."
+    gscp "I know that feel, bro...!" with vpunch
+    if gender != "boy":
+        player "{size=-5}...i'm not a boy...{/size}"
+    gscp "Don't worry; it's against the rules, but I'll reserve this game for you for a whole month."
+    gscp "Sorry, I can't go any longer though."
+    "There are a few tears in my eyes."
+    "I grasp his hands."
+    player "No, dude. It's okay."
+    player "Thanks. I'll try my hardest to earn enough money."
+    gscp "Wishing you the best."
+    "We let go of each other."
+    player "Thanks again..."
+    "I look at his name tag."
+    player "Elekid."
+    $ elek_dex = True
+    pdex "Elekid has been added to your Pokedex."
+    elek "No problem."
     player "There's no way I'll be able to afford that on my own..."
     player "Maybe I have to ask Dad..."
     "Regrettably, I walk out of Gamemon unable to purchase anything."
     "I blink back my tears."
     player "I'll be back for you, {i}PokeCrossing: Happy Ball Designer...{/i}"
-    if pika_mall == True:
+    if pika_mall:
         "I guess I should return to Pikachu now..."
         jump pika_return_day1
-    elif pika_mall == False:
+    else:
         "I guess I'll go home..."
         jump home_return_day1
-    
+
 label pika_return_day1:
     player "Hey Pikachu, I'm back..."
     "Pikachu quickly places something behind a shelf."
@@ -426,7 +731,7 @@ label pika_return_day1:
     player "Let's head home, Pikachu."
     pika "Okay, [name]."
     "We leave the mall and walk home together, talking about our day."
-    $ pika_pts += 1
+    $ pika_pts += 5
     #fade home
     jump home_return_day1
     
@@ -466,10 +771,13 @@ label home_return_day1:
     "I gasp in horror."
     player "I would {i}never{/i} be late to school!"
     "With that, I go to the bathroom to thoroughly brush and floss my teeth. Hygiene is very important!"
-    #add charmander event here
-    if char_dex == True:
-        "THEN I TEXTED CHARMANDER ALLLLL NIGHT LONG"
-    elif char_dex == False:
+    #add charmeleon event here
+    if char_dex and grabbed_tail:
+        "Then I text Charmeleon for his Tomodachi-Code."
+    elif char_dex and not grabbed_tail:
+        "Then I text Charmeleon for his Tomodachi-Code."
+        "We play {i}PokeCrossing: New Ball{/i} until late at night."
+    else:
         "Then, I lie in bed until falling asleep."
     jump day
     

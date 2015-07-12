@@ -25,32 +25,47 @@ init python:
 # This is the entry point into the game.
 label start:
     python:
-        day = 2 #after intro, it will be a Tuesday
+        day = 0 #after intro, it will be a Tuesday
     
     #Affection points.
         pika_pts = 10
         char_pts = 0
+        digl_pts = 0
+        ditt_pts = 0
         
     #Pokedex variables.
-        pika_dex = False
+        dad_dex = True
+        pika_dex = True
         char_dex = False
         jynx_dex = False
         digl_dex = False
         char_dex = False
-        dad_dex = False
         ditt_dex = False
         bulb_dex = False
+        elek_dex = False
     
     # Show a default background.
     scene black
     
     # other variables
     $ has_job = False #true after get_hired runs
-    $ skipped_work = 0
-    $ haircut = False #true after salon1 runs
+    $ skipped_work = 0 #affects salary
+    $ grabbed_tail = False #true if you decide to light something on fire with charmeleon's tail
+    #if true, then player is surprised to see charmeleon at school
+    #if false, then player is not surprised bc they already know that they attend the same school
+    $ haircut = False #true after jynx cuts player's hair
     
-    # The script here is run before any event.
-
+    #job_hunt variables
+    #tried_store variables. true after trying to get hired at each respective store
+    $ tried_gamemon = False
+    $ tried_salon = False
+    $ tried_gym = False
+    $ tried_florist = False
+    #other job_hunt variables
+    $ tried_job_hunt = 0 #increases every time player quits job hunting. prevents player from not getting a job at all.
+    $ go_gym_advice = False #true if jynx tells player to try job hunting at the gym
+    $ go_salon_advice = False #true if diglett tells player to try job hunting at the salon
+    
     "Hello, and welcome to PokeDate!"
     
     "If you've ever looked a Pokemon and thought, \"Wow, I would totally date that Pokemon!\"
@@ -91,16 +106,13 @@ label start:
     "Thank you for providing this information!"
     "Without further ado, let's get started on your romantic adventure! :-)"
     
-    jump day #for testing purposes
+    jump forgot_lunch1 #for testing purposes
     
-    # We jump to breakfast. Remember to fade!
+    # fade home
     jump breakfast
 
 # This is the label that is jumped to at the start of a day.
 label day:
-    #Initialize default values for variables to be used in the game.
-    # Increment the day it is.
-    
     $ current_money = inventory.money
     # By default, current_money will be updated at the start of every day (i.e. at the statement "It's ____day!")
     # if inventory.money is changed multiple times during a day (without going back to dayplanner)
@@ -111,32 +123,27 @@ label day:
     python:
         day += 1
     
-        if day % 7 == 1:
+        if day % 7 == 6:
             today = "Sunday"
-        elif day % 7 == 2:
-            today = "Monday"
-        elif day % 7 == 3:
-            today = "Tuesday"
-        elif day % 7 == 4:
-            today = "Wednesday"
-        elif day % 7 == 5:
-            today = "Thursday"
-        elif day % 7 == 6:
-            today = "Friday"
         elif day % 7 == 0:
+            today = "Monday"
+        elif day % 7 == 1:
+            today = "Tuesday"
+        elif day % 7 == 2:
+            today = "Wednesday"
+        elif day % 7 == 3:
+            today = "Thursday"
+        elif day % 7 == 4:
+            today = "Friday"
+        elif day % 7 == 5:
             today = "Saturday"
         else:
             today = "...I have no idea. This isn't supposed to happen, and if it does, tell the developers."
             
-    "Today is [today]."
-
-    # Here, we want to set up some of the default values for the
-    # day planner. In a more complicated game, we would probably
-    # want to add and remove choices from the dp_ variables
-    # (especially dp_period_acts) to reflect the choices the
-    # user has available.
+    "It's day [day]. Today is [today]."
 
     $ morning_act = "class" #player always goes to class
+    
     if day <= 3:
         $ afternoon_act = "mall" #player HAS to go to the mall and get a job.
     else:
@@ -144,33 +151,20 @@ label day:
     $ afternoon_act = None
     $ afternoon_act = None
     $ evening_act = None
+    
     # $ narrator("What should I do today?", interact=False)
-    
-    # Now, we call the day planner, which may set the act variables
-    # to new values. We call it with a list of periods that we want
-    # to compute the values for.
     # call screen day_planner(["Morning", "Afternoon", "Evening"])
-
     
-    # We process each of the three periods of the day, in turn.
 label morning:
-
-    # Tell the user what period it is.
     centered "Morning"
-
-    # Set these variables to appropriate values, so they can be
-    # picked up by the expression in the various events defined below. 
     $ period = "morning"
-
     $ act = morning_act
-    
-    # Execute the events for the morning.
     call events_run_period
 
 # player decides where to eat lunch at
 # 1-A is an underclassman class and player can talk with ditto and diglett
 # 2-B is player's own class where she can talk with pikachu
-# 3-C is an upperclassman class and player can talk with jynx and charmander
+# 3-C is an upperclassman class and player can talk with jynx and charmeleon
 label lunch:
     if check_skip_period():
         jump afternoon
@@ -179,6 +173,7 @@ label lunch:
     
     $ period = "lunch"
     
+    "DING -- DONG -- DING -- DONG --"
     "It's lunch time!"
     "Where should I go during lunch today?"
     menu:
@@ -190,8 +185,6 @@ label lunch:
             $ lunch_act = "lunch3"
     $ act = lunch_act
     call events_run_period
-    # That's it for the morning, so we fall through to the
-    # afternoon.
 
 # player decides whether to go to work or not
 label afternoon:
@@ -216,10 +209,12 @@ label afternoon:
                 $ afternoon_act = "work"
             "You know, what? Screw work!":
                 $ afternoon_act = "skip_work"
-            # there will be other stores available here, but unless a certain
-            # character for that store has been met, an uninteresting event will occur
     else:
+        "The time has come..."
         "Time to job hunt!"
+        if tried_job_hunt == 0:
+            "I'm not leaving the mall until I get a job!"
+            "It shouldn't be that hard, right?"
         $ afternoon_act = "job_hunt"
     $ act = afternoon_act
     call events_run_period
@@ -241,6 +236,8 @@ label mall:
     menu:
         "Salon":
             $ mall_act = "salon"
+            # there will be other stores available here, but unless a certain
+            # character for that store has been met, an uninteresting event will occur
         #other choices later... like perhaps you can go home early and hang out with pikachu instead (^:
     $ act = mall_act
     call events_run_period
@@ -265,6 +262,7 @@ label evening:
             $ evening_act = "home"
         "Go Home" if afternoon_act != "skip_work":
             $ evening_act = "home"
+        #perhaps at a certain day, dad gives you unlimited texting so you can text some buddies?
     $ act = evening_act
     
     call events_run_period
@@ -286,7 +284,7 @@ label night:
     # And we jump back to day to start the next day. This goes
     # on forever, until an event ends the game.
     jump day
-         
+
 
 # This is a callback that is called by the day planner. 
 label dp_callback:
