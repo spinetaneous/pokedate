@@ -708,13 +708,13 @@ label forgot_lunch1:
             player "Sigh... I guess there's nothing I can do."
             player "My lunch is at home, and I don't want to spend money to buy lunch..."
             player "Today, I'll skip lunch."
-            if ditt_pts >= 3 and digl_pts >= 3:
+            if ditt_pts >= 10 and digl_pts >= 10:
                 if ditt_pts > digl_pts:
                     ditt "Hey, that's a no-no!"
                     ditt "Lunch is very important. We'll share our lunches with you!"
                     ditt "Right, Diglett?"
                     digl "What???"
-                    ditt "Ahem. {i}Right, Diglett?{/i}"
+                    ditt "Ahem. {w}{i}Right, Diglett?{/i}"
                     digl "..."
                     digl "{size=-5}Well, I never said I was bothered by [name] anyway...{/size}"
                     digl "I guess."
@@ -724,13 +724,16 @@ label forgot_lunch1:
                     digl "Lunch is important. You shouldn't skip it."
                     digl "Here, we'll share our lunches with you."
                     ditt "Right, Ditto?"
-                    ditt "Oh! Diglett, that's very smart of you!"
+                    ditt "Oh!"
+                    ditt "Diglett, that's very smart of you!"
                     digl "Sit down, [name]. Let's eat lunch."
                     digl "..."
                     digl "{size=-5}Together.{/size}"
                 "Ditto and Diglett share their lunches with me."
                 "I'm so glad I have friends!"
                 "We talk and eat happily together."
+                $ digl_pts += 5
+                $ ditt_pts += 5
             else:
                 ditt "Oh, that's too bad!"
                 digl "Yeah..."
