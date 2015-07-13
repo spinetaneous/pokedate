@@ -51,6 +51,7 @@ label start:
         #if true, then player is surprised to see charmeleon at school
         #if false, then player is not surprised bc they already know that they attend the same school
         haircut = False #true after jynx cuts player's hair
+        know_pika_secret = False #true after pikachu tells you about his dying dad
     
     #job_hunt variables
         #tried_store variables. true after trying to get hired at each respective store
@@ -66,6 +67,7 @@ label start:
     #forgot_lunch variables
         ditt_getlunch = False
         digl_getlunch = False
+        
     
     # Show a default background.
     scene black

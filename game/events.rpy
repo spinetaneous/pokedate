@@ -978,7 +978,86 @@ label forgot_lunch1:
     return
     
 label forgot_lunch2:
-    pass
+    "I sit with Pikachu for lunch."
+    "Time to eat!"
+    "..."
+    "...!" with vpunch
+    pika "What's wrong, [name]?"
+    player "I..."
+    player "I forgot my lunch!" with vpunch
+    pika "Oh! {w}Then do you want some of my lunch?"
+    pika "I made it this morning, as usual."
+    "He's offering me lunch. What do I do?"
+    menu:
+        "Accept the offer":
+            "Pikachu's lunch looks really good... {w}Not to mention well-balanced and nutritious..."
+            player "You really mean it, Pikachu?"
+            pika "Haha, of course!"
+            if pika_pts >= 20:
+                pika "Here, say \"Ah~\"."
+                "Pikachu feeds me a spoonful of his homemade lunch."
+                pika "How is it?"
+                player "...!"
+                player "Wow, it's really good!"
+                player "I'm amazed that it's this good. {w}You've improved since the last time I've eaten your food."
+                pika "Come to think of it, the last time I made food for you was during middle school, wasn't it?"
+                player "Yeah, we haven't had any dinners together recently, huh?"
+                pika "Being a high school student really keeps you busy..."
+                pika "It's pretty chaotic sometimes."
+                player "Oh hey, I haven't seen your dad in awhile. How's he doing?"
+                pika "..."
+                pika "Well..."
+                pika "These days he isn't doing too well..."
+                player "...? {w}What's wrong?"
+                if pika_pts >= 30:
+                    pika "..."
+                    pika "He's in the hospital."
+                    player "!" with vpunch
+                    player "What happened!? Wasn't he perfectly healthy the last time I saw him!?" with vpunch
+                    pika "Well... {w}He was diagnosed with a terminal illness... {w}at the end of middle school."
+                    pika "I don't want to delve into details since we're still at school, but..."
+                    pika "It's starting to eat away at his brain."
+                    pika "Soon... {w}He won't be like he used to be."
+                    player "If the diagnosis was two years ago... {w}Why didn't you tell me?"
+                    pika "You're the only person I've told about my dad's situation."
+                    pika "I feel like I can tell you about anything, so... {w}I won't keep secrets anymore, okay?"
+                    pika "Don't be sad."
+                    pika "Please."
+                    player "I-I won't. Don't worry about me. {w}Worry about yourself."
+                    player "I'm here for your dad and you. Just call me any time, and I'll be there."
+                    pika "..."
+                    pika "Thanks, [name]."
+                    pika "That means a lot."
+                    $ know_pika_secret = True
+                    $ pika_pts += 5
+                else:
+                    pika "..."
+                    pika "I'm sorry, [name]. {w}I just can't tell you yet."
+                    player "It's okay. {w}Just tell me whenever you're ready. I'll still be there."
+                    pika "It's still difficult to come to terms with his situation, but..."
+                    pika "I promise that I'll tell you one day."
+                    player "Alright, Pikachu. I don't know what's going on, but I hope you're okay."
+                    player "Wishing you the best of luck."
+                    $ pika_pts += 5
+                "Pikachu and I eat lunch together."
+                "We make some small talk, but for the most part, it's quiet."
+                "However, it's a comfortable kind of quiet."
+                "There are times where words aren't needed."
+        "Decline the offer":
+            player "It's okay, Pikachu. I can't always rely on you for things!"
+            pika "...? {w}Where did that come from?"
+            player "Well, you're always there for me... {w}What if I'm not always there for you?"
+            player "If I can't even get my own lunch at times like this, when how reliable of a person am I really?"
+            pika "..."
+            player "What's wrong, Pikachu?"
+            pika "Nothing, [name]."
+            pika "So what are you going to do about lunch?"
+            "He has a point. What should I do?"
+            menu:
+                "Go buy lunch":
+                    pass
+                "Don't eat lunch":
+                    pass
     return
     
 label forgot_lunch3:
