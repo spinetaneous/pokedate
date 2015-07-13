@@ -803,17 +803,18 @@ label forgot_lunch1:
                 digl "Um... {w}I recommend the curry."
                 digl "And make sure to get some Moomoo Milk with that. The curry can get rather spicy sometimes, and milk has an enzyme that relieves the spiciness."
                 player "...But why specifically {i}Moomoo Milk{/i}?"
-                digl "O-oh... That's because Moomoo Milk is my... f-{size=-5}favorite{/size}..."
+                digl "Because it tastes the best!"
                 player "Hmm? {w}You have a soft side for {i}Moomoo Milk{/i}?"
                 digl "!"
                 digl "What's wrong with Moomoo Milk?!"
                 player "Nothing! It's just surprising to know that you have a soft side!"
-                digl "...!" #diglett blushhhh
+                digl "S-Shut up!" #diglett blushhhh
                 player "Okay, Diglett! {w}I'm going to get in line now."
                 $ digl_pts += 5
             "I get in line."
             if ditt_getlunch: 
                 "Shortly afterword, I receive my ramen and pay $7 for it."
+                $ inventory.earn(-7)
                 "I grab my food and return to Ditto."
                 ditt "So, you still got the ramen?"
                 player "Of course! {w}You suggested it, after all."
@@ -822,6 +823,7 @@ label forgot_lunch1:
                 ditt "Yeah, Diglett must be feeling so {i}{b}lonely{/b}{/i} without us by his side. ♥"
             elif digl_getlunch:
                 "Shortly afterword, I receive my curry and Moomoo Milk. I pay $7 for it."
+                $ inventory.earn(-7)
                 "I grab my food and return to Diglett."
                 player "Alright! Let's get back to class."
                 digl "Yeah, that idiot, Ditto, must be up to no good right about now."
@@ -833,8 +835,8 @@ label forgot_lunch1:
                 "I'll get the vegetable soup with fish."
                 "It seems like the healthiest option here. I heard fish helps your brain!"
                 "I receive my vegetable soup with fish and pay $7 for it."
+                $ inventory.earn(-7)
                 "Alright! Now I can head back to class 1-A."
-            $ inventory.earn(-7)
             #fade to class
             if ditt_getlunch:
                 player "We're baaack!"
@@ -1054,10 +1056,81 @@ label forgot_lunch2:
             pika "So what are you going to do about lunch?"
             "He has a point. What should I do?"
             menu:
-                "Go buy lunch":
-                    pass
+                "Buy your own lunch":
+                    player "No choice but to buy my own lunch!"
+                    pika "Okay, [name]. Come back soon!"
+                    #fade cafeteria
+                    "...{w}Where's the menu around here?"
+                    "..."
+                    "Oh! {w}There it is."
+                    "..."
+                    "I'll get the vegetable soup with fish."
+                    "It seems like the healthiest option here. I heard fish helps your brain!"
+                    "I receive my vegetable soup with fish and pay $7 for it."
+                    $ inventory.earn(-7)
+                    "Alright! Now I can head back to class 2-B."
+                    #fade class
+                    player "I'm baaack!"
+                    pika "Oh, welcome back."
+                    pika "What did you get?"
+                    player "Vegetable soup and fish."
+                    pika "Haha, that's so fitting."
+                    player "What do you mean?"
+                    pika "Well, it's the healthiest option at this school."
+                    player "Oh! Hehe, my health is in tip-top shape! {w}Jealous?"
+                    pika "Yeah, haha!"
+                    "Pikachu and I spent the rest of lunch eating together."
+                    "The vegetable soup and fish was delicious!"
+                    "But I can't help but feel a twinge of guilt... {w}I wonder why?"
+                    "There's nothing wrong with eating fish... {w}I think." #UR DAD IS A FISH
+                    $ pika_pts += 5
                 "Don't eat lunch":
-                    pass
+                    player "I guess I'll just suffer the consequences!"
+                    player "This is my punishment so that I'll never forget the bring my lunch ever again."
+                    if pika_pts >= 20:
+                        pika "Oh, come on, [name]. You're going to extremes."
+                        pika "Here, I insist. Take some of my food."
+                        player "But, Pikachu, didn't you hear me earlier?"
+                        pika "Come on, just rely on me one more time."
+                        pika "I don't want to see you hungry."
+                        pika "Put your pride aside for just a moment and let me take care of you, okay?"
+                        player "..."
+                        player "Okay, fine."
+                        player "But if I forget my lunch again, you're not allowed to feed me!"
+                        player "If you do, I'll stop being your friend!!"
+                        pika "Haha, you're being ridiculous. {w}But that's what makes you so fun to be around."
+                        $ pika_pts += 5
+                    else:
+                        pika "..." #sad face
+                        pika "I won't eat either then."
+                        pika "It isn't fair of me to keep eating in front of you while you're hungry."
+                        "...!"
+                        "Pikachu is offering to stop eating his lunch to accompany me on my lunch-less lunch."
+                        "What should I say?"
+                        menu:
+                            "Okay.":
+                                player "How nice of you, Pikachu!"
+                                pika "It's no problem."
+                                "We spend the rest of lunch goofing off and talking to each other about our days."
+                                $ pika_pts += 1
+                            "No! You're eating your lunch!":
+                                player "No! You're not allowed to give up your lunch just because I don't have mine!" with vpunch
+                                player "What kind of person would I be to make you suffer along with me?"
+                                pika "But are you sure? I don't want to make you even hungrier by eating my food in front of you."
+                                player "Don't worry about it!" with vpunch
+                                player "You're not the {i}only{/i} one eating lunch in front of me. {w}{i}Everyone{/i} is eating around me!"
+                                pika "..."
+                                pika "That's making me worry even more!"
+                                pika "Here!" with vpunch
+                                pika "Take some of my lunch, I insist!" with vpunch
+                                player "Huh? But I just said--"
+                                pika "[name]!" with vpunch
+                                player "...Okay, Pikachu."
+                                "As I bite into Pikachu's food, I notice his cooking has improved."
+                                "Come to think of it, the last time I ate Pikachu's homemade food was in middle school."
+                                "It has been two years, huh... {w}Time sure does fly by."
+                                "Pikachu and I spend the rest of our lunch time sharing his food."
+                                $ pika_pts += 5
     return
     
 label forgot_lunch3:
