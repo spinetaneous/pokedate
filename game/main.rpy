@@ -44,30 +44,31 @@ label start:
         bulb_dex = False
         elek_dex = False
     
-    # Show a default background.
-    scene black
-    
     # other variables
-    $ has_job = False #true after get_hired runs
-    $ skipped_work = 0 #affects salary
-    $ grabbed_tail = False #true if you decide to light something on fire with charmeleon's tail
-    #if true, then player is surprised to see charmeleon at school
-    #if false, then player is not surprised bc they already know that they attend the same school
-    $ haircut = False #true after jynx cuts player's hair
+        has_job = False #true after get_hired runs
+        skipped_work = 0 #affects salary
+        grabbed_tail = False #true if you decide to light something on fire with charmeleon's tail
+        #if true, then player is surprised to see charmeleon at school
+        #if false, then player is not surprised bc they already know that they attend the same school
+        haircut = False #true after jynx cuts player's hair
     
     #job_hunt variables
-    #tried_store variables. true after trying to get hired at each respective store
-    $ tried_gamemon = False
-    $ tried_salon = False
-    $ tried_gym = False
-    $ tried_florist = False
-    #other job_hunt variables
-    $ tried_job_hunt = 0 #increases every time player quits job hunting. prevents player from not getting a job at all.
-    $ go_gym_advice = False #true if jynx tells player to try job hunting at the gym
-    $ go_salon_advice = False #true if diglett tells player to try job hunting at the salon
+        #tried_store variables. true after trying to get hired at each respective store
+        tried_gamemon = False
+        tried_salon = False
+        tried_gym = False
+        tried_florist = False
+        #other job_hunt variables
+        tried_job_hunt = 0 #increases every time player quits job hunting. prevents player from not getting a job at all.
+        go_gym_advice = False #true if jynx tells player to try job hunting at the gym
+        go_salon_advice = False #true if diglett tells player to try job hunting at the salon
     
-    $ ditt_getlunch = False
-    $ digl_getlunch = False
+    #forgot_lunch variables
+        ditt_getlunch = False
+        digl_getlunch = False
+    
+    # Show a default background.
+    scene black
     
     "Hello, and welcome to PokeDate!"
     
@@ -104,8 +105,9 @@ label start:
             $ pos_pronoun = "their"
             $ gender = "person"
             player "I don't fit into gender binaries."
-            
+    
     "..."
+    
     "Thank you for providing this information!"
     "Without further ado, let's get started on your romantic adventure! :-)"
     

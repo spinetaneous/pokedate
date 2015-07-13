@@ -49,16 +49,16 @@ label school_day1:
     "..."
     "...I can still... make it...!"
     #fade to class
-    "**SLAM**"
-    player "{size=+5}TEACHER...! I AM HERE!!!{/size}"
-    t "Wow, and it's only 8:03AM."
-    player "{size=+5}I... AM NOT LATE!!!!{/size}"
+    "**SLAM**" with vpunch
+    player "{size=+5}TEACHER...! I AM HERE!!!{/size}" with vpunch
+    t "Wow, and it's only 8:03AM." with vpunch
+    player "{size=+5}I... AM NOT LATE!!!!{/size}" with vpunch
     "From the door, I can see my childhood friend, Pikachu, looking worried for me."
     "I flash him a brief thumbs up and wink, as if saying, \"Don't worry, I got this!\""
     "..."
     "Hey, did he just shake his head?"
     t "Just take a seat, [name]."
-    player "{size=+5}WAIT, DID YOU JUST MARK ME LATE--{/size}"
+    player "{size=+5}WAIT, DID YOU JUST MARK ME LATE--{/size}" with vpunch
     t "[name]."
     t "Take a seat."
     "She probably didn't mark me late, right?"
