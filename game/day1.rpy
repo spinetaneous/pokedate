@@ -384,12 +384,6 @@ label park_day1:
         char "No problem."
         char "I'm wouldn't mind giving my number to such a lovely [gender] such as yourself."
         "He winks at me."
-        char "..."
-        char "Excuse me for a second."
-        "Charmeleon turns around and walks a few steps away."
-        char "{size=-5}OH MY GOD I CAN'T BELIEVE I JUST SAID THAT{/size}"
-        char "{size=-5}THIS IS SO EMBARRASSING I CAN'T BELIEVE MYSELF{/size}"
-        "After that, he comes back."
     "Charmeleon hands me a slip of paper."
     char "Here's my number. You can text me tonight, if you want."
     if grabbed_tail:

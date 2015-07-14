@@ -263,7 +263,8 @@ label evening:
     "Wow, the sun is starting to set."
     "What should I do?"
     menu:
-        "Go to Park":
+        #maybe put park in mall period??? and like... u leave the mall lol
+        "Go to Park": #when you go to the park for the first time, you meet charmeleon
             $ evening_act = "park"
         "Stay Home" if afternoon_act == "skip_work":
             $ evening_act = "home"

@@ -22,14 +22,20 @@
 #   human silhouette in pokedex
 
 #FAVORITE ITEMS:
-#pikachu: lemonade and shalour sable
+#pikachu: lemonade and lumiose galette
 #charm: berry juice and lava cookie
 #diglett: casteliacone and moomoo milk
-#ditto: soda pop and lumiose galette (but not really bc AHEM read below)
+#ditto: soda pop and shalour sable (but not really bc AHEM read below)
 #fav = +=5 pts
 #meh = +=3 pts
-#ugh = +=0 pts
+#ugh = -=3 pts
 #EXCEPT DITTO!! everything is +=3 bc he doesn't actually have a fav
+
+#UGH ITEMS:
+#pikachu: water, lava cookie, shalour sable
+#charm: water, casteliacone, lumiose galette
+#diglett: soda pop, shalour sable
+#ditto: nothin'
 
 #FUTURE EVENTS:
 #   charmeleon fucking dies at the beach (maybe the worst ending??? maybe happens in the middle of the game?? i dunno)
@@ -88,7 +94,8 @@ init:
         #is the bastard child of a rich man
         #lives with his mom who has been kicked outta the rich house and is now an alcoholic
         #goes to park to escape home life but doesn't run away cuz deep down he loves his mom
-        #gets embarrassed easily
+        #gets embarrassed easily around the person he likes
+        #doesn't understand teen slang
     define ditt = Character('Ditto', color="#c9a0dc") #works at sleezy store 
         #silly and weird
         #wants to fit in bc he's a scared and tiny freshman who is also a blob with no form
@@ -123,7 +130,7 @@ init:
         #the player forgets her lunch one time. event differs depending on where player decides to go during lunch
         event("forgot_lunch1", "act == 'lunch1' and digl_dex", event.once(), event.happened("meet_ditto", not "forgot_lunch2", not "forgot_lunch3"), priority=998)
         event("forgot_lunch2", "act == 'lunch2'", event.once(), event.happened(not "forgot_lunch1", not "forgot_lunch3"), priority=998)
-        event("forgot_lunch3", "act == 'lunch3'", event.once(), event.happened(not "forgot_lunch1", not "forgot_lunch2"), priority=998)
+        event("forgot_lunch3", "act == 'lunch3' and jynx_dex", event.once(), event.happened(not "forgot_lunch1", not "forgot_lunch2"), priority=998)
         
     
 #Below are the boring events that happen when there are no higher priority events.
@@ -591,10 +598,10 @@ label meet_ditto: #the first time player goes to class, she notices ditto
             player "!!!"
             player "Don't call me that. You're being gross."
         "Go along with it.":
+            $ ditt_pts += 5
             player "Bruh, you askin' me to smile, but why ain't you smilin'?"
             dpika "Damn, you hella sharp fo'sho."
             player "Yeah, as sharp as my di--"
-            $ ditt_pts += 5
     pika "[name]!!" #two pikas on screen with SHAKY SCREEN 4 footsteps
     player "P...Pikachu...?"
     player "I..."
@@ -1136,6 +1143,160 @@ label forgot_lunch2:
     return
     
 label forgot_lunch3:
-    pass
+    if char_dex:
+        "Let's eat lunch with Jynx today!"
+        "There, I see a bright red pokemon... {w}Wait a minute..."
+        "That's Charmeleon!"
+        player "Hey, Charmeleon!"
+        char "...?"
+        char "My, my, my... {w}Who could you be?"
+        char "Another lost little lamb who just happened to... {w}{i}wander{/i} into the realm of upperclassmen...?"
+        player "Wh--"
+        char "It seems that you aren't familiar with the school grounds yet."
+        char "Would you like me to... {i}show you around...?{/i}"
+        "What the heck is this guy saying? What should I do?"
+        menu:
+            "Grab his tail" if grabbed_tail:
+                $ char_pts -= 2
+                "I decide to remind him of who I really am."
+                "Once again, I grab his tail."
+                char "OW!" with vpunch
+                char "N-Now, now, little lamb... {w}There's enough of me to go around..."
+                char "Just... {w}let go of me for a bit."
+                player "You {i}still{/i} don't remember me?"
+                char "Huh?"
+                "Charmeleon eyes me up and down."
+                char "..."
+                char "!" with vpunch
+                "He retracts his tail."
+                char "It's {i}you!{/i}" with vpunch
+                char "What are you doing here!?"
+                char "How did you find out about my school!?"
+                char "..."
+                char "You..."
+                char "You're not stalking me, are you?"
+                player "No!"
+                player "I came here to eat lunch with my friend!"
+                player "Speaking of whom, I wonder where she--"
+                jynx "HEY GIRL!!!" with vpunch
+                jynx "WHAT YOU DOIN' HERE!?"
+                player "I came to eat lunch with you!"
+                jynx "Wow, ain't that sweet of you!"
+                jynx "What's Charmander doin' here, huh? He pickin' on you?"
+                char "Um, my name isn't--"
+                jynx "Charmander, why you gotta be so rude?"
+                jynx "Just be a nice dear and have lunch with us instead of pickin' on poor lil' [name]!"
+                jynx "Let's all be friends!"
+                "Jynx puts her arms around our shoulders."
+                "She starts to drag both of us to the nearest empty table."
+                player "Hey, I--" with hpunch
+                char "Wait, let go--" with hpunch
+                "*THUD*" with vpunch
+                char "Why are you so strong!?"
+                jynx "Once again, let's all be friends!"
+                player "Huh?"
+                char "With this [gender]?! But [pronoun2] grabbed my tail! {w}Twice!"
+                jynx "Aren't you supposed to be an upperclassman?"
+                char "So??? What does that matter?"
+                jynx "Oh, my bad. I need to speak your language."
+                jynx "Ahem. {w}How can you be so rude to such an {i}adorable{/i}, lost little lamb?"
+                jynx "Look at [pos_pronoun] beautiful eyes."
+                if haircut:
+                    jynx "And look at that amazing hair! I sure wonder who did it for you!"
+                    jynx "Stunning! {w}Amazing! {w}Simply gorgeous!"
+                jynx "Surely, you can't be so cruel to such a cute [gender]?"
+                char "..."
+                char "Heh."
+                char "Well, when you put it that way..."
+                char "Refusing the requests of a young maiden isn't very becoming of a well-seasoned connoisseur of gentlemanly behavior such as myself."
+                jynx "There you go! {w}That wasn't so bad, was it?"
+                jynx "[name], what do you say?"
+                menu:
+                    "Let's be friends!":
+                        $ char_pts += 5
+                        player "Okay, let's put all that tail pulling and stuff behind us!"
+                        char "..."
+                        jynx "{i}Charmander...?{/i}"
+                        char "!"
+                        char "Yeah, okay!"
+                    "Screw Charmeleon!":
+                        $ char_pts -= 3
+                        player "Screw you, Charmeleon!"
+                        char "Screw me? That's gross."
+                        char "Can that even happen? Aren't you a different species?"
+                        jynx "No dude, she's cursin' you out..."
+                        char "Ohhhh."
+                        char "Hey, that's rude!" with vpunch
+                        char "Why, I oughta--"
+            "Reintroduce yourself":
+                $ char_pts += 2
+                player "Hey, don't you remember me?"
+                player "We met at the Pikabelle Chutendo meet-and-greet!"
+                char "!"
+                if grabbed_tail:
+                    char "You were the one who abused me!" with vpunch
+                    "He retracts his tail."
+                    char "What are you doing here!?"
+                    char "How did you find out about my school!?"
+                    char "..."
+                    char "You..."
+                    char "You're not stalking me, are you?"
+                    player "No!"
+                else:
+                    char "You were standing behind me!"
+                    player "Yeah!"
+                player "I didn't know that we both go to the same school!"
+                player "I came here to eat lunch with my friend!"
+                player "Speaking of whom, I wonder where she--"
+                jynx "HEY GIRL!!!" with vpunch
+                jynx "WHAT YOU DOIN' HERE!?"
+                player "I came to eat lunch with you!"
+                jynx "Wow, ain't that sweet of you!"
+                jynx "What's Charmander doin' here, huh? He pickin' on you?"
+                char "Um, my name isn't--"
+                jynx "Charmander, why you gotta be so rude?"
+                player "Oh, no! He wasn't picking on me at all."
+                jynx "Good!"
+                jynx "Otherwise, I'd have to cross some lines to protect my cute lil' [name]! ♥"
+                char "Uh--"
+            "Go along with it":
+                $ char_pts += 5
+                player "Oh my, what a gentleman~"
+                player "I sure would {i}love{/i} to be in your hands!"
+                char "Don't worry... Just let me take care of you."
+                player "Be careful~ I'm a fragile [gender] ♥"
+                "*SLAM*" with hpunch
+                jynx "Y'ALL NEED TO STOP FLIRTING RIGHT BY THE DOOR!!!" with vpunch
+                jynx "Charmander! What do you think you're doing?"
+                char "I was just talking with..."
+                char "..."
+                char "Hey... haven't I seen you somewhere before?"
+                char "!" with vpunch
+                if grabbed_tail:
+                    char "Didn't you grab my tail at the Pikabelle Chutendo meet-and-greet!?"
+                    "He retracts his tail."
+                    char "It {i}is{/i} you!" with vpunch
+                    char "What are you doing here!?"
+                    char "How did you find out about my school!?"
+                    char "..."
+                    char "You..."
+                    char "You're not stalking me, are you?"
+                    player "No!"
+                    player "I came here to eat lunch with my friend!"
+                else:
+                    char "Weren't you standing behind me at the Pikabelle Chutendo meet-and-greet!?"
+                    player "Yeah!"
+                player "I didn't know that we both go to the same school!"
+                jynx "Charmander, join us since you're here anyway!"
+                char "Huh? Wait, I--"
+        jynx "Let's eat lunch!!!" with vpunch
+        player "oh my goddddd i forgot my lunchhh oh no"
+        char "haha dat sux lolol"
+        jynx "o no wat u gon do honey sweetie"
+        player "idk lol"
+        "wat do?"
+        #insert menu
+    else:
+        pass
     return
     
