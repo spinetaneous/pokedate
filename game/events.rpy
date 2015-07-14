@@ -18,6 +18,8 @@
 #   INCORPORATE GARY GARY (OAK) KUN!!!
 #   remember to introduce pokedex properly
 #   events based on number of affection pts need a backup event (since the only stats that will trigger anything are affection pts)
+#   secret bishounen unlockable mode released after beating the game (everyone is human lel)
+#   human silhouette in pokedex
 
 #FAVORITE ITEMS:
 #pikachu: lemonade and shalour sable
