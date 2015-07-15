@@ -70,6 +70,7 @@ label start:
         forgotlunch3 = False
         ditt_getlunch = False
         digl_getlunch = False
+        char_getlunch = False
         
     
     # Show a default background.

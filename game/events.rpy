@@ -17,6 +17,7 @@
 #   with enough ditt_pts, you call him dumb names like fluffy egg
 
 #   INCORPORATE GARY GARY (OAK) KUN!!!
+#   also incorporate okie doki doki ddeokbokki
 #   remember to introduce pokedex properly
 #   events based on number of affection pts need a backup event (since the only stats that will trigger anything are affection pts)
 #   secret bishounen unlockable mode released after beating the game (everyone is human lel)
@@ -1425,7 +1426,51 @@ label forgot_lunch3:
     menu:
         "Go buy your own lunch":
             player "I guess I'll just go buy my own lunch then."
-            pass
+            player "Be right back!"
+            if char_pts >= 10:
+                char "Wait!"
+                char "I cannot just leave a lost, little lamb to fend for nourishment all alone!"
+                char "What if you get lost again? Allow me to accompany you."
+                "Charmeleon wants to come along."
+                "Should I let him?"
+                menu:
+                    "Yes":
+                        player "Okay, I suppose you can come along."
+                        char "Wondrous! {w}Worry not, for you are safe within my care."
+                        char "We shall return post-haste, Jynx!"
+                        jynx "Yeah, yeah get goin' and hurry back!"
+                        $ char_pts += 2
+                        $ char_getlunch = True
+                    "No":
+                        player "It's fine. I can find the cafeteria on my own."
+                        player "I was never lost in the first place."
+                        char "Alas, it is tragic of a young [gender] to become lost."
+                        char "I will pray for your safe return."
+            #fade cafeteria
+            "Wow! So this is the cafeteria."
+            "I'm not too familiar with buying my own lunch. I always bring lunch from home."
+            if char_getlunch:
+                player "Charmeleon, what's good?"
+                char "Hm..."
+                char "I quite fancy the ddeokbokki here."
+                char "The spice level brings a certain kind of delicious tingle."
+                player "Okie-dokie!"
+                char "Do you mean... {i}okie-ddeokbokki?{/i}"
+                "Was that supposed to be a pun? How should I respond?"
+                menu:
+                    "Hilarious!":
+                        $ char_pts += 5
+                        player "Haha, that was so funny!"
+                        char "Thank you!"
+                        char "The ddeokbokki makes my heart go doki doki."
+                        char "..."
+                        char "{i}Okie-doki-doki-ddeokbokki.{/i}"
+                        "Oh my god."
+                    "Lame...":
+                        $ char_pts -= 5
+                        player "...{w}..."
+                        char "..."
+                        pass
         "Don't eat lunch":
             pass
     return
