@@ -201,13 +201,13 @@ label park_day1:
                 "What's it like being so hot all the time?":
                     $ char_pts += 5
                     unknown "!"
-                    unknown "Well, I guess you could say I'm just a..."
+                    unknown "Well, I suppose one could refer to me as a..."
                     unknown "{i}...force of nature{/i}."
                     player "..."
                     player "I don't get it."
                 "Pikabelle Chutendo is pretty cool, right!?":
-                    unknown "Well, since she made so many games, I guess she's kinda cool."
-                    unknown "Not my type though."
+                    unknown "Well, she {i}is{/i} capable enough to create a plethora of enjoyable entertainment."
+                    unknown "However, she is not my type."
                     player "Dude, she's married."
                 "You know, I think you're giving me heat stroke...":
                     $ char_pts -= 5
@@ -219,16 +219,16 @@ label park_day1:
                     unknown "Maybe you should go to the back of the line or something."
                 "Have you played any {i}PokeCrossing{/i} games lately?":
                     $ char_pts += 10
-                    unknown "Yeah, actually!"
-                    unknown "I was playing {i}New Ball{/i} yesterday, and I got to put in a campsite!"
+                    unknown "In fact, I have!"
+                    unknown "Why, just yesterday I was playing {i}New Ball{/i}, and I was able to put in a campsite!"
                     player "Oh, those are fun!"
                     player "You get non-resident villagers in there, and then you can play cool minigames to get furniture."
-                    unknown "That sounds fun."
+                    unknown "How amazing!"
                     player "Sometimes you lose though, and then they take money or items from you..."
                     unknown "Oh..."
                     player "I usually fill my inventory with shells and put all my money in the bank!"
-                    unknown "Wow, that's smart!"
-                    unknown "I should try that next time!"
+                    unknown "That is smart!"
+                    unknown "Perhaps next time I will utilize that technique!"
                     player "Yeah!"
                     unknown "..."
         "Play with the fire-type pokemon's tail":
@@ -287,18 +287,18 @@ label park_day1:
                             "Lighting myself on fire would be a very bad idea."
                             unknown "What are you doing!? Give that back!"
                             "He snatches the tail out of my hands."
-                            unknown "I know it's hard to keep your hands off me, but please exercise some control."
+                            unknown "I know that it is difficult to keep your hands off me, but please exercise some control."
                             player "..."
                         "Nevermind!":
                             $ char_pts += 5
                             player "Sorry! I was just spacing out."
-                            unknown "I know it's hard to keep your hands off me, but please exercise some control!"
+                            unknown "I know that it is difficult to keep your hands off me, but please exercise some control!"
                             player "..."
                 "Apologize.":
                     $ char_pts += 5
                     player "Sorry, I didn't mean to grab your tail!"
                     unknown "..."
-                    unknown "Well, if you didn't mean to..."
+                    unknown "Well, I suppose if you did not mean to..."
                     unknown "I guess I can let you off just this once..."
     "..."
     player "So uh..."
@@ -308,18 +308,18 @@ label park_day1:
         player "Hey, I'm sorry, okay!?"
         player "At least let me know your name! Then I can properly apologize."
         unknown "..."
-        char "It's Charmeleon."
+        char "I am called Charmeleon."
         $ char_dex = True
         pdex "Charmeleon has been added to your Pokedex."
         player "Once again, I'm really sorry!"
         player "Please forgive me, Charmeleon!"
         char "...Sigh."
-        char "If you're going to be like that then..."
+        char "If you are going to be like that then..."
         char "I suppose..."
         player "Phew!"
     else:
         "He chuckles."
-        unknown "So... You wanna know my name, huh?"
+        unknown "So... You wish to know my name, huh?"
         unknown "They call me..."
         char "{b}{i}Charm{/i}{/b}eleon."
         $ char_dex = True
@@ -329,34 +329,35 @@ label park_day1:
             "Wow, that's pretty cool!":
                 $ char_pts += 5
                 char "I know, right!?"
-                char "It's a shame not many people think it's funny."
-                char "You're different, though. You thought it was cool."
+                char "What a shame not many people think it's funny."
+                char "You... {w}are different, though. You thought it was cool."
                 char "Great minds think alike!"
                 player "I know, right!?"
                 player "Your puns are so {i}fire!!{/i}"
                 char "Fire?"
                 player "Get it? \"Fire\" in teenage slang describes something really good!"
                 player "And also you're a fire-type pokemon!"
-                char "Wow, that's really clever."
-                char "You're so witty. How old are you anyway?"
+                char "Wow, that is truly clever."
+                char "You are so witty. How old are you anyway?"
                 player "I'm a second-year in high school!"
-                char "Really? I'm a third-year!"
+                char "Truly? I am a third-year!"
                 char "Which school do you go to!?"
                 player "PokeCreek!"
-                char "Me too!"
-                char "I guess we'll see each other around."
-                char "Wonder why we haven't seen each other before?"
+                char "!"
+                char "I, too, attend that school!"
+                char "Perhaps we shall see each other around."
+                char "I do wonder why we haven't seen each other before..."
                 player "I don't visit other classes that often, but maybe that'll change."
             "Wow, that's pretty lame!":
                 $ char_pts -= 5
                 char "!"
-                char "You just don't appreciate my great sense of humor."
+                char "You just do not appreciate my great sense of humor."
                 player "What sense of humor?"
                 char "!"
-                char "You're pretty rude. You act like a little kid."
-                char "What are you, like, 12?"
+                char "You are very rude... similar to a little kid."
+                char "Are you perhaps a 12 year old?"
                 player "No! I'm a second-year in high school!"
-                char "Pfft, no wonder. You wouldn't understand the wit of a third-year like me."
+                char "Pfft, no wonder. You would not understand the wit of a third-year such as I."
                 player "You're in high school? You seem like an old man."
                 player "What high school would accept you?"
                 char "Um, PokeCreek? The one I {i}attend?{/i}"
@@ -379,19 +380,19 @@ label park_day1:
     player "Can we exchange numbers too? Then we can text each other our codes!"
     if grabbed_tail:
         char "..."
-        char "I guess there's no helping it..."
+        char "There is no helping it..."
     else:
         char "No problem."
-        char "I'm wouldn't mind giving my number to such a lovely [gender] such as yourself."
+        char "I would not mind giving my number to such a lovely [gender] such as yourself."
         "He winks at me."
     "Charmeleon hands me a slip of paper."
-    char "Here's my number. You can text me tonight, if you want."
+    char "Recorded here is my number. You may text me tonight, if you wish."
     if grabbed_tail:
         char "...I guess."
     player "Thanks!"
-    char "I've gotta go home now."
+    char "I must return home now."
     if not grabbed_tail:
-        char "Talk to you later!"
+        char "We shall converse at another time!"
     player "Bye!"
     "He runs off."
     "..."
@@ -400,8 +401,8 @@ label park_day1:
     "...Pikabelle Chutendo...!"
     pbc "Hello there!"
     "She hands me an autograph."
-    player "{size=+5}OH MY GOD PIKABELLE CHUTENDO I LOVE YOU SO MUCH{/size}"
-    player "{size=+5}I HAVE EVERY SINGLE ONE OF YOUR GAMES{/size}"
+    player "{size=+5}OH MY GOD PIKABELLE CHUTENDO I LOVE YOU SO MUCH{/size}" with vpunch
+    player "{size=+5}I HAVE EVERY SINGLE ONE OF YOUR GAMES{/size}" with vpunch
     pbc "Really? Each one?"
     pbc "Wow, you must be a big fan! I'm glad you like my games so much."
     pbc "I thought some might not like {i}Happy Ball Designer{/i} since it's a bit different than the rest..."
@@ -415,7 +416,7 @@ label park_day1:
     player "You have a new game!?"
     player "I have to have it!"
     player "Sorry, I gotta go!"
-    player "{size=+5}THANK YOU FOR EXISTING PIKABELLE CHUTENDO I LOVE YOU VERY MUCH GOODBYE{/size}"
+    player "{size=+5}THANK YOU FOR EXISTING PIKABELLE CHUTENDO I LOVE YOU VERY MUCH GOODBYE{/size}" with vpunch
     pbc "See you!"
     pbc "What a nice [gender]."
     jump see_game_day1

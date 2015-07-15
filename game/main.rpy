@@ -65,6 +65,9 @@ label start:
         go_salon_advice = False #true if diglett tells player to try job hunting at the salon
     
     #forgot_lunch variables
+        forgotlunch1 = False
+        forgotlunch2 = False
+        forgotlunch3 = False
         ditt_getlunch = False
         digl_getlunch = False
         
@@ -113,7 +116,7 @@ label start:
     "Thank you for providing this information!"
     "Without further ado, let's get started on your romantic adventure! :-)"
     
-    jump forgot_lunch1 #for testing purposes
+    #jump forgot_lunch1 #for testing purposes
     
     # fade home
     jump breakfast
