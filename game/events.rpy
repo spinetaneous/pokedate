@@ -726,7 +726,7 @@ label forgot_lunch1:
     "Nevermind his question. Right now, there are bigger things to worry about!"
     "What should I do about lunch?"
     menu:
-        "Buy your own lunch" if inventory.money > 7:
+        "Buy your own lunch" if inventory.money >= 7:
             "Hmm... {w}Well, I didn't get a job for nothing!"
             player "I think I'll just go and buy my own lunch."
             player "I'll be back in a bit!"
@@ -1470,7 +1470,23 @@ label forgot_lunch3:
                         $ char_pts -= 5
                         player "...{w}..."
                         char "..."
-                        pass
+                        "That uncomfortable pun brought about an equally uncomfortable silence..."
+                player "I'm getting in line now."
+                "Shortly afterward, I receive my ddeokbokki and pay $7 for it."
+                $ inventory.earn(-7)
+                "I grab my food and return to Charmander."
+                char "Nice choice."
+                char "Now, let us return to Jynx. She must be positively anxious for our return."
+            else:
+                "...{w}Where's the menu around here?"
+                "..."
+                "Oh! {w}There it is."
+                "..."
+                "I'll get the vegetable soup with fish."
+                "It seems like the healthiest option here. I heard fish helps your brain!"
+                "I receive my vegetable soup with fish and pay $7 for it."
+                $ inventory.earn(-7)
+                "Alright! Now I can head back to class 1-A."
         "Don't eat lunch":
             pass
     return
