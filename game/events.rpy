@@ -1487,6 +1487,18 @@ label forgot_lunch3:
                 "I receive my vegetable soup with fish and pay $7 for it."
                 $ inventory.earn(-7)
                 "Alright! Now I can head back to class 1-A."
+            # fade classroom
+            if char_getlunch:
+                jynx "What took you guys so long!?" with vpunch
+                char "We were not gone for that long..."
+            else:
+                jynx "What took you so long!?" with vpunch
+                char "I see you found the cafeteria without getting lost."
+                char "Being able to learn on one's own is a fine trait."
+            "Jynx, Charmeleon, and I all spend lunch together, eating and chatting happily."
+            char "And my name is Charmeleon, not Charmander!" with vpunch
+            jynx "Oh, is that so?"
+            $ char_pts += 5
         "Don't eat lunch":
             pass
     return
