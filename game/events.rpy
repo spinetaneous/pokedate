@@ -44,6 +44,7 @@
 #   camping adventure with everyone but u get lost with charmeleon and he makes a lil fire for u (cuz he's made of fire)
 #   ditto gets kidnapped and u rescue him
 #   PIKACHU EARNS PERFECT ATTENDANCE AWARD AND U DON'T *RIFT CREATED* but pikachu has never taken it srsly so u are offended
+#       THEN HE GIVES U THE MEDAL wow pika confirmed han yi an
 #   the "I never needed you" ending for not choosing pikachu (worst ending)
 #   fight fight fight 4 ur luv
 #############################################################
