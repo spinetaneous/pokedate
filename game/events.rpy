@@ -91,6 +91,10 @@ init:
     define digl = Character('Diglett', color="#ab4221") #works at gym
         #tsundere. works at gym. is secretly hella ripped
         #insecure about his looks
+        #used to be part of a gang
+        #lil sis (diglette L MAO) died in gang activities so diglett leaves
+        #das why he gets kidnapped
+        #why did he get kidnapped if he's ripped??? cuz there were MORE ripped people against him LOL
     define pika = Character('Pikachu', color="#ffd700") #at school... maybe one day u can go to house????
         #the childhood friend. sweet and nice
         #neglected by mom aka Pikabelle Chutendo who works too much to pay for dad's medical bills
