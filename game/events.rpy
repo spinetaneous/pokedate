@@ -40,8 +40,11 @@
 #ditto: nothin'
 
 #FUTURE EVENTS:
-#   charmeleon fucking dies at the beach (maybe the worst ending??? maybe happens in the middle of the game?? i dunno)
+#   charmeleon fucking dies at the beach
+#       happens at the beach event on the first saturday
+#       will only happen if you and char rly don't like each other lol
 #   camping adventure with everyone but u get lost with charmeleon and he makes a lil fire for u (cuz he's made of fire)
+#       but only if he doesn't die lmao
 #   ditto gets kidnapped and u rescue him
 #   PIKACHU EARNS PERFECT ATTENDANCE AWARD AND U DON'T *RIFT CREATED* but pikachu has never taken it srsly so u are offended
 #       THEN HE GIVES U THE MEDAL wow pika confirmed han yi an
