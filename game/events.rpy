@@ -1482,7 +1482,7 @@ label forgot_lunch3:
                 player "I'm getting in line now."
                 "Shortly afterward, I receive my ddeokbokki and pay $7 for it."
                 $ inventory.earn(-7)
-                "I grab my food and return to Charmander."
+                "I grab my food and return to Charmeleon."
                 char "Nice choice."
                 char "Now, let us return to Jynx. She must be positively anxious for our return."
             else:
@@ -1494,7 +1494,7 @@ label forgot_lunch3:
                 "It seems like the healthiest option here. I heard fish helps your brain!"
                 "I receive my vegetable soup with fish and pay $7 for it."
                 $ inventory.earn(-7)
-                "Alright! Now I can head back to class 1-A."
+                "Alright! Now I can head back to class 3-C."
             # fade classroom
             if char_getlunch:
                 jynx "What took you guys so long!?" with vpunch
@@ -1504,10 +1504,63 @@ label forgot_lunch3:
                 char "I see you found the cafeteria without getting lost."
                 char "Being able to learn on one's own is a fine trait."
             "Jynx, Charmeleon, and I all spend lunch together, eating and chatting happily."
-            char "And my name is Charmeleon, not Charmander!" with vpunch
-            jynx "Oh, is that so?"
             $ char_pts += 5
         "Don't eat lunch":
-            pass
+            player "I guess I won't eat lunch then."
+            player "It's kind of hard to eat a lunch you don't have."
+            jynx "Honey, that's too sad!!"
+            jynx "Here, just take some of my lunch."
+            jynx "Charmander!!" with vpunch
+            jynx "Let [name] have some of your lunch too."
+            if char_pts >= 10:
+                char "Of course I would not mind sharing some of my lunch with a fine young lamb such as [name]."
+            else:
+                char "...I have no obligation to do such a thing."
+                player "It's okay, Jynx. I don't need that much food."
+                jynx "Whatever you say, [name]..."
+            "Jynx, Charmeleon, and I all spend lunch together, eating and chatting happily."
+        char "And my name is Charmeleon, not Charmander!" with vpunch
+        jynx "Oh, is that so?"
     return
     
+label finals:
+    "Today's the day... {w}It's time to ace those finals!"
+    #fade classroom
+    "..."
+    "DING -- DONG -- DING -- DONG --"
+    t "Alright class, it's the day you've all been waiting for."
+    t "Remember, try your best and don't spend too long on any one question."
+    t "There's no harm in guessing. Unless it's one of {i}those{/i} tests, which this isn't so don't worry."
+    t "If you need a sharpened pencil, raise your hand. Do not get up."
+    t "I will now hand out the test. Do not flip over the test until I say to."
+    "As she hands out the final, I can feel my heart racing."
+    "These questions could make or break my grade!"
+    "I stare at the paper on my desk."
+    t "And... {w}Start!"
+    #sound of flipping paper over lol
+    "Question 1: Which of the following was the first pokemon?"
+    menu:
+        "Rhydon":
+            pass
+        "Arceus":
+            pass
+        "Mewtwo":
+            pass
+        "Bulbasaur":
+            pass
+        "Dad":
+            pass
+    "Question 2: Which of the following was the first Pokedex entry?"
+    menu:
+        "Bulbasaur":
+            pass
+        "Chikorita":
+            pass
+        "Treecko":
+            pass
+        "Turtwig":
+            pass
+        "Diglett":
+            pass
+    #come up with more stuff later
+    return

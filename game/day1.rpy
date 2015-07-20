@@ -64,7 +64,7 @@ label school_day1:
     "She probably didn't mark me late, right?"
     "As I take my seat, the teacher resumes her lecture."
     t "Now, class... Remember that next week is finals week."
-    t "Study hard and get the questions right. {w}Or not. You get out of tests as much as you put in."
+    t "If you do well enough, you might even win a prize!" #reward is gary gary oak kun
     t "Today we will be learning about the First Fundamental Theorem of Calculus."
     "..."
     "I rest my head against my hand."
