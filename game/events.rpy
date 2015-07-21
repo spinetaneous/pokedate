@@ -1180,7 +1180,7 @@ label forgot_lunch3:
                 "I decide to remind him of who I really am."
                 "Once again, I grab his tail."
                 char "OW!" with vpunch
-                char "N-Now, now, little lamb... {w}There is enough of me to go around..."
+                char "N-Now, now, little lamb... {w}There's enough of me to go around..."
                 char "Just... {w}let go of me for a bit."
                 player "You {i}still{/i} don't remember me?"
                 char "Huh?"
@@ -1193,8 +1193,8 @@ label forgot_lunch3:
                 char "How did you find out about my school!?"
                 char "..."
                 char "You..."
-                char "You are not stalking me, are you?"
-                char "Are you not what one would call... a {i}sasaeng?{/i}"
+                char "Are you stalking me?"
+                char "Are you perhaps... a {i}sasaeng?{/i}"
                 player "No! I don't even know what that is!" with vpunch
                 player "I came here to eat lunch with my friend!"
                 player "Speaking of whom, I wonder where she--"
@@ -1203,7 +1203,7 @@ label forgot_lunch3:
                 player "I came to eat lunch with you!"
                 jynx "Wow, ain't that sweet of you!"
                 jynx "What's Charmander doin' here, huh? He pickin' on you?"
-                char "Um, my name is not--"
+                char "Um, my name isn't--"
                 jynx "Charmander, why you gotta be so rude?"
                 jynx "Just be a nice dear and have lunch with us instead of pickin' on poor lil' [name]!"
                 jynx "Let's all be friends!"
@@ -1239,14 +1239,14 @@ label forgot_lunch3:
                         jynx "{i}Charmander...?{/i}"
                         char "!"
                         char "Yeah, okay!"
-                    "Screw Charmeleon!":
+                    "Screw you, Charmeleon!":
                         $ char_pts -= 3
                         player "Screw you, Charmeleon!"
-                        char "Screw me? That is gross."
-                        char "Can that even happen? Are you not a different species?"
+                        char "Screw me? Gross."
+                        char "Can that even happen? Aren't you, like, a different species?"
                         jynx "No dude, she's cursin' you out..."
                         char "Ohhhh."
-                        char "Hey, that is very rude!" with vpunch
+                        char "Hey, that's very rude!" with vpunch
                         char "Why, I ought to--"
             "Reintroduce yourself":
                 player "Hey, don't you remember me?"
@@ -1259,8 +1259,8 @@ label forgot_lunch3:
                     char "How did you find out about my school!?"
                     char "..."
                     char "You..."
-                    char "You are not stalking me, are you?"
-                    char "Are you not what one would call a... {i}sasaeng?{/i}"
+                    char "Are you stalking me?"
+                    char "Are you perhaps a... {i}sasaeng?{/i}"
                     player "No!"
                 else:
                     char "You were standing behind me!"
@@ -1273,7 +1273,7 @@ label forgot_lunch3:
                 player "I came to eat lunch with you!"
                 jynx "Wow, ain't that sweet of you!"
                 jynx "What's Charmander doin' here, huh? He pickin' on you?"
-                char "Um, my name is not--"
+                char "Um, my name isn't--"
                 jynx "Charmander, why you gotta be so rude?"
                 player "Oh, no! He wasn't picking on me at all."
                 jynx "Good!"
@@ -1290,7 +1290,7 @@ label forgot_lunch3:
                 jynx "Charmander! What do you think you're doing?"
                 char "I was just talking with..."
                 char "..."
-                char "Hey... I seen you somewhere before?"
+                char "Hey... Have I seen you somewhere before?"
                 char "!" with vpunch
                 if grabbed_tail:
                     char "Didn't you grab my tail at the Pikabelle Chutendo meet-and-greet!?"
@@ -1300,7 +1300,8 @@ label forgot_lunch3:
                     char "How did you find out about my school!?"
                     char "..."
                     char "You..."
-                    char "You're not stalking me, are you?"
+                    char "Are you stalking me?"
+                    char "Are you perhaps a... {i}sasaeng?{/i}"
                     player "No!"
                     player "I came here to eat lunch with my friend!"
                 else:
@@ -1381,21 +1382,21 @@ label forgot_lunch3:
                         jynx "{i}Charmander...?{/i}"
                         char "!"
                         char "Yeah, okay!"
-                    "Screw Charmeleon!":
+                    "Screw you, Charmeleon!":
                         $ char_pts -= 3
                         player "Screw you, Charmeleon!"
-                        char "Screw me? That is gross."
-                        char "Can that even happen? Are you not a different species?"
+                        char "Screw me? Gross."
+                        char "Can that even happen? Aren't you, like, a different species?"
                         jynx "No dude, she's cursin' you out..."
                         char "Ohhhh."
-                        char "Hey, that is rude!" with vpunch
+                        char "Hey, that's very rude!" with vpunch
                         char "Why, I ought to--"
             "Introduce yourself":
                 $ char_pts += 2
                 player "My name is [name]!"
                 player "I'm a second-year, and I came here to meet with my friend Jynx--"
                 char "Sh... Dear..."
-                char "All I had to do was peer deeply into your wondrous eyes, and all the answers became clear...!"
+                char "All I had to do was peer deeply into your wondrous eyes, and all the answers became clear..."
                 char "You are here... {w}to meet with your friend, Jynx!"
                 player "... {w}Um..."
                 player "That's what I just said..."
@@ -1437,30 +1438,29 @@ label forgot_lunch3:
             player "Be right back!"
             if char_pts >= 10:
                 char "Wait!"
-                char "I cannot just leave a lost, little lamb to fend for nourishment all alone!"
-                char "What if you get lost again? Allow me to accompany you."
+                char "I can't just leave a lost, little lamb to fend for nourishment all alone!"
+                char "What if you get lost again? Let me come with you."
                 "Charmeleon wants to come along."
                 "Should I let him?"
                 menu:
                     "Yes":
                         player "Okay, I suppose you can come along."
-                        char "Wondrous! {w}Worry not, for you are safe within my care."
-                        char "We shall return post-haste, Jynx!"
-                        jynx "Yeah, yeah get goin' and hurry back!"
+                        char "Cool! {w}Don't worry, I'll get you to the cafeteria safe and sound."
+                        char "Be right back, Jynx!"
+                        jynx "Yeah, yeah, hurry up and get goin'!"
                         $ char_pts += 2
                         $ char_getlunch = True
                     "No":
                         player "It's fine. I can find the cafeteria on my own."
                         player "I was never lost in the first place."
-                        char "Alas, it is tragic of a young [gender] to become lost."
-                        char "I will pray for your safe return."
+                        char "Alright. Whatever you say."
             #fade cafeteria
             "Wow! So this is the cafeteria."
             "I'm not too familiar with buying my own lunch. I always bring lunch from home."
             if char_getlunch:
                 player "Charmeleon, what's good?"
                 char "Hm..."
-                char "I quite fancy the ddeokbokki here."
+                char "I like the ddeokbokki here."
                 char "The spice level brings a certain kind of delicious tingle."
                 player "Okie-dokie!"
                 char "Do you mean... {i}okie-ddeokbokki?{/i}"
@@ -1484,7 +1484,7 @@ label forgot_lunch3:
                 $ inventory.earn(-7)
                 "I grab my food and return to Charmeleon."
                 char "Nice choice."
-                char "Now, let us return to Jynx. She must be positively anxious for our return."
+                char "Let's go back now."
             else:
                 "...{w}Where's the menu around here?"
                 "..."
@@ -1498,11 +1498,10 @@ label forgot_lunch3:
             # fade classroom
             if char_getlunch:
                 jynx "What took you guys so long!?" with vpunch
-                char "We were not gone for that long..."
+                char "We weren't gone for that long..."
             else:
                 jynx "What took you so long!?" with vpunch
-                char "I see you found the cafeteria without getting lost."
-                char "Being able to learn on one's own is a fine trait."
+                char "Heh, I see you found the cafeteria without getting lost."
             "Jynx, Charmeleon, and I all spend lunch together, eating and chatting happily."
             $ char_pts += 5
         "Don't eat lunch":
@@ -1513,9 +1512,9 @@ label forgot_lunch3:
             jynx "Charmander!!" with vpunch
             jynx "Let [name] have some of your lunch too."
             if char_pts >= 10:
-                char "Of course I would not mind sharing some of my lunch with a fine young lamb such as [name]."
+                char "Of course I wouldn't mind sharing some of my lunch with a fine young lamb such as [name]."
             else:
-                char "...I have no obligation to do such a thing."
+                char "Eh, nah."
                 player "It's okay, Jynx. I don't need that much food."
                 jynx "Whatever you say, [name]..."
             "Jynx, Charmeleon, and I all spend lunch together, eating and chatting happily."
