@@ -101,7 +101,7 @@ init:
         #doesn't like mom
         #likes player. obviously
     define char = Character('Charmeleon', color="#ff760d") #at park all the time
-        #the aristocrat. suave and lame
+        #the playboy with no real love exp
         #is the bastard child of a rich man
         #lives with his mom who has been kicked outta the rich house and is now an alcoholic
         #goes to park to escape home life but doesn't run away cuz deep down he loves his mom
