@@ -1562,5 +1562,11 @@ label finals:
             pass
         "Diglett":
             pass
+    "Question 3: (True or False) Ruby's hair is white."
+    menu:
+        "True":
+            pass
+        "False":
+            pass
     #come up with more stuff later
     return
