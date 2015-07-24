@@ -63,7 +63,7 @@ label school_day1:
     t "Take a seat."
     "She probably didn't mark me late, right?"
     "As I take my seat, the teacher resumes her lecture."
-    t "Now, class... Remember that next week is finals week."
+    t "Now, class... Remember that next week is mid-terms week."
     t "If you do well enough, you might even win a prize!" #reward is gary gary oak kun
     t "Today we will be learning about the First Fundamental Theorem of Calculus."
     "..."

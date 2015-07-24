@@ -1518,11 +1518,11 @@ label forgot_lunch3:
                 player "It's okay, Jynx. I don't need that much food."
                 jynx "Whatever you say, [name]..."
             "Jynx, Charmeleon, and I all spend lunch together, eating and chatting happily."
-        char "And my name is Charmeleon, not Charmander!" with vpunch
-        jynx "Oh, is that so?"
+    char "And my name is Charmeleon, not Charmander!" with vpunch
+    jynx "Oh, is that so?"
     return
     
-label finals:
+label midterms:
     "Today's the day... {w}It's time to ace those finals!"
     #fade classroom
     "..."
