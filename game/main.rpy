@@ -286,7 +286,8 @@ label evening:
             $ evening_act = "home"
         "Go Home" if afternoon_act != "skip_work":
             $ evening_act = "home"
-        #perhaps at a certain day, dad gives you unlimited texting so you can text some buddies?
+        #maybe change evening period to texting period
+        #or maybe just change it to "maybe i should do something before goin to bed" period
     $ act = evening_act
     
     call events_run_period
