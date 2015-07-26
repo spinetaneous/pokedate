@@ -51,7 +51,7 @@ label school_day1:
     #fade to class
     "**SLAM**" with vpunch
     player "{size=+5}TEACHER...! I AM HERE!!!{/size}" with vpunch
-    t "Wow, and it's only 8:03AM." with vpunch
+    t "Wow, and it's only 8:03AM."
     player "{size=+5}I... AM NOT LATE!!!!{/size}" with vpunch
     "From the door, I can see my childhood friend, Pikachu, looking worried for me."
     "I flash him a brief thumbs up and wink, as if saying, \"Don't worry, I got this!\""

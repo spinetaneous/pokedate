@@ -1537,6 +1537,12 @@ label midterms:
     "I stare at the paper on my desk."
     t "And... {w}Start!"
     #sound of flipping paper over lol
+    #fade black and then class again
+    "...{w}...{w}..."
+    "Oh man... {w}That was brutal..."
+    "...!"
+    "What are these? Bonus questions?"
+    "My only hope!"
     "Question 1: Which of the following was the first pokemon?"
     menu:
         "Rhydon":
