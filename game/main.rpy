@@ -81,7 +81,7 @@ label start:
     "If you've ever looked a Pokemon and thought, \"Wow, I would totally date that Pokemon!\"
      then this is the dating sim for you!"
     "We are dedicated to provide for you an unforgettable experience."
-    "DISCLAIMER: This game takes place in a weeaboo universe. {w}Wait, don't leave yet."
+    "DISCLAIMER: This game takes place in a weird universe. {w}Wait, don't leave yet."
     "It's because we tried making a game set in a Japanese high school, but..."
     "We're American. {w}And the Internet isn't very helpful. {w}Or maybe we just suck. {w}We dunno."
     "But hey, this is a game, so who cares. {w}By two high school girls who don't have any experience with otome games. {w}Or making games in general."
@@ -259,6 +259,8 @@ label mall:
             $ mall_act = "warm_topic"
         "Pikachu's house":
             $ mall_act = "pika_house"
+        "Park": #when you go to the park for the first time you meet charmeleon
+            $ mall_act = "park"
             # there will be other stores available here, but unless a certain
             # character for that store has been met, an uninteresting event will occur
         #other choices later... like perhaps you can go home early and hang out with pikachu instead (^:
@@ -276,16 +278,11 @@ label evening:
 
     $ period = "evening"
     
-    "Wow, the sun is starting to set."
-    "What should I do?"
+    "Since the sun is starting to set, I go home."
+    "Now that I'm at home, what should I do?"
     menu:
-        #maybe put park in mall period??? and like... u leave the mall lol
-        "Go to Park": #when you go to the park for the first time, you meet charmeleon
-            $ evening_act = "park"
-        "Stay Home" if afternoon_act == "skip_work":
-            $ evening_act = "home"
-        "Go Home" if afternoon_act != "skip_work":
-            $ evening_act = "home"
+        "Text someone":
+            pass
         #maybe change evening period to texting period
         #or maybe just change it to "maybe i should do something before goin to bed" period
     $ act = evening_act
