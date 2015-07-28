@@ -124,7 +124,7 @@ init:
         #default events for when nothing interesting is happening
         event("class1", "act == 'class'", event.solo(), event.choose_one("class"), priority=1000)
         event("class2", "act == 'class'", event.solo(), event.choose_one("class"), priority=1000)
-        event("work", "act == 'mall'", event.solo(), event.depends("get_hired"), priority=1000)
+        event("work", "act == 'work' and has_job", event.solo(), priority=1000)
         event("skip_work1", "act == 'skip_work'", event.solo(), priority=1000)
         event("eat_lunch1", "act == 'lunch1'", event.solo(), priority=1000)
         event("eat_lunch2", "act == 'lunch2'", event.solo(), priority=1000)
@@ -133,6 +133,9 @@ init:
         
         #the process of finding a job. can take place over many days. stops once player gets hired
         event("where_job_hunt", "act == 'job_hunt' and not has_job", priority=1)
+        
+        #the player gets lectured by riley for skipping work so many times
+        event("work_lecture", "act == 'work' and skipped_work >= 10", event.once(), priority=1)
         
         #the first time player goes to salon after knowing jynx, she gets a haircut
         event("get_haircut", "act == 'salon' and jynx_dex", event.once(), priority=999)
@@ -166,7 +169,9 @@ label work: #this only happens after you get hired
     #and add events that notify the player that their pay is being reduced
     "I head to my job at the mall and strengthen my resolve as I sell pokepuffs."
     "I've got to work hard if I want to get {i}PokeCrossing: Happy Ball Designer!{/i}"
+    "Let's get down to business... Literally a business because La Pokesserie is a bakery."
     python:
+        #fade mall
         if skipped_work < 3:
             inventory.earn(35)
         elif skipped_work >= 3 and skipped_work < 6:
@@ -570,6 +575,14 @@ label job_hunt_la_pokesserie:
     "{size=+5}{i}THE SUPER SPECIAL LIMITED EDITION {color=#ffd700}GOLD{/color} VERSION OF{/i} POKECROSSING: HAPPY BALL DESIGNER{i} SIGNED BY PIKABELLE CHUTENDO HERSELF FEATURING NEVER-BEFORE-SEEN EXTRA MATERIAL{/i}{/size}... {w}is mine!"
     $ has_job = True
     return
+    
+label work_lecture:
+    trap "[name]..."
+    trap "Do you think La Pokesserie is a joke? {w}You need to stop skipping out on your job all the time."
+    trap "If I could, I'd fire you. {w}But... With no employees, I'd go even deeper into the red..."
+    trap "So instead, I'm going to deduct your pay even more."
+    "At least there's some hope of earning enough for the game..."
+    jump work
     
 label meet_ditto: #the first time player goes to class, she notices ditto
     if char_dex and not grabbed_tail:

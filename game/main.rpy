@@ -46,12 +46,13 @@ label start:
     
     # other variables
         has_job = False #true after get_hired runs
-        skipped_work = 0 #affects salary
+        skipped_work = 10 #affects salary
         grabbed_tail = False #true if you decide to light something on fire with charmeleon's tail
         #if true, then player is surprised to see charmeleon at school
         #if false, then player is not surprised bc they already know that they attend the same school
         haircut = False #true after jynx cuts player's hair
         know_pika_secret = False #true after pikachu tells you about his dying dad
+        unlimited_text = False #true after dad gets unlimited texting
     
     #job_hunt variables
         #tried_store variables. true after trying to get hired at each respective store
@@ -123,7 +124,7 @@ label start:
     "Thank you for providing this information!"
     "Without further ado, let's get started on your romantic adventure! :-)"
     
-    #jump forgot_lunch1 #for testing purposes
+    jump day #for testing purposes
     
     # fade home
     jump breakfast
@@ -281,7 +282,11 @@ label evening:
     "Since the sun is starting to set, I go home."
     "Now that I'm at home, what should I do?"
     menu:
-        "Text someone":
+        "Text someone" if unlimited_text:
+            pass
+        "Talk to Dad":
+            pass #dad jokes lmao spend time with dad he's fun
+        "Don't do anything": #in case you just don't want a dad joke haha
             pass
         #maybe change evening period to texting period
         #or maybe just change it to "maybe i should do something before goin to bed" period
