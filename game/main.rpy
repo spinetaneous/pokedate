@@ -46,7 +46,7 @@ label start:
     
     # other variables
         has_job = False #true after get_hired runs
-        skipped_work = 10 #affects salary
+        skipped_work = 0 #affects salary
         grabbed_tail = False #true if you decide to light something on fire with charmeleon's tail
         #if true, then player is surprised to see charmeleon at school
         #if false, then player is not surprised bc they already know that they attend the same school
@@ -237,14 +237,14 @@ label afternoon:
     $ act = afternoon_act
     call events_run_period
 
-# if player went to work, then now she can hang around the mall afterwards
-label mall:
+# if player went to work, then now she can hang at the mall or somewhere else afterwards
+label after_work:
     if check_skip_period() or afternoon_act == "skip_work":
         jump evening
     
-    centered "Mall"
+    centered "After Work"
     
-    $ period = "mall"
+    $ period = "after_work"
     
     if afternoon_act != "job_hunt":
         "Nothing like a day of hard work!"
@@ -253,19 +253,19 @@ label mall:
     "Where should I hang out now?"
     menu:
         "Salon":
-            $ mall_act = "salon"
+            $ after_work_act = "salon"
         "Gym":
-            $ mall_act = "gym"
+            $ after_work_act = "gym"
         "Warm Topic":
-            $ mall_act = "warm_topic"
+            $ after_work_act = "warm_topic"
         "Pikachu's house":
-            $ mall_act = "pika_house"
+            $ after_work_act = "pika_house"
         "Park": #when you go to the park for the first time you meet charmeleon
-            $ mall_act = "park"
+            $ after_work_act = "park"
             # there will be other stores available here, but unless a certain
             # character for that store has been met, an uninteresting event will occur
         #other choices later... like perhaps you can go home early and hang out with pikachu instead (^:
-    $ act = mall_act
+    $ act = after_work_act
     call events_run_period
 
 # player decides whether to go to the park or to go/stay home
@@ -286,8 +286,8 @@ label evening:
             pass
         "Talk to Dad":
             pass #dad jokes lmao spend time with dad he's fun
-        "Don't do anything": #in case you just don't want a dad joke haha
-            pass
+        "Go to sleep": #in case you just don't want a dad joke haha
+            jump night
         #maybe change evening period to texting period
         #or maybe just change it to "maybe i should do something before goin to bed" period
     $ act = evening_act
