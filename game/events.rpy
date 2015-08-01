@@ -125,7 +125,6 @@ init:
         event("class1", "act == 'class'", event.solo(), event.choose_one("class"), priority=1000)
         event("class2", "act == 'class'", event.solo(), event.choose_one("class"), priority=1000)
         event("work", "act == 'work' and has_job", event.solo(), priority=1000)
-        event("skip_work1", "act == 'skip_work'", event.solo(), priority=1000)
         event("eat_lunch1", "act == 'lunch1'", event.solo(), priority=1000)
         event("eat_lunch2", "act == 'lunch2'", event.solo(), priority=1000)
         event("eat_lunch3", "act == 'lunch3'", event.solo(), priority=1000)
@@ -183,14 +182,6 @@ label work: #this only happens after you get hired
             "It's difficult with such little pay, though..."
     return
     
-label skip_work1:
-    "I don't feel like working today."
-    "Sorry, Riley."
-    "I'm sure the store can run with one less person today."
-    "Instead, it's time for me to play video games! {i}PokeCrossing: New Ball{/i}, here I come..."
-    $ skipped_work += 1
-    return
-
 label eat_lunch1:
     "I head over to the underclassmen classes and sit down."
     "...But I don't see anyone I know here."

@@ -226,7 +226,12 @@ label afternoon:
             "Time to earn some cash!":
                 $ afternoon_act = "work"
             "You know, what? Screw work!":
-                $ afternoon_act = "skip_work"
+                "I don't feel like working today."
+                "Sorry, Riley."
+                "I'm sure the store can run with one less person today."
+                "Instead, it's time for me to play video games! {i}PokeCrossing: New Ball{/i}, here I come..."
+                $ skipped_work += 1
+                jump after_work
     else:
         "The time has come..."
         "Time to job hunt!"
@@ -239,7 +244,7 @@ label afternoon:
 
 # if player went to work, then now she can hang at the mall or somewhere else afterwards
 label after_work:
-    if check_skip_period() or afternoon_act == "skip_work":
+    if check_skip_period():
         jump evening
     
     centered "After Work"
