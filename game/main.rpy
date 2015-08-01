@@ -231,7 +231,7 @@ label afternoon:
                 "I'm sure the store can run with one less person today."
                 "Instead, it's time for me to play video games! {i}PokeCrossing: New Ball{/i}, here I come..."
                 $ skipped_work += 1
-                jump after_work
+                jump evening
     else:
         "The time has come..."
         "Time to job hunt!"
