@@ -1006,7 +1006,7 @@ label forgot_lunch1:
                         $ ditt_pts += 1
     return
     
-label forgot_lunch2:
+label forgot_lunch2: #unfinished
     $ forgotlunch2 = True
     "I sit with Pikachu for lunch."
     "Time to eat!"
@@ -1526,7 +1526,7 @@ label forgot_lunch3:
     jynx "Oh, is that so?"
     return
     
-label midterms:
+label midterms: #unfinished
     "Today's the day... {w}It's time to ace those finals!"
     #fade classroom
     "..."
