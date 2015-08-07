@@ -291,6 +291,8 @@ label evening:
             pass
         "Talk to Dad":
             pass #dad jokes lmao spend time with dad he's fun
+        "Watch anime":
+            pass #desu note, not moe gakkou gurashi, etc
         "Go to sleep": #in case you just don't want a dad joke haha
             jump night
         #maybe change evening period to texting period
